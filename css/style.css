@@ -50,7 +50,7 @@ body {
 .sidebar {
   background: rgb(174, 216, 238);
   background: radial-gradient(circle, rgba(174, 216, 238, 1) 27%, rgba(210, 224, 240, 1) 93%);
-  width: 360px;
+  max-width: 360px;
   border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
@@ -129,7 +129,7 @@ body {
 }
 
 .main-content {
-  width: 70%;
+  /* width: 70%; */
   padding: 40px 50px;
 }
 
@@ -318,7 +318,7 @@ section {
 }
 
 .projects__item:not(:last-child) {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .projects__content {
