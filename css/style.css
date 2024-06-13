@@ -1,0 +1,383 @@
+:root {
+  --white: #fff;
+  --primary-darkest: #170f2e;
+  --primary-darker: #312163;
+  --primary-dark: #5531a7;
+  --primary-default: #9251f7;
+  --primary-light: #c696fc;
+  --primary-lighter: #efe2f9;
+  --primary-lightest: #f8f2fc;
+  --secondary-darker: #1f2347;
+  --secondary-dark: #2a337e;
+  --secondary-default: #516cf7;
+  --secondary-light: #95aafb;
+  --secondary-lighter: #e1e7fe;
+  --secondary-lightest: #f5f7ff;
+  --gray-darkest: #232339;
+  --gray-darker: #2e2e48;
+  --gray-dark: #47516b;
+  --gray-default: #79819a;
+  --gray-light: #acb1c3;
+  --gray-lighter: #d9dfe8;
+  --gray-lightest: #e2e6ee;
+  --gray-lightest-2: #f7f9fc;
+  --status-info: #22c3f1;
+  --status-success-light: #e7fae5;
+  --status-success: #4ac06f;
+  --status-success-dark: #1f5c43;
+  --status-warning-light: #fefcbf;
+  --status-warning: #f4ce10;
+  --status-warning-dark: #857129;
+  --font-family: "Outfit", sans-serif;
+  --second-family: "DM Sans", sans-serif;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.sidebar {
+  background: rgb(174, 216, 238);
+  background: radial-gradient(circle, rgba(174, 216, 238, 1) 27%, rgba(210, 224, 240, 1) 93%);
+  width: 360px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__box {
+  padding: 20px 40px;
+}
+
+.profile {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.profile__image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 30px;
+  object-fit: cover;
+}
+
+.profile__name {
+  font-size: 1.5em;
+  margin: 0;
+
+}
+
+.profile__title {
+  font-size: 16px;
+
+  color: #a478e8;
+  margin: 5px 0;
+}
+
+.profile__quote {
+  font-style: italic;
+  color: var(--gray-dark);
+  margin-top: 10px;
+}
+
+.contact-info,
+.socials,
+.languages {
+  width: 100%;
+}
+
+.contact-info__list,
+.socials__list,
+.languages__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info__item-img {
+
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.contact-info__item,
+.socials__item,
+.languages__item {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+
+}
+
+.contact-info__link {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+.main-content {
+  width: 70%;
+  padding: 40px 50px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+.experience__title,
+.skills__title,
+.education__title,
+.projects__title,
+.tools__title {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.experience__list,
+.education__list,
+.projects__list,
+.tools__list {
+  list-style: none;
+  padding: 0;
+}
+
+.experience__item,
+.education__item,
+.projects__item,
+.tools__item {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: var(--gray-lightest-2);
+
+
+  border-radius: 5px;
+}
+
+.skills__categories {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skills__category {
+  width: 48%;
+}
+
+.skills__list {
+  list-style: none;
+  padding: 0;
+}
+
+.skills__item {
+  margin-bottom: 10px;
+}
+
+.languages__item-img {
+  width: 20px;
+  height: 15px;
+  margin-right: 20px;
+}
+
+.social__item-img {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+}
+
+.profile__title,
+.languages__title,
+.socials__title {
+  margin-bottom: 30px;
+}
+
+.section {
+  position: relative;
+
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  left: -55px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background-color: #0073e6;
+  border-radius: 50%;
+  padding: 5px;
+  z-index: 5;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  left: -70px;
+  top: -7px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.04), 0 6px 24px 0 rgba(0, 0, 0, 0.04), 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.skills__category--development {
+  display: flex;
+  align-items: center;
+}
+
+.skills__category-title {
+  margin-right: 30px;
+}
+
+
+.skills__category-box {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.skills__category-image {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.skills__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.skills__item {
+  font-size: 18px;
+  padding: 20px;
+  background: var(--gray-lightest-2);
+  margin-right: 10px;
+  text-align: center;
+  width: 100%;
+
+  max-width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-default);
+}
+
+.education__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.education__item {
+  padding: 20px;
+  min-width: 100px;
+  margin-right: 10px;
+}
+
+.education__course {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.education__course-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+
+
+.projects__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.projects__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects__item-image {
+  min-width: 200px;
+
+  height: 140px;
+}
+
+.projects__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.projects__content {
+  padding: 10px;
+}
+
+.projects__content-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.projects__content-link {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-default);
+}
+
+.projects__content-link img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.tools__list {
+  display: flex;
+}
+
+.tools__item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tools__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.tools__item-img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 850px) {
+  .skills__list {
+
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skills__item {
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 690px) {
+  .skills__list {
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
