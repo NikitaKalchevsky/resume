@@ -39,6 +39,8 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  font-size: 14px;
+
 }
 
 .container {
@@ -183,6 +185,13 @@ section {
 
 .skills__item {
   margin-bottom: 10px;
+  display: flex;
+}
+
+.skills__item-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 
 .languages__item-img {
@@ -399,10 +408,31 @@ section {
   display: flex;
 }
 
+.experience__item-title {
+  font-size: 14px;
+}
+
 .experience__item-img {
   width: 45px;
   height: 45px;
   margin-right: 20px;
+}
+
+.experience__item-desc {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.experience__item-desc::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20px;
+  background-image: url('/images/ico/location-mini.svg');
+  background-size: cover;
+  width: 12px;
+  height: 15px;
 }
 
 @media (max-width: 850px) {
@@ -421,5 +451,9 @@ section {
   .skills__list {
 
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebar__box {
+    padding: 20px 20px;
   }
 }
