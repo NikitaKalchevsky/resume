@@ -268,7 +268,7 @@ section {
   margin-right: 10px;
   text-align: center;
   width: 100%;
-
+  border-radius: 6px;
   max-width: 110px;
   display: flex;
   align-items: center;
@@ -283,7 +283,21 @@ section {
 
 .education__item {
   padding: 20px;
-  min-width: 100px;
+  min-width: 180px;
+
+}
+
+.education__info-text {
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.education__info-date {
+  color: var(--gray-default);
+  font-size: 12px;
+}
+
+.education__item:not(:last-child) {
   margin-right: 10px;
 }
 
@@ -351,6 +365,17 @@ section {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  max-width: 140px;
+  width: 100%;
+
+}
+
+.tools__item-title {
+  margin-bottom: 5px;
+}
+
+.tools__item-descr {
+  text-align: center;
 }
 
 .tools__item:not(:last-child) {
@@ -361,6 +386,23 @@ section {
   width: 40px;
   height: 40px;
   margin-bottom: 10px;
+}
+
+.experience__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.experience__item {
+  display: flex;
+}
+
+.experience__item-img {
+  width: 45px;
+  height: 45px;
+  margin-right: 20px;
 }
 
 @media (max-width: 850px) {
