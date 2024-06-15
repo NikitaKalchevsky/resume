@@ -122,7 +122,12 @@ body {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  transition: all 0.4s;
+}
 
+.contact-info__item:hover,
+.socials__item:hover {
+  color: chocolate;
 }
 
 .contact-info__link {
