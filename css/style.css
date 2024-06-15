@@ -295,7 +295,12 @@ section {
 .education__item {
   padding: 20px;
   min-width: 180px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
 
+.education__item:hover {
+  box-shadow: 0 3px 15px 0 rgba(255, 104, 56, .5);
 }
 
 .education__info-text {
