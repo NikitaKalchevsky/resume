@@ -269,10 +269,11 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+
 }
 
 .skills__item {
-  font-size: 18px;
+  font-size: 14px;
   padding: 20px;
   background: var(--gray-lightest-2);
   margin-right: 10px;
@@ -328,6 +329,12 @@ section {
   height: 25px;
 }
 
+.education__course-link {
+  width: 30px;
+  height: 20px;
+  padding-left: 10px;
+}
+
 .education__info {
   display: flex;
   justify-content: space-between;
@@ -343,6 +350,11 @@ section {
 .projects__item {
   display: flex;
   flex-direction: column;
+  transition: all 0.4s;
+}
+
+.projects__item:hover {
+  box-shadow: 0 3px 15px 0 rgba(255, 104, 56, .5);
 }
 
 .projects__item-image {
