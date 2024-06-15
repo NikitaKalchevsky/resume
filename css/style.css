@@ -323,7 +323,17 @@ section {
   margin-right: 10px;
 }
 
+.education__info-certificat {
+  width: 45px;
+  height: 25px;
+}
 
+.education__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
 
 .projects__list {
   display: flex;
@@ -436,6 +446,14 @@ section {
   height: 15px;
 }
 
+
+
+
+
+
+
+
+
 @media (max-width: 850px) {
   .skills__list {
 
@@ -499,6 +517,8 @@ section {
     padding: 10px;
     min-width: 150px;
   }
+
+
 
   .skills__category--development {
     flex-direction: column;
