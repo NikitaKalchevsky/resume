@@ -1,511 +1,1325 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Kalchevskyi Nikita</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="images/favicon/site.webmanifest">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikita Kalchevsky — AI Automation Specialist</title>
+<meta name="description" content="AI Automation Specialist building production Telegram bots, Claude API integrations, and full-stack web applications. Glendale, CA.">
+<meta property="og:title" content="Nikita Kalchevsky — AI Automation Specialist">
+<meta property="og:description" content="Production Telegram bots · Claude API · Python · React · Full-stack automation">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-card: #141414;
+  --border: #1f1f1f;
+  --border-strong: #2a2a2a;
+  --text: #e8e6e1;
+  --text-dim: #8a8680;
+  --text-faint: #555049;
+  --accent: #d4ff00;        /* electric lime — acid, distinctive */
+  --accent-dim: #8aa600;
+  --warn: #ff7a45;
+  --serif: 'Fraunces', Georgia, serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle noise overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+main { position: relative; z-index: 2; }
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── TOP STATUS BAR ───────────────────── */
+.status-bar {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  padding: 0.6rem 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(10,10,10,0.85);
+}
+.status-bar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.status-left {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.status-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.status-bar a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.status-bar a:hover { color: var(--accent); }
+
+/* ─── HERO ─────────────────────────────── */
+.hero {
+  padding: 6rem 0 5rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-tag::before {
+  content: '/// ';
+  color: var(--text-faint);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  font-variation-settings: "opsz" 144;
+}
+.hero h1 .accent {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+.hero-sub {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--text-dim);
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.hero-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.hero-meta .label {
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hero-meta .val {
+  color: var(--text);
+}
+.hero-meta a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.hero-meta a:hover { border-color: var(--accent); }
+
+/* ─── SECTION ──────────────────────────── */
+section {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+.section-head h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+}
+.section-meta {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ─── ABOUT ─────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.about-text {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+}
+.about-text strong {
+  color: var(--accent);
+  font-weight: 500;
+  font-style: italic;
+}
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.stat {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.stat-val {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.stat-val .unit {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+/* ─── PROJECTS ─────────────────────────── */
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.project:last-child { border-bottom: none; }
+.project:nth-child(even) > .project-img,
+.project:nth-child(even) > .browser-frame,
+.project:nth-child(even) > .phones,
+.project:nth-child(even) > .terminal-frame { order: -1; }
+
+.project-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  overflow: hidden;
+  border-radius: 4px;
+}
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Browser frame for website screenshots */
+.browser-frame {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,255,0,0.05);
+}
+.browser-bar {
+  background: var(--bg-card);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-strong);
+  flex-shrink: 0;
+}
+.browser-dots {
+  display: flex;
+  gap: 0.35rem;
+}
+.browser-dots span {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.browser-dots span:nth-child(1) { background: #ff5f57; }
+.browser-dots span:nth-child(2) { background: #febc2e; }
+.browser-dots span:nth-child(3) { background: #28c840; }
+.browser-url {
+  flex: 1;
+  background: var(--bg);
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.browser-url::before {
+  content: '🔒 ';
+  opacity: 0.5;
+}
+.browser-content {
+  flex: 1;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+.browser-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Phone mockup grid for Telegram bot screenshots */
+.phones {
+  position: relative;
+  aspect-ratio: 4/3;
+  background:
+    radial-gradient(ellipse at center, rgba(212,255,0,0.06) 0%, transparent 60%),
+    var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+.phone {
+  position: relative;
+  height: 100%;
+  max-height: 420px;
+  aspect-ratio: 549/1280;
+  background: #1a1a1a;
+  border: 2px solid #2a2a2a;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%;
+  height: 8px;
+  background: #1a1a1a;
+  border-radius: 0 0 6px 6px;
+  z-index: 2;
+}
+.phone-1 {
+  transform: rotate(-4deg) translateY(-8px);
+  z-index: 2;
+}
+.phone-2 {
+  transform: rotate(4deg) translateY(8px);
+  z-index: 1;
+}
+.phone-single {
+  transform: none;
+  max-height: 480px;
+}
+
+/* Terminal frame for server/code screenshots */
+.terminal-frame {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--mono);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+.terminal-bar {
+  background: var(--bg-card);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-strong);
+  flex-shrink: 0;
+}
+.terminal-bar .browser-dots span:nth-child(1) { background: #ff5f57; }
+.terminal-bar .browser-dots span:nth-child(2) { background: #febc2e; }
+.terminal-bar .browser-dots span:nth-child(3) { background: #28c840; }
+.terminal-title {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-left: 0.5rem;
+}
+.terminal-body {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--text);
+  overflow: hidden;
+}
+.terminal-body .prompt { color: var(--accent); }
+.terminal-body .cmd { color: var(--text); }
+.terminal-body .out { color: var(--text-dim); }
+.terminal-body .ok { color: var(--accent); }
+.terminal-body .dim { color: var(--text-faint); }
+
+/* Placeholder */
+.project-img .placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(212,255,0,0.03) 8px,
+      rgba(212,255,0,0.03) 16px
+    ),
+    var(--bg-card);
+  font-family: var(--mono);
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+  letter-spacing: 0.05em;
+}
+.project-img .placeholder strong {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.project-content { padding: 0.5rem 0; }
+.project-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.project-tag .live-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  animation: pulse 2s infinite;
+}
+.project h3 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.project-desc {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.project-stack {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-elevated);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+.project-stack .stack-label {
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+.project-bullets {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.project-bullets li {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  padding: 0.4rem 0 0.4rem 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+.project-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--mono);
+}
+.project-bullets li strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+.btn.primary:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+
+/* ─── STACK GRID ───────────────────────── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.stack-cat {
+  background: var(--bg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.stack-cat h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.stack-cat ul { list-style: none; }
+.stack-cat li {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--border);
+  transition: color 0.2s;
+}
+.stack-cat li:last-child { border-bottom: none; }
+.stack-cat li:hover { color: var(--text); }
+.stack-cat li.primary { color: var(--text); font-weight: 500; }
+
+/* ─── EXPERIENCE ───────────────────────── */
+.exp-list { display: flex; flex-direction: column; }
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.exp-item:last-child { border-bottom: none; }
+.exp-period {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  padding-top: 0.4rem;
+}
+.exp-period .current {
+  color: var(--accent);
+}
+.exp-role {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+.exp-company {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
+.exp-desc {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ─── EDUCATION & LANGUAGES ────────────── */
+.dual-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 4rem;
+}
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.edu-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+}
+.edu-item:last-child { border-bottom: none; }
+.edu-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.edu-meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+.edu-school {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.lang-list {
+  display: flex;
+  flex-direction: column;
+}
+.lang {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lang:last-child { border-bottom: none; }
+.lang-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+}
+.lang-level {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.lang-level.native { color: var(--accent); }
+
+/* ─── CTA / FOOTER ─────────────────────── */
+.cta {
+  padding: 7rem 0;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, rgba(212,255,0,0.05) 0%, transparent 60%),
+    var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.cta-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.cta h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+.cta h2 .accent { color: var(--accent); font-style: normal; }
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+footer {
+  padding: 3rem 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ─── RESPONSIVE ───────────────────────── */
+@media (max-width: 900px) {
+  .wrap { padding: 0 1.25rem; }
+  .hero { padding: 4rem 0 3rem; }
+  .hero h1 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-text { font-size: 1.1rem; }
+  .project { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
+  .project:nth-child(even) .project-img,
+  .project:nth-child(even) .browser-frame,
+  .project:nth-child(even) .phones,
+  .project:nth-child(even) .terminal-frame { order: 0; }
+  .project h3 { font-size: 1.5rem; }
+  .stack-grid { grid-template-columns: repeat(2, 1fr); }
+  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .exp-period { padding-top: 0; }
+  .dual-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .section-head { flex-wrap: wrap; }
+  .section-meta { margin-left: 0; width: 100%; }
+  section { padding: 3.5rem 0; }
+  .phone { max-height: 380px; }
+  .terminal-body { font-size: 0.7rem; padding: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .hero-meta { gap: 1.25rem; }
+  .stack-grid { grid-template-columns: 1fr; }
+  .status-bar { font-size: 0.7rem; }
+  .status-left { gap: 1rem; }
+  .status-bar .hide-mobile { display: none; }
+}
+
+/* ─── REVEAL ANIMATION ─────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
-
 <body>
-  <div class="container">
 
-    <div class="sidebar">
-      <div class="sidebar__box">
+<div class="status-bar">
+  <div class="wrap">
+    <div class="status-left">
+      <span><span class="status-dot"></span>AVAILABLE FOR PROJECTS</span>
+      <span class="hide-mobile">GLENDALE · CA</span>
+      <span class="hide-mobile">UTC−08:00</span>
+    </div>
+    <div>
+      <a href="#contact">[ HIRE ME ]</a>
+    </div>
+  </div>
+</div>
 
-        <div class="profile">
-          <img src="images/my-photos.jpg" alt="Chiara Bianchi" class="profile__image">
-          <h1 class="profile__name">Nikita Kalchevsky</h1>
-          <h2 class="profile__title">Front-End Developer</h2>
-          <blockquote class="profile__quote">
-            “I create convenient and beautiful web spaces.”
-          </blockquote>
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-tag">AI Automation Specialist · Python · Claude API</div>
+    <h1>Nikita<br>Kalchevsky<span class="accent">.</span></h1>
+    <p class="hero-sub">
+      I build production Telegram bots, LLM-powered tools, and full-stack web apps that businesses actually rely on. Currently shipping a live e-commerce platform and a 16,003-record ECU lookup bot serving real customers — both running on a $5 droplet without breaking a sweat.
+    </p>
+    <div class="hero-meta">
+      <div>
+        <span class="label">Email</span>
+        <span class="val"><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></span>
+      </div>
+      <div>
+        <span class="label">Telegram</span>
+        <span class="val"><a href="https://t.me/Hybrid_d">@Hybrid_d</a></span>
+      </div>
+      <div>
+        <span class="label">Phone</span>
+        <span class="val"><a href="tel:+12398879992">+1 (239) 887-9992</a></span>
+      </div>
+      <div>
+        <span class="label">GitHub</span>
+        <span class="val"><a href="https://github.com/nikitakalchevsky">@nikitakalchevsky</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>About</h2>
+      <span class="section-meta">// who · what · why</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        15 years building and running networks taught me one thing: <strong>code is easy, keeping it alive is hard</strong>. Now I bring that operations mindset to AI automation — building bots, integrations, and web platforms that don't just work in a demo, they survive a Tuesday at 3 AM. I work with Claude API, Python, and React, ship to DigitalOcean, and treat every project like it has paying customers behind it. Because mine do.
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-label">Production bots shipped</span>
+          <span class="stat-val">4<span class="unit">live</span></span>
         </div>
-        <div class="contact-info">
-          <ul class="contact-info__list">
-            <li class="contact-info__item">
-              <img class="contact-info__item-img" src="images/ico/email.svg" alt="ico social">
-
-              <a href="mailo:nikita.kalchevskyi@gmail.com">Email: nikita.kalchevskyi@gmail.com</a>
-            </li>
-            <li class="contact-info__item">
-              <img class="contact-info__item-img" src="images/ico/website.svg" alt="ico social">
-              <p>Website:
-                <a href="https://nikitakalchevsky.github.io/resume/" class="contact-info__link">
-                  https://hybrid-nik.it
-                </a>
-              </p>
-            </li>
-            <li class="contact-info__item">
-              <img class="contact-info__item-img" src="images/ico/phone.svg" alt="ico social">
-
-              <a href="tel:+1(239)8879992">Phone: (+1) 239 8879992</a>
-            </li>
-            <li class="contact-info__item">
-              <img class="contact-info__item-img" src="images/ico/location.svg" alt="ico social">
-
-              <a href="https://maps.app.goo.gl/9KDdVEVy7stAwQLC7" target="_blank">Location: USA, Florida</a>
-            </li>
-          </ul>
+        <div class="stat">
+          <span class="stat-label">DB records served</span>
+          <span class="stat-val">16K<span class="unit">+ rows</span></span>
         </div>
-        <div class="socials">
-          <h3 class="socials__title">Socials</h3>
-          <ul class="socials__list">
-            <li class="socials__item">
-              <img class="social__item-img" src="images/social/instagramm.svg" alt="social img">
-              <p class="social__item-text">
-                <a href="https://www.instagram.com/nikita_kalchevsky/" target="_blank" rel="noreferrer">Instagram:
-                  @Nikita_Kalchevsky</a>
-              </p>
-            </li>
-            <li class="socials__item">
-              <img class="social__item-img" src="images/social/viber.svg" alt="social img">
-              <p class="social__item-text">
-                <a href="tel:+12398879992">Viber: +(1) 2398879992</a>
-              </p>
-            </li>
-            <li class="socials__item">
-              <img class="social__item-img" src="images/social/telegram.svg" alt="social img">
-              <p class="social__item-text">
-                <a href="tel:@Hybrid_d" target="_blank" rel="noreferrer">Telegramm: @Hybrid_d</a>
-              </p>
-            </li>
-            <li class="socials__item">
-              <img class="social__item-img" src="images/social/whatsapp.svg" alt="social img">
-              <p class="social__item-text">
-                <a href="tel:+12398879992" target="_blank" rel="noreferrer">WhatsApp: +(1) 2398879992</a>
-              </p>
-            </li>
-          </ul>
+        <div class="stat">
+          <span class="stat-label">E-commerce SKUs live</span>
+          <span class="stat-val">441<span class="unit">products</span></span>
         </div>
-        <div class="languages">
-          <h3 class="languages__title">Languages</h3>
-          <ul class="languages__list">
-            <li class="languages__item">
-              <img src="images/flag/ru.svg" alt="photo flag" class="languages__item-img">
-              <p class="languages__item-text">
-                Russian - Native
-              </p>
-            </li>
-            <li class="languages__item">
-              <img src="images/flag/ua.svg" alt="photo flag" class="languages__item-img">
-              <p class="languages__item-text">
-                Ukraine - Native
-              </p>
-            </li>
-            <li class="languages__item">
-              <img src="images/flag/usa.svg" alt="photo flag" class="languages__item-img">
-              <p class="languages__item-text">
-                English - Elementary
-              </p>
-            </li>
-          </ul>
+        <div class="stat">
+          <span class="stat-label">Server uptime</span>
+          <span class="stat-val">11<span class="unit">days · 0 incidents</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Years in tech</span>
+          <span class="stat-val">15<span class="unit">+</span></span>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="main-content">
+<!-- ─── PROJECTS ─── -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Selected Work</h2>
+      <span class="section-meta">// 2024 – 2026</span>
+    </div>
 
-      <section class="projects section">
-        <h3 class="projects__title">Latest Projects</h3>
-        <ul class="projects__list">
-          <li class="projects__item">
-            <a class="projects__item-link" href="https://nikitakalchevsky.github.io/simplefood/index.html"
-              target="_blank">
-              <img class="projects__item-image" src="images/simple-food.jpg" alt="photo project">
-              <div class="projects__content">
-                <h4 class="projects__content-title">
-                  Layout according to template
-                </h4>
-                <div class="projects__content-link">
-                  <img src="images/ico/icolink.svg" alt="ico link">
-                  <a class="" href="https://nikitakalchevsky.github.io/simplefood/index.html"
-                    target="_blank">https://simplefood/</a>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="projects__item">
-            <a class="projects__item-link" href="https://nikitakalchevsky.github.io/freshok/" target="_blank">
-              <img class="projects__item-image" src="images/freshok.jpg" alt="photo project">
-              <div class="projects__content">
-                <h4 class="projects__content-title">
-                  Layout according to template
-                </h4>
-                <div class="projects__content-link">
-                  <img src="images/ico/icolink.svg" alt="ico link">
-                  <a class="" href="https://nikitakalchevsky.github.io/freshok/" target="_blank">https://freshok/</a>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="projects__item">
-            <a class="projects__item-link" href="https://apelsin-rozmarin.com.ua/" target="_blank">
-              <img class="projects__item-image" src="images/apelsin.jpg" alt="photo project">
-              <div class="projects__content">
-                <h4 class="projects__content-title">
-                  Word Press Shop
-                </h4>
-                <div class="projects__content-link">
-                  <img src="images/ico/icolink.svg" alt="ico link">
-                  <a class="" href="https://apelsin-rozmarin.com.ua/" target="_blank">https://apelsin-rozmarin/</a>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="projects__item">
-            <a class="projects__item-link" href="https://exclusivestyle-us.com/" target="_blank">
-              <img class="projects__item-image" src="images/exlusive.jpg" alt="photo project">
-              <div class="projects__content">
-                <h4 class="projects__content-title">
-                  Word Press Shop
-                </h4>
-                <div class="projects__content-link">
-                  <img src="images/ico/icolink.svg" alt="ico link">
-                  <a class="" href="https://exclusivestyle-us.com/" target="_blank">https://exclusivestyle-us</a>
-                </div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </section>
+    <div class="projects">
 
-      <section class="skills section">
-        <h3 class="skills__title">Skills</h3>
-        <div class="skills__categories">
-          <div class="skills__category skills__category--development">
-            <div class="skills__category-box">
-              <img class="skills__category-image" src="images/ico/development.svg" alt="">
-              <h4 class="skills__category-title">Development</h4>
-            </div>
-            <ul class="skills__list">
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/html.svg" alt="ico skill">
-                <p>
-                  HTML
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/css.svg" alt="ico skill">
-                <p>
-                  CSS
-                </p>
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/js.svg" alt="ico skill">
-                <p>
-                  JS
-                </p>
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/gulp.svg" alt="ico skill">
-                <p>
-                  Gulp
-                </p>
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/git.svg" alt="ico skill">
-                <p>
-                  Git
-                </p>
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/react.svg" alt="ico skill">
-                <p>
-                  React JS
-                </p>
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/wordpress.svg" alt="ico skill">
-                <p>
-                  Word Press
-                </p>
-              </li>
-              <li class="skills__item">
-                <img class="skills__item-img" src="images/skill/hosting.svg" alt="ico skill">
-                <p>
-                  Hosting
-                </p>
-              </li>
-            </ul>
+      <!-- PROJECT 1 -->
+      <article class="project">
+        <div class="phones">
+          <div class="phone phone-1">
+            <img src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing NISSAN ECU lookup">
           </div>
         </div>
-      </section>
+        <div class="project-content">
+          <div class="project-tag"><span class="live-dot"></span>LIVE · COMMERCIAL</div>
+          <h3>Airbag ECU Lookup Bot</h3>
+          <p class="project-desc">
+            A production Telegram bot serving real customers for an automotive ECU programming service in Glendale, CA. Customers send a vehicle brand and part number; the bot queries a 16,003-record database, returns the correct reprogramming method and price, and books an appointment within an hour. Claude Haiku handles messy natural-language inputs.
+          </p>
+          <div class="project-stack">
+            <span class="stack-label">stack:</span>Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Two-bot architecture:</strong> client-facing bot + admin management panel</li>
+            <li><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron-based auto-restart every 6h</li>
+            <li><strong>Lean ops:</strong> 89MB memory footprint, runs comfortably on 1GB RAM / 1 vCPU</li>
+            <li><strong>API tuning:</strong> eliminated Claude 400 errors via prompt+DB chunking and temperature 0.1</li>
+          </ul>
+          <div class="project-links">
+            <a href="#contact" class="btn">Demo on request</a>
+          </div>
+        </div>
+      </article>
 
-      <section class="education section">
-        <h3 class="education__title">Education</h3>
-        <ul class="education__list">
-          <li class="education__item">
-            <div class="education__course">
-              <img class="education__course-img" src="images/education/itgid.jpg" alt="logo cource">
-              <p>
-                iTGid
-              </p>
-              <a href="https://itgid.info/ru" target="_blank">
-                <img class="education__course-link" src="images/ico/link.svg" alt="link course">
-              </a>
-            </div>
-            <div class="education__info">
-              <div class="education__info-box">
-                <p class="education__info-text">
-                  JavaScript v2.0
-                </p>
-                <p class="education__info-date">
-                  Match 2024
-                </p>
-              </div>
-              <a href="images/education/js2.0.png" target="_blank">
-                <img src="images/ico/certificate.svg" alt="photo sertificate" class="education__info-certificat"
-                  width="40" height="20">
-              </a>
-            </div>
-          </li>
-          <li class="education__item">
-            <div class="education__course">
-              <img class="education__course-img" src="images/education/itgid.jpg" alt="logo cource">
-              <p>
-                iTGid
-              </p>
-              <a href="https://itgid.info/ru" target="_blank">
-                <img class="education__course-link" src="images/ico/link.svg" alt="link course">
-              </a>
-            </div>
-            <div class="education__info">
-              <div class="education__info-box">
-                <p class="education__info-text">
-                  Array Method
-                </p>
-                <p class="education__info-date">
-                  April 2024
-                </p>
-              </div>
-              <a href="images/education/js_array.png" target="_blank">
-                <img src="images/ico/certificate.svg" alt="photo sertificate" class="education__info-certificat"
-                  width="40" height="20">
-              </a>
-            </div>
-          </li>
-          <li class="education__item">
-            <div class="education__course">
-              <img class="education__course-img" src="images/education/itgid.jpg" alt="logo cource">
-              <p>
-                iTGid
-              </p>
-              <a href="https://itgid.info/ru" target="_blank">
-                <img class="education__course-link" src="images/ico/link.svg" alt="link course">
-              </a>
-            </div>
-            <div class="education__info">
-              <div class="education__info-box">
-                <p class="education__info-text">
-                  ReactJS
-                </p>
-                <p class="education__info-date">
-                  Aug 2024
-                </p>
-              </div>
-              <a href="">
-                <img src="images/ico/certificate.svg" alt="photo sertificate" class="education__info-certificat"
-                  width="40" height="20">
-              </a>
-            </div>
-          </li>
+      <!-- PROJECT 2 -->
+      <article class="project">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">apelsin-rozmarin.com.ua</div>
+          </div>
+          <div class="browser-content">
+            <img src="images/fruktbox-home.jpg" alt="Fruktbox e-commerce homepage with product catalog">
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
+          <h3>Fruktbox — E-Commerce Platform</h3>
+          <p class="project-desc">
+            A full-stack online shop for fruit gift boxes serving the Ukrainian market — designed, built, deployed, and maintained solo. 441 live products, custom admin panel, real-time order pipeline, and three integrated payment methods. Indexed in Google Merchant Center, SSL grade A.
+          </p>
+          <div class="project-stack">
+            <span class="stack-label">stack:</span>React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Custom admin panel</strong> for product, inventory, and order management</li>
+            <li><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
+            <li><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
+            <li><strong>SEO &amp; commerce:</strong> Google Search Console + Merchant Center, sitemap submitted, SSL A grade</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn primary">Visit site →</a>
+          </div>
+        </div>
+      </article>
 
-          <li class="education__item">
-            <div class="education__course">
-              <img class="education__course-img" src="images/education/0to1.jpg" alt="logo cource">
-              <p>
-                from 0 to 1
-              </p>
-              <a href="https://from0to1.com.ua/" target="_blank">
-                <img class="education__course-link" src="images/ico/link.svg" alt="link course">
-              </a>
-            </div>
-            <div class="education__info">
-              <div class="education__info-box">
-                <p class="education__info-text">
-                  HTML CSS
-                </p>
-                <p class="education__info-date">
-                  Oct 2023
-                </p>
-              </div>
-              <a href="images/education/from0to1.jpg" target="_blank">
-                <img src="images/ico/certificate.svg" alt="photo sertificate" class="education__info-certificat">
-              </a>
-            </div>
+      <!-- PROJECT 3 -->
+      <article class="project">
+        <div class="phones">
+          <div class="phone phone-1">
+            <img src="images/personal-bot-menu.jpg" alt="Personal AI Assistant main menu with 9 modules">
+          </div>
+          <div class="phone phone-2">
+            <img src="images/personal-bot-nutrition.jpg" alt="Personal AI Assistant nutrition tracking and finance modules">
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag">R&amp;D · MODULAR</div>
+          <h3>Personal AI Assistant</h3>
+          <p class="project-desc">
+            A modular Telegram-based personal assistant where Claude Haiku handles all natural-language input parsing — "ate 200g chicken" becomes a structured calorie entry, "spent $40 on gas" becomes a categorized expense. Built as a testbed for production patterns I now reuse for client work.
+          </p>
+          <div class="project-stack">
+            <span class="stack-label">stack:</span>Python · Claude Haiku · SQLite · python-telegram-bot · cron
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Nutrition module</strong> with Mifflin-St Jeor BMR calculation and personalized macro goals</li>
+            <li><strong>Finance tracking</strong> with category breakdowns and monthly statistics</li>
+            <li><strong>Schedule &amp; reminders</strong>, timezone-aware</li>
+            <li><strong>Copart auction monitor</strong> — polls every 2 hours for new listings</li>
+            <li><strong>Reliability:</strong> weekly SQLite backups, auto-restart on reboot via crontab</li>
+          </ul>
+        </div>
+      </article>
 
-          </li>
+      <!-- PROJECT 4 -->
+      <article class="project">
+        <div class="terminal-frame">
+          <div class="terminal-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <span class="terminal-title">root@ubuntu-s-1vcpu-1gb-nyc1: ~</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> <span class="cmd">screen -ls</span></div>
+            <div><span class="out">There are screens on:</span></div>
+            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122794.bot</span> <span class="dim">(airbag · Detached)</span></div>
+            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122797.admin</span> <span class="dim">(panel · Detached)</span></div>
+            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23444.personal</span> <span class="dim">(agent · Detached)</span></div>
+            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23445.ai-agent</span> <span class="dim">(langchain · Detached)</span></div>
+            <div><span class="prompt">$</span> <span class="cmd">uptime</span></div>
+            <div><span class="out">up <span class="ok">11 days</span>, load average: <span class="ok">0.00, 0.00, 0.00</span></span></div>
+            <div><span class="prompt">$</span> <span class="cmd">free -h | head -2</span></div>
+            <div><span class="out">          total   used   free</span></div>
+            <div><span class="out">Mem:      961Mi  <span class="ok">456Mi</span>   81Mi</span></div>
+            <div><span class="prompt">$</span> <span class="cmd">_</span></div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag">FRAMEWORK · INFRASTRUCTURE</div>
+          <h3>LangChain Framework + Bot Fleet</h3>
+          <p class="project-desc">
+            A LangChain-powered Telegram assistant designed as a deployment-ready foundation for client-specific automation. Modular skills directory keeps each capability isolated and swappable per client. Currently runs alongside three other production bots on a single $5 droplet — <strong>11 days uptime, zero incidents, load average 0.00</strong>.
+          </p>
+          <div class="project-stack">
+            <span class="stack-label">stack:</span>Python · LangChain · ChatAnthropic · screen · cron · modular skills architecture
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Skill-based modular design</strong> — database, messaging, logging, approval, pricing, orders, inventory</li>
+            <li><strong>Approval workflows</strong> for human-in-the-loop scenarios</li>
+            <li><strong>Fleet management:</strong> 4 production bots co-located on one droplet, isolated screen sessions</li>
+            <li><strong>Reliability proven</strong> — production uptime measured in days, not hours</li>
+          </ul>
+        </div>
+      </article>
 
-        </ul>
-      </section>
-
-      <section class="tools section">
-        <h3 class="tools__title">Tools</h3>
-        <ul class="tools__list">
-          <li class="tools__item">
-            <img class="tools__item-img" src="images/tools/vscode.svg" alt="image vscode">
-            <h4 class="tools__item-title">
-              VS Code
-            </h4>
-            <p class="tools__item-descr">
-              Code editor
-            </p>
-          </li>
-          <li class="tools__item">
-            <img class="tools__item-img" src="images/tools/figma.svg" alt="image vscode">
-            <h4 class="tools__item-title">
-              Figma
-            </h4>
-            <p class="tools__item-descr">
-              Reading layouts
-            </p>
-          </li>
-          <li class="tools__item">
-            <img class="tools__item-img" src="images/tools/photoshop.svg" alt="image vscode">
-            <h4 class="tools__item-title">
-              Photoshop
-            </h4>
-            <p class="tools__item-descr">
-              Reading layouts
-            </p>
-          </li>
-          <li class="tools__item">
-            <img class="tools__item-img" src="images/tools/xcode.svg" alt="image vscode">
-            <h4 class="tools__item-title">
-              Xcode
-            </h4>
-            <p class="tools__item-descr">
-              iOS development
-            </p>
-          </li>
-        </ul>
-      </section>
-
-      <section class="experience section">
-        <h3 class="experience__title">Experience</h3>
-        <ul class="experience__list">
-          <li class="experience__item">
-            <img class="experience__item-img" src="images/ico/cp.png" alt="image company">
-            <div class="experience__content">
-              <div class="experience__item-box">
-                <p class="experience__item-title">
-                  Local network owner
-                </p>
-              </div>
-              <div class="experience__item-desc">
-                <p class="experience__item-text">
-                  Jul 2002 - Jan 2010
-                </p>
-                <p class="experience__item-adress">
-                  Kharkiv, Ukraine
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="experience__item">
-            <img class="experience__item-img" src="images/ico/airbites.png" alt="image company">
-            <div class="experience__content">
-              <div class="experience__item-box">
-                <p class="experience__item-title">
-                  Local network engineer
-                </p>
-              </div>
-              <div class="experience__item-desc">
-                <p class="experience__item-text">
-                  Jul 2010 - Jan 2015
-                </p>
-                <p class="experience__item-adress">
-                  Kharkiv, Ukraine
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="experience__item">
-            <img class="experience__item-img" src="images/ico/Kyivstar.png" alt="image company">
-            <div class="experience__content">
-              <div class="experience__item-box">
-                <p class="experience__item-title">
-                  Local network engineer
-                </p>
-              </div>
-              <div class="experience__item-desc">
-                <p class="experience__item-text">
-                  Jul 2015 - Jan 2020
-                </p>
-                <p class="experience__item-adress">
-                  Kharkiv, Ukraine
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="experience__item">
-            <img class="experience__item-img" src="images/ico/uber.svg" alt="image company">
-            <div class="experience__content">
-              <div class="experience__item-box">
-                <p class="experience__item-title">
-                  Taxi driver
-                </p>
-              </div>
-              <div class="experience__item-desc">
-                <p class="experience__item-text">
-                  Jul 2022 - Jan 2024
-                </p>
-                <p class="experience__item-adress">
-                  Kyiv, Ukraine
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="experience__item">
-            <img class="experience__item-img" src="images/ico/freelinser.png" alt="image company">
-            <div class="experience__content">
-              <div class="experience__item-box">
-                <p class="experience__item-title">
-                  Freelance
-                </p>
-              </div>
-              <div class="experience__item-desc">
-                <p class="experience__item-text">
-                  Jul 2024 - This Now
-                </p>
-                <p class="experience__item-adress">
-                  Kyiv, Ukraine
-                </p>
-              </div>
-            </div>
-          </li>
-              <li class="experience__item">
-            <img class="experience__item-img" src="images/ico/freelinser.png" alt="image company">
-            <div class="experience__content">
-              <div class="experience__item-box">
-                <p class="experience__item-title">
-                  Freelance
-                </p>
-              </div>
-              <div class="experience__item-desc">
-                <p class="experience__item-text">
-                  Jul 2025 - This Now
-                </p>
-                <p class="experience__item-adress">
-                  FL North Port, USA
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section>
     </div>
   </div>
+</section>
 
-  <script src="js/main.js"></script>
+<!-- ─── STACK ─── -->
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Stack</h2>
+      <span class="section-meta">// daily drivers</span>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-cat">
+        <h4>AI &amp; LLM</h4>
+        <ul>
+          <li class="primary">Claude API (Sonnet, Haiku, Opus)</li>
+          <li class="primary">Anthropic SDK</li>
+          <li>LangChain</li>
+          <li>Prompt engineering</li>
+          <li>Function calling / tools</li>
+          <li>Claude Skills</li>
+        </ul>
+      </div>
+      <div class="stack-cat">
+        <h4>Backend</h4>
+        <ul>
+          <li class="primary">Python 3</li>
+          <li class="primary">python-telegram-bot</li>
+          <li>aiogram</li>
+          <li>SQLite</li>
+          <li>openpyxl</li>
+          <li>async / await</li>
+        </ul>
+      </div>
+      <div class="stack-cat">
+        <h4>Frontend</h4>
+        <ul>
+          <li class="primary">React</li>
+          <li class="primary">Vite</li>
+          <li>JavaScript (ES6+)</li>
+          <li>HTML5 / CSS3</li>
+          <li>Firebase (Firestore, Auth)</li>
+          <li>WordPress</li>
+        </ul>
+      </div>
+      <div class="stack-cat">
+        <h4>Infrastructure</h4>
+        <ul>
+          <li class="primary">DigitalOcean droplets</li>
+          <li class="primary">Linux / Ubuntu</li>
+          <li>screen · cron · SSH</li>
+          <li>Git / GitHub</li>
+          <li>DNS &amp; domain config</li>
+          <li>Search Console / Merchant Center</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Trajectory</h2>
+      <span class="section-meta">// 2002 → now</span>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-period">2024 — <span class="current">now</span></div>
+        <div>
+          <div class="exp-role">AI Automation Specialist · Freelance</div>
+          <div class="exp-company">Self-employed · Glendale, CA</div>
+          <p class="exp-desc">Building production Telegram bots, Claude API integrations, and full-stack web apps. Operating a local ECU programming service (Glendale, CA) as a real-world testbed for automation tooling — every customer interaction stress-tests the systems I build for clients.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2022 — 2024</div>
+        <div>
+          <div class="exp-role">Driver · Front-End Developer (transitioning)</div>
+          <div class="exp-company">Kyiv, Ukraine → North Port, FL</div>
+          <p class="exp-desc">Drove rideshare while completing intensive coursework in HTML/CSS, JavaScript, and React. Built first portfolio sites and WordPress projects.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2015 — 2020</div>
+        <div>
+          <div class="exp-role">Network Engineer</div>
+          <div class="exp-company">Kyivstar · Kharkiv, Ukraine</div>
+          <p class="exp-desc">Network engineering and infrastructure operations at Ukraine's largest telecom operator.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2010 — 2015</div>
+        <div>
+          <div class="exp-role">Network Engineer</div>
+          <div class="exp-company">Airbites · Kharkiv, Ukraine</div>
+          <p class="exp-desc">ISP-level network engineering and customer infrastructure.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2002 — 2010</div>
+        <div>
+          <div class="exp-role">Local Network Owner / Operator</div>
+          <div class="exp-company">Independent ISP · Kharkiv, Ukraine</div>
+          <p class="exp-desc">Owned and operated a local-area ISP. Full responsibility for hardware, customer support, billing, and operations. The original real-world classroom for "ship it and keep it running."</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── EDUCATION + LANGUAGES ─── -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Learning</h2>
+      <span class="section-meta">// formal &amp; ongoing</span>
+    </div>
+    <div class="dual-grid">
+
+      <div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div>
+              <div class="edu-name">ReactJS</div>
+              <span class="edu-school">iTGid</span>
+            </div>
+            <div class="edu-meta">Aug 2024</div>
+          </div>
+          <div class="edu-item">
+            <div>
+              <div class="edu-name">JavaScript Array Methods</div>
+              <span class="edu-school">iTGid</span>
+            </div>
+            <div class="edu-meta">Apr 2024</div>
+          </div>
+          <div class="edu-item">
+            <div>
+              <div class="edu-name">JavaScript v2.0</div>
+              <span class="edu-school">iTGid</span>
+            </div>
+            <div class="edu-meta">Mar 2024</div>
+          </div>
+          <div class="edu-item">
+            <div>
+              <div class="edu-name">HTML &amp; CSS</div>
+              <span class="edu-school">From 0 to 1</span>
+            </div>
+            <div class="edu-meta">Oct 2023</div>
+          </div>
+          <div class="edu-item">
+            <div>
+              <div class="edu-name">Anthropic Claude API · LangChain · Agent architectures</div>
+              <span class="edu-school">Self-directed · ongoing</span>
+            </div>
+            <div class="edu-meta">2024 — now</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;">Languages</h4>
+        <div class="lang-list">
+          <div class="lang">
+            <span class="lang-name">Russian</span>
+            <span class="lang-level native">Native</span>
+          </div>
+          <div class="lang">
+            <span class="lang-name">Ukrainian</span>
+            <span class="lang-level native">Native</span>
+          </div>
+          <div class="lang">
+            <span class="lang-name">English</span>
+            <span class="lang-level">Working · improving</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section id="contact" class="cta">
+  <div class="wrap">
+    <div class="cta-tag">/// LET'S BUILD SOMETHING</div>
+    <h2>Need a bot, an<br>integration, or a<br><span class="accent">whole system</span><span style="font-style:normal">?</span></h2>
+    <p style="color: var(--text-dim); font-family: var(--mono); font-size: 0.95rem; max-width: 580px; margin: 0 auto;">
+      Telegram bots · Claude API integrations · automation pipelines · full-stack web apps. Available for one-off projects or ongoing retainers.
+    </p>
+    <div class="cta-buttons">
+      <a href="mailto:nikita.kalchevskyi@gmail.com" class="btn primary">Email me →</a>
+      <a href="https://t.me/Hybrid_d" class="btn">Telegram</a>
+      <a href="resume.pdf" class="btn">Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 · Nikita Kalchevsky · Built solo, no frameworks</div>
+    <div>Last shipped: <span style="color: var(--accent);">just now</span></div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.project, .stat, .exp-item, .edu-item').forEach(el => {
+  el.classList.add('reveal');
+  io.observe(el);
+});
+
+// Live clock in status bar (PT)
+const clockEl = document.querySelectorAll('.status-left span')[2];
+if (clockEl) {
+  function tick() {
+    const now = new Date();
+    const opts = { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit', hour12: false };
+    clockEl.textContent = 'PT ' + now.toLocaleTimeString('en-US', opts);
+  }
+  tick();
+  setInterval(tick, 30000);
+}
+</script>
+
 </body>
-
 </html>
