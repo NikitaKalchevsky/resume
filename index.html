@@ -1036,6 +1036,42 @@ footer .wrap {
         </div>
       </article>
 
+      <!-- PROJECT 5: TuningStore -->
+      <article class="project">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">tuningstore.net</div>
+          </div>
+          <div class="browser-content" style="background:#0a0a0a; display:flex; align-items:center; justify-content:center; min-height:200px;">
+            <div style="font-family:var(--mono); font-size:0.75rem; color:var(--text-faint); text-align:center; padding:2rem;">
+              <div style="color:var(--accent); font-size:1.1rem; margin-bottom:0.5rem;">tuningstore.net</div>
+              <div>ECU firmware marketplace</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag">IN DEV · LAUNCHING</div>
+          <h3>TuningStore — ECU Firmware Marketplace</h3>
+          <p class="project-desc">
+            A multilingual digital marketplace for ECU calibration files — stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog (brand → model → engine → calibration), purchase securely, and receive a presigned R2 download link. Built solo from zero.
+          </p>
+          <div class="project-stack">
+            <span class="stack-label">stack:</span>Next.js 16 (App Router) · TypeScript · Prisma 7 · PostgreSQL (Neon) · NextAuth v4 · Stripe · PayPal · Coinbase · Cloudflare R2 · next-intl (7 locales)
+          </div>
+          <ul class="project-bullets">
+            <li><strong>4-level catalog:</strong> brand → model → engine → calibration file, 301+ firmware files imported</li>
+            <li><strong>7 languages:</strong> EN, UA, RU, DE, FR, ES, IT via next-intl with full route localization</li>
+            <li><strong>Three payment rails:</strong> Stripe, PayPal, Coinbase Commerce — webhooks handle order fulfillment</li>
+            <li><strong>Secure delivery:</strong> Cloudflare R2 presigned URLs — files never exposed publicly</li>
+            <li><strong>Admin bulk import:</strong> drag-and-drop .bin upload → auto-parse filename → DB + R2 in one shot</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://tuningstore.net" target="_blank" rel="noopener" class="btn primary">tuningstore.net →</a>
+          </div>
+        </div>
+      </article>
+
       <!-- PROJECT 4 -->
       <article class="project">
         <div class="terminal-frame">
