@@ -225,4 +225,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-23 — DCA bot скрины, lightbox, фикс скролла в начало страницы при перезагрузке*
+*Последнее обновление: 2026-05-23 — DCA bot: 2 телефона (dca-bot-all.jpg + dca-bot-menu.jpg)*
