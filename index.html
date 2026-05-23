@@ -414,6 +414,15 @@ section {
   object-fit: cover;
   object-position: top;
   display: block;
+  animation: phone-scroll 8s ease-in-out infinite;
+}
+.phone-2 img, .phone-single img {
+  animation-delay: 4s;
+}
+@keyframes phone-scroll {
+  0%, 15%  { object-position: top; }
+  70%, 85% { object-position: bottom; }
+  100%     { object-position: top; }
 }
 .phone::before {
   content: '';

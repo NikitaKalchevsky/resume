@@ -224,4 +224,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-22 — добавлен DCA Trade Bot, LinkedIn, обновлён стек (Next.js, TypeScript, Prisma, PostgreSQL, Vercel, Cloudflare R2), TuningStore переведён в LIVE, hero обновлён*
+*Последнее обновление: 2026-05-23 — CSS-анимация автопрокрутки скринов в phone-фреймах (phone-scroll 8s)*
