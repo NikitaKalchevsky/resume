@@ -37,8 +37,9 @@ resume/
 │   ├── personal-bot-menu.jpg
 │   ├── personal-bot-nutrition.jpg
 │   ├── tuningstore-home.jpg
-│   ├── dca-bot-menu.jpg        — (ожидается скрин от пользователя)
-│   ├── dca-bot-positions.jpg   — (ожидается скрин от пользователя)
+│   ├── dca-bot-all.jpg         — длинный скрин: market scan + buy signal + positions (используется)
+│   ├── dca-bot-menu.jpg        — buy signal (запасной)
+│   ├── dca-bot-positions.jpg   — market scan (запасной)
 │   └── ...
 ├── resume.pdf          — PDF-версия резюме (обновлять вручную)
 └── PROJECT_GUIDE.md    — этот файл
@@ -224,4 +225,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-23 — CSS-анимация автопрокрутки скринов в phone-фреймах (phone-scroll 8s)*
+*Последнее обновление: 2026-05-23 — DCA bot скрины добавлены (dca-bot-all.jpg), single phone frame, lightbox для открытия изображений в полный экран*
