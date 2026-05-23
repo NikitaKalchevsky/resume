@@ -872,10 +872,10 @@ footer .wrap {
 <!-- ─── HERO ─── -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-tag">AI Automation Specialist · Python · Claude API</div>
+    <div class="hero-tag">AI Automation Specialist · Telegram Bots & Claude API</div>
     <h1>Nikita<br>Kalchevsky<span class="accent">.</span></h1>
     <p class="hero-sub">
-      I build production Telegram bots, LLM-powered tools, and full-stack web apps that businesses actually rely on. Currently shipping a live e-commerce platform and a 16,003-record ECU lookup bot serving real customers — both running on a $5 droplet without breaking a sweat.
+      I build production Telegram bots, LLM-powered tools, and full-stack web apps that businesses actually rely on. From a 16,003-record ECU lookup bot to a crypto DCA trading bot to a 7-language firmware marketplace — five production systems, zero co-founders.
     </p>
     <div class="hero-meta">
       <div>
@@ -893,6 +893,10 @@ footer .wrap {
       <div>
         <span class="label">GitHub</span>
         <span class="val"><a href="https://github.com/nikitakalchevsky">@nikitakalchevsky</a></span>
+      </div>
+      <div>
+        <span class="label">LinkedIn</span>
+        <span class="val"><a href="https://linkedin.com/in/nikitakalchevsky">nikitakalchevsky</a></span>
       </div>
     </div>
   </div>
@@ -913,7 +917,7 @@ footer .wrap {
       <div class="about-stats">
         <div class="stat">
           <span class="stat-label">Production bots shipped</span>
-          <span class="stat-val">4<span class="unit">live</span></span>
+          <span class="stat-val">5<span class="unit">live</span></span>
         </div>
         <div class="stat">
           <span class="stat-label">DB records served</span>
@@ -924,8 +928,8 @@ footer .wrap {
           <span class="stat-val">441<span class="unit">products</span></span>
         </div>
         <div class="stat">
-          <span class="stat-label">Server uptime</span>
-          <span class="stat-val">11<span class="unit">days · 0 incidents</span></span>
+          <span class="stat-label">Droplet uptime</span>
+          <span class="stat-val">24/7<span class="unit"> · 0 incidents</span></span>
         </div>
         <div class="stat">
           <span class="stat-label">Years in tech</span>
@@ -1043,15 +1047,12 @@ footer .wrap {
             <div class="browser-dots"><span></span><span></span><span></span></div>
             <div class="browser-url">tuningstore.net</div>
           </div>
-          <div class="browser-content" style="background:#0a0a0a; display:flex; align-items:center; justify-content:center; min-height:200px;">
-            <div style="font-family:var(--mono); font-size:0.75rem; color:var(--text-faint); text-align:center; padding:2rem;">
-              <div style="color:var(--accent); font-size:1.1rem; margin-bottom:0.5rem;">tuningstore.net</div>
-              <div>ECU firmware marketplace</div>
-            </div>
+          <div class="browser-content">
+            <img src="images/tuningstore-home.jpg" alt="TuningStore ECU firmware marketplace homepage">
           </div>
         </div>
         <div class="project-content">
-          <div class="project-tag">IN DEV · LAUNCHING</div>
+          <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
           <h3>TuningStore — ECU Firmware Marketplace</h3>
           <p class="project-desc">
             A multilingual digital marketplace for ECU calibration files — stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog (brand → model → engine → calibration), purchase securely, and receive a presigned R2 download link. Built solo from zero.
@@ -1068,6 +1069,38 @@ footer .wrap {
           </ul>
           <div class="project-links">
             <a href="https://tuningstore.net" target="_blank" rel="noopener" class="btn primary">tuningstore.net →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT: DCA Trade Bot -->
+      <article class="project">
+        <div class="phones">
+          <div class="phone phone-1">
+            <img src="images/dca-bot-menu.jpg" alt="DCA Trade Bot Telegram menu with position controls" onerror="this.style.display='none'">
+          </div>
+          <div class="phone phone-2">
+            <img src="images/dca-bot-positions.jpg" alt="DCA Trade Bot positions and P&L view" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag"><span class="live-dot"></span>LIVE · TRADING</div>
+          <h3>Smart DCA Trade Bot</h3>
+          <p class="project-desc">
+            Automated crypto DCA strategy bot for Binance.US, managed entirely via Telegram inline menus — no web interface needed. Scans top coins by volume and momentum, buys on dips below MA20, scales position size with dip depth, and auto-sells on take-profit. Deployed on DigitalOcean with non-blocking async exchange calls.
+          </p>
+          <div class="project-stack">
+            <span class="stack-label">stack:</span>Python · ccxt (Binance.US) · python-telegram-bot · APScheduler · SQLite · asyncio · DigitalOcean
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Smart DCA strategy:</strong> buys when price &lt; MA20 by configurable threshold, scales position size with dip depth</li>
+            <li><strong>Auto-mode:</strong> autonomous buy/sell within limits — max invested, min interval between trades</li>
+            <li><strong>Auto-sell only mode:</strong> takes profit on open positions without enabling auto-buy</li>
+            <li><strong>Inline Telegram UI:</strong> positions, P&amp;L, settings — full control without a web dashboard</li>
+            <li><strong>DRY_RUN mode</strong> for safe strategy testing without real orders</li>
+          </ul>
+          <div class="project-links">
+            <a href="#contact" class="btn">Demo on request</a>
           </div>
         </div>
       </article>
@@ -1141,16 +1174,17 @@ footer .wrap {
         <ul>
           <li class="primary">Python 3</li>
           <li class="primary">python-telegram-bot</li>
-          <li>aiogram</li>
-          <li>SQLite</li>
-          <li>openpyxl</li>
+          <li class="primary">Next.js (App Router)</li>
+          <li>Prisma ORM · PostgreSQL</li>
+          <li>APScheduler · SQLite</li>
+          <li>openpyxl · ccxt</li>
           <li>async / await</li>
         </ul>
       </div>
       <div class="stack-cat">
         <h4>Frontend</h4>
         <ul>
-          <li class="primary">React</li>
+          <li class="primary">React · TypeScript</li>
           <li class="primary">Vite</li>
           <li>JavaScript (ES6+)</li>
           <li>HTML5 / CSS3</li>
@@ -1162,11 +1196,12 @@ footer .wrap {
         <h4>Infrastructure</h4>
         <ul>
           <li class="primary">DigitalOcean droplets</li>
+          <li class="primary">Vercel · Cloudflare R2</li>
           <li class="primary">Linux / Ubuntu</li>
+          <li>Stripe · PayPal · Coinbase</li>
           <li>screen · cron · SSH</li>
           <li>Git / GitHub</li>
-          <li>DNS &amp; domain config</li>
-          <li>Search Console / Merchant Center</li>
+          <li>DNS · Search Console</li>
         </ul>
       </div>
     </div>
@@ -1295,7 +1330,7 @@ footer .wrap {
           </div>
           <div class="lang">
             <span class="lang-name">English</span>
-            <span class="lang-level">Working · improving</span>
+            <span class="lang-level">Working proficiency · actively improving</span>
           </div>
         </div>
       </div>

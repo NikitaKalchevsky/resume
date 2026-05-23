@@ -36,10 +36,22 @@ resume/
 │   ├── fruktbox-home.jpg
 │   ├── personal-bot-menu.jpg
 │   ├── personal-bot-nutrition.jpg
+│   ├── tuningstore-home.jpg
+│   ├── dca-bot-menu.jpg        — (ожидается скрин от пользователя)
+│   ├── dca-bot-positions.jpg   — (ожидается скрин от пользователя)
 │   └── ...
 ├── resume.pdf          — PDF-версия резюме (обновлять вручную)
 └── PROJECT_GUIDE.md    — этот файл
 ```
+
+## Проекты в резюме (порядок отображения)
+
+1. **Airbag ECU Lookup Bot** — phone mockup (`airbag-bot-chat.jpg`)
+2. **Fruktbox E-Commerce** — browser frame (`fruktbox-home.jpg`)
+3. **Personal AI Assistant** — dual phones (`personal-bot-menu.jpg` + `personal-bot-nutrition.jpg`)
+4. **TuningStore** — browser frame (`tuningstore-home.jpg`) · LIVE · PRODUCTION
+5. **Smart DCA Trade Bot** — dual phones (`dca-bot-menu.jpg` + `dca-bot-positions.jpg`) · ожидаются скрины
+6. **LangChain Bot Fleet** — terminal frame (CSS-only, без изображений)
 
 **Ключевой принцип:** всё в `index.html`. CSS — в теге `<style>`, JS — в теге `<script>` в конце файла. Никаких отдельных `.css` и `.js` файлов.
 
@@ -212,4 +224,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-21 — добавлен проект TuningStore*
+*Последнее обновление: 2026-05-22 — добавлен DCA Trade Bot, LinkedIn, обновлён стек (Next.js, TypeScript, Prisma, PostgreSQL, Vercel, Cloudflare R2), TuningStore переведён в LIVE, hero обновлён*
