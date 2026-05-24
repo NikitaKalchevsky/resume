@@ -225,4 +225,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-23 — DCA bot: 2 телефона (dca-bot-all.jpg + dca-bot-menu.jpg)*
+*Последнее обновление: 2026-05-23 — Content fixes: hero "six projects", location North Port FL→Glendale CA, languages Ukrainian first*
