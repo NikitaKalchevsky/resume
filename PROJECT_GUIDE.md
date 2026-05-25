@@ -1,4 +1,4 @@
-# Resume — Сайт-резюме Никиты Калчевского
+# Resume — Сайт-резюме Микиты Калчевского
 
 ## Что это
 
@@ -225,4 +225,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-23 — Content fixes: hero "six projects", location North Port FL→Glendale CA, languages Ukrainian first*
+*Последнее обновление: 2026-05-25 — Nikita → Mykyta everywhere; removed broken Download PDF button*
