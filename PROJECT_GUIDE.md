@@ -225,4 +225,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-25 — @media print styles; resume.pdf generated (0.35MB); Download PDF button restored*
+*Последнее обновление: 2026-05-25 — @media print with small project images; resume.pdf regenerated from live URL*
