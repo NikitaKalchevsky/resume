@@ -17,7 +17,8 @@
 | Что | Версия / детали |
 |-----|----------------|
 | HTML/CSS/JS | Чистые, без фреймворков |
-| Шрифты | Google Fonts (Fraunces, JetBrains Mono, Inter) — загружаются из сети |
+| Шрифты | Google Fonts (Fraunces — дисплей, Hanken Grotesk — тело, JetBrains Mono — моно) — загружаются из сети |
+| Тема | Светлая, Warm Editorial: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент |
 | Хостинг | GitHub Pages |
 | Git-репозиторий | https://github.com/NikitaKalchevsky/resume.git |
 | Ветка | `main` |
@@ -184,7 +185,7 @@ git status
 | Ветка деплоя | `main` |
 | Локальная папка | `C:\Users\Nik\resume-deploy\resume\` |
 | Шрифты | Google Fonts — подгружаются автоматически при открытии сайта |
-| Акцентный цвет | `#d4ff00` (electric lime) — переменная `--accent` в CSS |
+| Акцентный цвет | вермилион `oklch(0.605 0.190 36)` (≈ `#d6451f`) — переменная `--accent` в CSS; ссылки/hover используют `--accent-deep` для контраста AA |
 | Контактный email | nikita.kalchevskyi@gmail.com |
 | Telegram | @Hybrid_d |
 
@@ -225,4 +226,9 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ---
 
-*Последнее обновление: 2026-05-25 — @media print with small project images; resume.pdf regenerated from live URL*
+## История изменений
+
+- **2026-06-11** — Полный редизайн в светлую тему **Warm Editorial**: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент вместо кислотного лайма. Шрифт тела Inter → Hanken Grotesk. Добавлены параллакс (hero-ghost «MK», фоновая сетка), staggered scroll-reveal, анимированные счётчики статистики, индикатор прогресса прокрутки. Аудит-фиксы: `prefers-reduced-motion` (отключает все анимации), focus-visible состояния, favicon (inline SVG), `og:image`. Весь текст переведён с em-dash на en-dash/запятые. Из репозитория удалён мусор (`Claude Setup.exe`), добавлен `.gitignore`.
+- **2026-05-25** — `@media print` с маленькими картинками проектов; `resume.pdf` перегенерирован из живого URL.
+
+*Последнее обновление: 2026-06-11 — редизайн в светлую тему Warm Editorial + аудит.*

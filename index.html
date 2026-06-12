@@ -3,32 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mykyta Kalchevsky — AI Automation Specialist</title>
-<meta name="description" content="AI Automation Specialist building production Telegram bots, Claude API integrations, and full-stack web applications. Glendale, CA.">
-<meta property="og:title" content="Mykyta Kalchevsky — AI Automation Specialist">
-<meta property="og:description" content="Production Telegram bots · Claude API · Python · React · Full-stack automation">
+<title>Mykyta Kalchevsky – AI Automation Specialist</title>
+<meta name="description" content="AI Automation Specialist building production Telegram bots, Claude API integrations, and full-stack web apps. Glendale, CA.">
+<meta property="og:title" content="Mykyta Kalchevsky – AI Automation Specialist">
+<meta property="og:description" content="Production Telegram bots, Claude API, Python, React, full-stack automation.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="images/tuningstore-home.jpg">
+<meta name="theme-color" content="#f7f3ec">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f7f3ec'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' text-anchor='middle' fill='%231c1a17'%3EM%3C/text%3E%3Ccircle cx='25' cy='8' r='3' fill='%23d6451f'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #0a0a0a;
-  --bg-elevated: #111111;
-  --bg-card: #141414;
-  --border: #1f1f1f;
-  --border-strong: #2a2a2a;
-  --text: #e8e6e1;
-  --text-dim: #8a8680;
-  --text-faint: #555049;
-  --accent: #d4ff00;        /* electric lime — acid, distinctive */
-  --accent-dim: #8aa600;
-  --warn: #ff7a45;
-  --serif: 'Fraunces', Georgia, serif;
-  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-  --sans: 'Inter', system-ui, sans-serif;
+  /* ── Warm paper neutrals (OKLCH, tinted toward the brand hue) ── */
+  --paper:        oklch(0.972 0.007 75);
+  --paper-2:      oklch(0.955 0.009 73);
+  --card:         oklch(0.988 0.005 78);
+  --ink:          oklch(0.235 0.013 55);
+  --ink-soft:     oklch(0.405 0.016 55);
+  --ink-dim:      oklch(0.525 0.020 60);
+  --ink-faint:    oklch(0.660 0.022 65);
+  --line:         oklch(0.890 0.012 75);
+  --line-strong:  oklch(0.825 0.016 70);
+  /* ── Vermilion accent ── */
+  --accent:       oklch(0.605 0.190 36);
+  --accent-deep:  oklch(0.510 0.175 35);   /* link/hover, AA on paper */
+  --accent-tint:  oklch(0.930 0.038 50);
+  --live:         oklch(0.640 0.150 145);
+
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --sans:  'Hanken Grotesk', system-ui, sans-serif;
+
+  --ease:  cubic-bezier(0.16, 1, 0.3, 1);   /* ease-out-expo */
+  --ease2: cubic-bezier(0.22, 1, 0.36, 1);
+  --maxw: 1180px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,8 +48,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.6;
@@ -46,866 +58,310 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle grid background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
-  z-index: 0;
+/* ── Atmospheric background: soft warm wash + faint engineering grid ── */
+.bg-field {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 78% -8%, oklch(0.93 0.045 48 / 0.55), transparent 60%),
+    radial-gradient(50rem 38rem at 0% 12%, oklch(0.94 0.03 95 / 0.5), transparent 55%);
 }
-
-/* Subtle noise overlay */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: overlay;
+.bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(oklch(0.4 0.02 60 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.4 0.02 60 / 0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 85%);
+}
+/* Grain, paper texture */
+.bg-grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
 }
 
 main { position: relative; z-index: 2; }
 
-.wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
+
+/* ── Scroll progress ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+  background: var(--accent); z-index: 200;
+  box-shadow: 0 0 12px oklch(0.605 0.19 36 / 0.6);
+  will-change: width;
 }
 
-/* ─── TOP STATUS BAR ───────────────────── */
+/* ── TOP STATUS BAR ── */
 .status-bar {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-elevated);
-  padding: 0.6rem 0;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid var(--line);
+  background: oklch(0.972 0.007 75 / 0.78);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  padding: 0.65rem 0;
   font-family: var(--mono);
   font-size: 0.75rem;
-  color: var(--text-dim);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-  background: rgba(10,10,10,0.85);
+  color: var(--ink-dim);
 }
-.status-bar .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.status-left {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
+.status-bar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.status-left { display: flex; gap: 1.5rem; align-items: center; }
 .status-dot {
-  display: inline-block;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
-  animation: pulse 2s infinite;
-  margin-right: 0.5rem;
-  vertical-align: middle;
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--live); box-shadow: 0 0 0 0 oklch(0.64 0.15 145 / 0.5);
+  animation: ping 2.4s var(--ease) infinite; margin-right: 0.5rem; vertical-align: middle;
 }
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 oklch(0.64 0.15 145 / 0.5); }
+  70%  { box-shadow: 0 0 0 7px oklch(0.64 0.15 145 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.64 0.15 145 / 0); }
 }
-.status-bar a {
-  color: var(--text-dim);
-  text-decoration: none;
-  transition: color 0.2s;
+.status-bar a { color: var(--ink-dim); text-decoration: none; transition: color 0.2s var(--ease); }
+.status-bar a:hover { color: var(--accent-deep); }
+.status-cta {
+  font-weight: 500; letter-spacing: 0.04em;
+  padding: 0.2rem 0.7rem; border: 1px solid var(--line-strong); border-radius: 999px;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
 }
-.status-bar a:hover { color: var(--accent); }
+.status-cta:hover { border-color: var(--accent); color: var(--accent-deep) !important; background: var(--accent-tint); }
 
-/* ─── HERO ─────────────────────────────── */
-.hero {
-  padding: 6rem 0 5rem;
-  border-bottom: 1px solid var(--border);
-  position: relative;
+/* ── HERO ── */
+.hero { position: relative; padding: 7rem 0 5rem; border-bottom: 1px solid var(--line); overflow: hidden; }
+.hero-ghost {
+  position: absolute; top: 50%; right: -4%; transform: translateY(-50%);
+  font-family: var(--serif); font-weight: 900; font-size: 34vw; line-height: 0.8;
+  color: oklch(0.5 0.06 45 / 0.05); letter-spacing: -0.04em; pointer-events: none;
+  z-index: 0; user-select: none; white-space: nowrap; will-change: transform;
 }
+.hero .wrap { position: relative; z-index: 2; }
 .hero-tag {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--accent);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  font-family: var(--mono); font-size: 0.75rem; color: var(--accent-deep);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.75rem;
+  display: inline-flex; align-items: center; gap: 0.6rem;
 }
-.hero-tag::before {
-  content: '/// ';
-  color: var(--text-faint);
-}
+.hero-tag::before { content: ''; width: 1.75rem; height: 1px; background: var(--accent); }
 .hero h1 {
-  font-family: var(--serif);
-  font-weight: 900;
-  font-size: clamp(2.8rem, 8vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  margin-bottom: 2rem;
-  font-variation-settings: "opsz" 144;
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(3rem, 9.5vw, 7rem); line-height: 0.92; letter-spacing: -0.035em;
+  margin-bottom: 2rem; font-variation-settings: "opsz" 144; color: var(--ink);
 }
-.hero h1 .accent {
-  color: var(--accent);
-  font-style: italic;
-  font-weight: 400;
-}
+.hero h1 .accent { color: var(--accent); }
+.hero h1 .swash { font-style: italic; font-weight: 500; }
 .hero-sub {
-  font-family: var(--mono);
-  font-size: 1rem;
-  color: var(--text-dim);
-  max-width: 720px;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
+  font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  color: var(--ink-soft); max-width: 44ch; line-height: 1.55; margin-bottom: 2.75rem;
 }
-.hero-meta {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  font-family: var(--mono);
-  font-size: 0.85rem;
-}
-.hero-meta div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-.hero-meta .label {
-  color: var(--text-faint);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.hero-meta .val {
-  color: var(--text);
-}
-.hero-meta a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
-}
+.hero-sub b { color: var(--ink); font-weight: 600; font-style: italic; }
+.hero-meta { display: flex; gap: 2.25rem 2.75rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.85rem; }
+.hero-meta div { display: flex; flex-direction: column; gap: 0.3rem; }
+.hero-meta .label { color: var(--ink-faint); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.hero-meta .val { color: var(--ink); }
+.hero-meta a { color: var(--accent-deep); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s var(--ease); }
 .hero-meta a:hover { border-color: var(--accent); }
 
-/* ─── SECTION ──────────────────────────── */
-section {
-  padding: 5rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-}
-.section-num {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--accent);
-}
-.section-head h2 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  letter-spacing: -0.02em;
-}
-.section-meta {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-  letter-spacing: 0.05em;
-}
+/* ── SECTION ── */
+section { padding: 5.5rem 0; border-bottom: 1px solid var(--line); position: relative; z-index: 2; }
+.section-head { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.section-num { font-family: var(--mono); font-size: 0.8rem; color: var(--accent-deep); }
+.section-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 4vw, 3rem); letter-spacing: -0.02em; color: var(--ink); }
+.section-meta { margin-left: auto; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); letter-spacing: 0.05em; }
 
-/* ─── ABOUT ─────────────────────────────── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.about-text {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  line-height: 1.5;
-  font-weight: 400;
-  color: var(--text);
-}
-.about-text strong {
-  color: var(--accent);
-  font-weight: 500;
-  font-style: italic;
-}
-.about-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid var(--border);
-}
-.stat {
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-}
-.stat-label {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.stat-val {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-.stat-val .unit {
-  color: var(--text-faint);
-  font-size: 0.85rem;
-  font-weight: 400;
-  margin-left: 0.25rem;
-}
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start; }
+.about-text { font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.55rem); line-height: 1.5; font-weight: 400; color: var(--ink-soft); }
+.about-text strong { color: var(--accent-deep); font-weight: 500; font-style: italic; }
+.about-stats { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.stat { padding: 1.25rem 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.stat-label { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-dim); letter-spacing: 0.05em; text-transform: uppercase; }
+.stat-val { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat-val .unit { color: var(--ink-faint); font-size: 0.82rem; font-weight: 400; margin-left: 0.3rem; }
 
-/* ─── PROJECTS ─────────────────────────── */
-.projects {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-.project {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  padding: 3.5rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: center;
-}
+/* ── PROJECTS ── */
+.projects { display: grid; grid-template-columns: 1fr; gap: 0; }
+.project { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; padding: 4rem 0; border-bottom: 1px solid var(--line); align-items: center; }
 .project:last-child { border-bottom: none; }
-.project:nth-child(even) > .project-img,
-.project:nth-child(even) > .browser-frame,
-.project:nth-child(even) > .phones,
-.project:nth-child(even) > .terminal-frame { order: -1; }
+.project:nth-child(even) > .project-visual { order: -1; }
 
-.project-img {
-  position: relative;
-  aspect-ratio: 4/3;
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  overflow: hidden;
-  border-radius: 4px;
-}
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.project-visual { position: relative; }
+.project-img { position: relative; aspect-ratio: 4/3; background: var(--card); border: 1px solid var(--line-strong); overflow: hidden; border-radius: 6px; }
+.project-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Browser frame for website screenshots */
+/* Browser frame */
 .browser-frame {
-  position: relative;
-  aspect-ratio: 4/3;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,255,0,0.05);
+  position: relative; aspect-ratio: 4/3; background: var(--card);
+  border: 1px solid var(--line-strong); border-radius: 10px; overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 24px 50px -24px oklch(0.4 0.05 50 / 0.35), 0 2px 6px oklch(0.4 0.05 50 / 0.08);
 }
-.browser-bar {
-  background: var(--bg-card);
-  padding: 0.6rem 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-bottom: 1px solid var(--border-strong);
-  flex-shrink: 0;
-}
-.browser-dots {
-  display: flex;
-  gap: 0.35rem;
-}
-.browser-dots span {
-  width: 11px; height: 11px;
-  border-radius: 50%;
-  background: var(--border-strong);
-}
+.browser-bar { background: var(--paper-2); padding: 0.6rem 0.85rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+.browser-dots { display: flex; gap: 0.4rem; }
+.browser-dots span { width: 11px; height: 11px; border-radius: 50%; background: var(--line-strong); }
 .browser-dots span:nth-child(1) { background: #ff5f57; }
 .browser-dots span:nth-child(2) { background: #febc2e; }
 .browser-dots span:nth-child(3) { background: #28c840; }
-.browser-url {
-  flex: 1;
-  background: var(--bg);
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.browser-url::before {
-  content: '🔒 ';
-  opacity: 0.5;
-}
-.browser-content {
-  flex: 1;
-  overflow: hidden;
-  background: #fff;
-  position: relative;
-}
-.browser-content img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: top;
-}
+.browser-url { flex: 1; background: var(--paper); padding: 0.3rem 0.75rem; border-radius: 5px; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-dim); border: 1px solid var(--line); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.browser-url::before { content: '🔒 '; opacity: 0.5; }
+.browser-content { flex: 1; overflow: hidden; background: #fff; position: relative; }
+.browser-content img { width: 100%; height: auto; display: block; object-fit: cover; object-position: top; }
 
-/* Phone mockup grid for Telegram bot screenshots */
+/* Phone mockups */
 .phones {
-  position: relative;
-  aspect-ratio: 4/3;
-  background:
-    radial-gradient(ellipse at center, rgba(212,255,0,0.06) 0%, transparent 60%),
-    var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  gap: 1rem;
+  position: relative; aspect-ratio: 4/3;
+  background: radial-gradient(ellipse at center, var(--accent-tint) 0%, transparent 62%), var(--card);
+  border: 1px solid var(--line-strong); border-radius: 10px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; padding: 1.5rem; gap: 1rem;
 }
-.phone {
-  position: relative;
-  height: 100%;
-  max-height: 420px;
-  aspect-ratio: 549/1280;
-  background: #1a1a1a;
-  border: 2px solid #2a2a2a;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-  flex-shrink: 0;
-}
-.phone img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  animation: phone-scroll 8s ease-in-out infinite;
-}
-.phone-2 img, .phone-single img {
-  animation-delay: 4s;
-}
-@keyframes phone-scroll {
-  0%, 15%  { object-position: top; }
-  70%, 85% { object-position: bottom; }
-  100%     { object-position: top; }
-}
-.phone::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 25%;
-  height: 8px;
-  background: #1a1a1a;
-  border-radius: 0 0 6px 6px;
-  z-index: 2;
-}
-.phone-1 {
-  transform: rotate(-4deg) translateY(-8px);
-  z-index: 2;
-}
-.phone-2 {
-  transform: rotate(4deg) translateY(8px);
-  z-index: 1;
-}
-.phone-single {
-  transform: none;
-  max-height: 480px;
-}
+.phone { position: relative; height: 100%; max-height: 420px; aspect-ratio: 549/1280; background: #15140f; border: 2px solid #2a2722; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 45px -18px oklch(0.3 0.04 50 / 0.5); flex-shrink: 0; }
+.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; animation: phone-scroll 9s var(--ease2) infinite; }
+.phone-2 img, .phone-single img { animation-delay: 4.5s; }
+@keyframes phone-scroll { 0%, 15% { object-position: top; } 70%, 85% { object-position: bottom; } 100% { object-position: top; } }
+.phone::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 26%; height: 8px; background: #15140f; border-radius: 0 0 6px 6px; z-index: 2; }
+.phone-1 { transform: rotate(-4deg) translateY(-8px); z-index: 2; }
+.phone-2 { transform: rotate(4deg) translateY(8px); z-index: 1; }
+.phone-single { transform: none; max-height: 480px; }
 
-/* Terminal frame for server/code screenshots */
-.terminal-frame {
-  position: relative;
-  aspect-ratio: 4/3;
-  background: var(--bg);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  font-family: var(--mono);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-}
-.terminal-bar {
-  background: var(--bg-card);
-  padding: 0.6rem 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-bottom: 1px solid var(--border-strong);
-  flex-shrink: 0;
-}
+/* Terminal frame (dark device on paper, by design) */
+.terminal-frame { position: relative; aspect-ratio: 4/3; background: oklch(0.21 0.012 55); border: 1px solid oklch(0.32 0.014 55); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; font-family: var(--mono); box-shadow: 0 24px 50px -24px oklch(0.3 0.04 50 / 0.45); }
+.terminal-bar { background: oklch(0.26 0.012 55); padding: 0.6rem 0.85rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid oklch(0.32 0.014 55); flex-shrink: 0; }
 .terminal-bar .browser-dots span:nth-child(1) { background: #ff5f57; }
 .terminal-bar .browser-dots span:nth-child(2) { background: #febc2e; }
 .terminal-bar .browser-dots span:nth-child(3) { background: #28c840; }
-.terminal-title {
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  margin-left: 0.5rem;
-}
-.terminal-body {
-  flex: 1;
-  padding: 1.25rem 1.5rem;
-  font-size: 0.78rem;
-  line-height: 1.65;
-  color: var(--text);
-  overflow: hidden;
-}
+.terminal-title { font-size: 0.7rem; color: oklch(0.7 0.02 60); margin-left: 0.5rem; }
+.terminal-body { flex: 1; padding: 1.25rem 1.5rem; font-size: 0.78rem; line-height: 1.7; color: oklch(0.85 0.015 70); overflow: hidden; }
 .terminal-body .prompt { color: var(--accent); }
-.terminal-body .cmd { color: var(--text); }
-.terminal-body .out { color: var(--text-dim); }
-.terminal-body .ok { color: var(--accent); }
-.terminal-body .dim { color: var(--text-faint); }
-
-/* Placeholder */
-.project-img .placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 8px,
-      rgba(212,255,0,0.03) 8px,
-      rgba(212,255,0,0.03) 16px
-    ),
-    var(--bg-card);
-  font-family: var(--mono);
-  color: var(--text-faint);
-  font-size: 0.75rem;
-  text-align: center;
-  padding: 1rem;
-  letter-spacing: 0.05em;
-}
-.project-img .placeholder strong {
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-}
+.terminal-body .cmd { color: oklch(0.92 0.01 80); }
+.terminal-body .out { color: oklch(0.68 0.02 65); }
+.terminal-body .ok { color: var(--live); }
+.terminal-body .dim { color: oklch(0.52 0.02 60); }
 
 .project-content { padding: 0.5rem 0; }
-.project-tag {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--accent);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.project-tag .live-dot {
-  display: inline-block;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
-  animation: pulse 2s infinite;
-}
-.project h3 {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 2rem;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 1.25rem;
-}
-.project-desc {
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-.project-stack {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-  margin-bottom: 1.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--bg-elevated);
-  border-left: 2px solid var(--accent);
-  border-radius: 0 4px 4px 0;
-}
-.project-stack .stack-label {
-  color: var(--accent);
-  margin-right: 0.5rem;
-}
-.project-bullets {
-  list-style: none;
-  margin-bottom: 1.5rem;
-}
-.project-bullets li {
-  font-size: 0.9rem;
-  color: var(--text-dim);
-  padding: 0.4rem 0 0.4rem 1.25rem;
-  position: relative;
-  line-height: 1.5;
-}
-.project-bullets li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-family: var(--mono);
-}
-.project-bullets li strong {
-  color: var(--text);
-  font-weight: 500;
-}
-.project-links {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-.btn {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  padding: 0.6rem 1.1rem;
-  border: 1px solid var(--border-strong);
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: all 0.2s;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 2px;
-}
-.btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-1px);
-}
-.btn.primary {
-  background: var(--accent);
-  color: var(--bg);
-  border-color: var(--accent);
-  font-weight: 700;
-}
-.btn.primary:hover {
-  background: var(--text);
-  border-color: var(--text);
-  color: var(--bg);
-  transform: translateY(-1px);
-}
+.project-tag { font-family: var(--mono); font-size: 0.7rem; color: var(--accent-deep); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.project-tag .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 0 oklch(0.64 0.15 145 / 0.5); animation: ping 2.4s var(--ease) infinite; }
+.project h3 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.15rem); letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 1.25rem; color: var(--ink); }
+.project-desc { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.5rem; max-width: 60ch; }
+.project-stack { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-dim); margin-bottom: 1.5rem; padding: 0.85rem 1rem; background: var(--paper-2); border: 1px solid var(--line); border-radius: 6px; line-height: 1.7; }
+.project-stack .stack-label { color: var(--accent-deep); margin-right: 0.5rem; font-weight: 500; }
+.project-bullets { list-style: none; margin-bottom: 1.75rem; }
+.project-bullets li { font-size: 0.9rem; color: var(--ink-soft); padding: 0.4rem 0 0.4rem 1.4rem; position: relative; line-height: 1.55; }
+.project-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
+.project-bullets li strong { color: var(--ink); font-weight: 600; }
+.project-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-/* ─── STACK GRID ───────────────────────── */
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-}
-.stack-cat {
-  background: var(--bg);
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.stack-cat h4 {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--accent);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
+.btn { font-family: var(--mono); font-size: 0.8rem; padding: 0.65rem 1.2rem; border: 1px solid var(--line-strong); color: var(--ink); text-decoration: none; letter-spacing: 0.04em; transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease); background: var(--card); cursor: pointer; border-radius: 6px; }
+.btn:hover { border-color: var(--accent); color: var(--accent-deep); transform: translateY(-2px); }
+.btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 500; }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: oklch(0.99 0.01 80); transform: translateY(-2px); }
+
+/* ── STACK GRID ── */
+.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.stack-cat { background: var(--paper); padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; transition: background 0.3s var(--ease); }
+.stack-cat:hover { background: var(--card); }
+.stack-cat h4 { font-family: var(--mono); font-size: 0.7rem; color: var(--accent-deep); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
 .stack-cat ul { list-style: none; }
-.stack-cat li {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  padding: 0.35rem 0;
-  border-bottom: 1px dashed var(--border);
-  transition: color 0.2s;
-}
+.stack-cat li { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-dim); padding: 0.4rem 0; border-bottom: 1px dashed var(--line); transition: color 0.2s var(--ease); }
 .stack-cat li:last-child { border-bottom: none; }
-.stack-cat li:hover { color: var(--text); }
-.stack-cat li.primary { color: var(--text); font-weight: 500; }
+.stack-cat li:hover { color: var(--ink); }
+.stack-cat li.primary { color: var(--ink); font-weight: 600; }
 
-/* ─── EXPERIENCE ───────────────────────── */
+/* ── EXPERIENCE ── */
 .exp-list { display: flex; flex-direction: column; }
-.exp-item {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 3rem;
-  padding: 1.75rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: start;
-}
+.exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; padding: 1.9rem 0; border-bottom: 1px solid var(--line); align-items: start; }
 .exp-item:last-child { border-bottom: none; }
-.exp-period {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--text-faint);
-  padding-top: 0.4rem;
-}
-.exp-period .current {
-  color: var(--accent);
-}
-.exp-role {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 1.3rem;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.25rem;
-}
-.exp-company {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  margin-bottom: 0.75rem;
-}
-.exp-desc {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  line-height: 1.65;
-}
+.exp-period { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-faint); padding-top: 0.45rem; }
+.exp-period .current { color: var(--accent-deep); font-weight: 500; }
+.exp-role { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; letter-spacing: -0.01em; margin-bottom: 0.25rem; color: var(--ink); }
+.exp-company { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-dim); margin-bottom: 0.75rem; }
+.exp-desc { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.65; max-width: 68ch; }
 
-/* ─── EDUCATION & LANGUAGES ────────────── */
-.dual-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 4rem;
-}
-.edu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.edu-item {
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  align-items: baseline;
-}
+/* ── EDUCATION & LANGUAGES ── */
+.dual-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; }
+.edu-list { display: flex; flex-direction: column; }
+.edu-item { padding: 1.25rem 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: baseline; }
 .edu-item:last-child { border-bottom: none; }
-.edu-name {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-.edu-meta {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-}
-.edu-school {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  display: block;
-  margin-top: 0.25rem;
-}
-
-.lang-list {
-  display: flex;
-  flex-direction: column;
-}
-.lang {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.edu-name { font-family: var(--serif); font-size: 1.12rem; font-weight: 500; color: var(--ink); }
+.edu-meta { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); }
+.edu-school { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-dim); display: block; margin-top: 0.25rem; }
+.lang-list { display: flex; flex-direction: column; }
+.lang { padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
 .lang:last-child { border-bottom: none; }
-.lang-name {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-}
-.lang-level {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.lang-level.native { color: var(--accent); }
+.lang-name { font-family: var(--serif); font-size: 1.12rem; color: var(--ink); }
+.lang-level { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.lang-level.native { color: var(--accent-deep); }
+.sub-head { font-family: var(--mono); font-size: 0.7rem; color: var(--accent-deep); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
 
-/* ─── CTA / FOOTER ─────────────────────── */
-.cta {
-  padding: 7rem 0;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center, rgba(212,255,0,0.05) 0%, transparent 60%),
-    var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-.cta-tag {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--accent);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.cta h2 {
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
-  font-style: italic;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 2rem;
-}
-.cta h2 .accent { color: var(--accent); font-style: normal; }
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2.5rem;
+/* ── CTA / FOOTER ── */
+.cta { padding: 8rem 0; text-align: center; background: radial-gradient(ellipse at center, var(--accent-tint) 0%, transparent 60%); border-bottom: 1px solid var(--line); }
+.cta-tag { font-family: var(--mono); font-size: 0.75rem; color: var(--accent-deep); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.cta h2 { font-family: var(--serif); font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 900; letter-spacing: -0.035em; line-height: 1; margin-bottom: 1.5rem; color: var(--ink); }
+.cta h2 .swash { font-style: italic; font-weight: 500; color: var(--accent); }
+.cta p { color: var(--ink-soft); font-family: var(--serif); font-size: 1.15rem; max-width: 52ch; margin: 0 auto; line-height: 1.55; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.75rem; }
+footer { padding: 3rem 0; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+footer a { color: var(--ink-dim); text-decoration: none; }
+footer a:hover { color: var(--accent-deep); }
+
+/* ── FOCUS STATES (a11y) ── */
+a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px;
 }
 
-footer {
-  padding: 3rem 0;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-faint);
-}
-footer .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-/* ─── RESPONSIVE ───────────────────────── */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .wrap { padding: 0 1.25rem; }
-  .hero { padding: 4rem 0 3rem; }
-  .hero h1 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+  .hero { padding: 4.5rem 0 3.5rem; }
+  .hero-ghost { font-size: 52vw; opacity: 0.7; }
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-text { font-size: 1.1rem; }
-  .project { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
-  .project:nth-child(even) .project-img,
-  .project:nth-child(even) .browser-frame,
-  .project:nth-child(even) .phones,
-  .project:nth-child(even) .terminal-frame { order: 0; }
-  .project h3 { font-size: 1.5rem; }
+  .project { grid-template-columns: 1fr; gap: 1.75rem; padding: 3rem 0; }
+  .project:nth-child(even) > .project-visual { order: 0; }
   .stack-grid { grid-template-columns: repeat(2, 1fr); }
   .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .exp-period { padding-top: 0; }
   .dual-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .section-head { flex-wrap: wrap; }
   .section-meta { margin-left: 0; width: 100%; }
-  section { padding: 3.5rem 0; }
+  section { padding: 4rem 0; }
   .phone { max-height: 380px; }
   .terminal-body { font-size: 0.7rem; padding: 1rem; }
 }
-
 @media (max-width: 600px) {
-  .hero-meta { gap: 1.25rem; }
+  .hero-meta { gap: 1.4rem; }
   .stack-grid { grid-template-columns: 1fr; }
   .status-bar { font-size: 0.7rem; }
   .status-left { gap: 1rem; }
   .status-bar .hide-mobile { display: none; }
 }
 
-/* ─── LIGHTBOX ─────────────────────────── */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 1000;
-  cursor: zoom-out;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(6px);
-}
+/* ── LIGHTBOX ── */
+.lightbox { display: none; position: fixed; inset: 0; background: oklch(0.22 0.01 55 / 0.9); z-index: 1000; cursor: zoom-out; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
 .lightbox.active { display: flex; }
-.lightbox-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 4px;
-  box-shadow: 0 0 80px rgba(0,0,0,0.8);
-  cursor: default;
-}
-.lightbox-close {
-  position: fixed;
-  top: 1.5rem;
-  right: 2rem;
-  font-family: var(--mono);
-  font-size: 1.2rem;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: color 0.2s;
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  padding: 0.4rem 0.75rem;
-  border-radius: 2px;
-}
+.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 0 80px oklch(0.2 0.01 55 / 0.6); cursor: default; }
+.lightbox-close { position: fixed; top: 1.5rem; right: 2rem; font-family: var(--mono); font-size: 1.05rem; color: var(--paper); cursor: pointer; transition: color 0.2s var(--ease), border-color 0.2s var(--ease); background: oklch(0.3 0.01 55 / 0.6); border: 1px solid oklch(0.6 0.02 60 / 0.5); padding: 0.4rem 0.8rem; border-radius: 6px; }
 .lightbox-close:hover { color: var(--accent); border-color: var(--accent); }
 
-/* ─── REVEAL ANIMATION ─────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .hero-ghost { transform: translateY(-50%) !important; }
 }
 
+/* ── PRINT ── */
 @media print {
-  body::before, body::after { display: none; }
+  .bg-field, .bg-grid, .bg-grain, .scroll-progress { display: none; }
   .status-bar { display: none; }
   body { background: white; color: black; font-size: 11pt; }
+  .hero-ghost { display: none; }
   .project { display: grid !important; grid-template-columns: 120px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #ddd; break-inside: avoid; }
-  .phones { display: block !important; width: 120px; }
-  .phones .phone { width: 60px; display: inline-block; }
+  .phones { display: block !important; width: 120px; background: none; border: none; }
+  .phones .phone { width: 60px; display: inline-block; box-shadow: none; }
   .phones .phone img { width: 100%; height: auto; max-height: 120px; object-fit: cover; object-position: top; animation: none !important; }
-  .browser-frame { display: block !important; width: 120px; }
+  .browser-frame { display: block !important; width: 120px; box-shadow: none; }
   .browser-content img { width: 100%; height: auto; max-height: 90px; object-fit: cover; object-position: top; }
   .browser-bar { display: none; }
   .terminal-frame { display: none; }
@@ -915,9 +371,7 @@ footer .wrap {
   .btn { display: none; }
   .live-dot { display: none; }
   .hero-tag, .section-num, .section-meta { color: #333; }
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.3rem; }
-  h3 { font-size: 1rem; }
+  h1 { font-size: 1.8rem; } h2 { font-size: 1.3rem; } h3 { font-size: 1rem; }
   .project-stack { font-size: 0.8rem; color: #444; }
   .project-desc { font-size: 0.85rem; }
   .project-bullets { font-size: 0.8rem; }
@@ -926,6 +380,11 @@ footer .wrap {
 </head>
 <body>
 
+<div class="bg-field" aria-hidden="true"></div>
+<div class="bg-grid" data-parallax="0.06" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="progress" aria-hidden="true"></div>
+
 <div class="status-bar">
   <div class="wrap">
     <div class="status-left">
@@ -933,9 +392,7 @@ footer .wrap {
       <span class="hide-mobile">GLENDALE · CA</span>
       <span class="hide-mobile">UTC−08:00</span>
     </div>
-    <div>
-      <a href="#contact">[ HIRE ME ]</a>
-    </div>
+    <div><a href="#contact" class="status-cta">Hire me</a></div>
   </div>
 </div>
 
@@ -943,33 +400,19 @@ footer .wrap {
 
 <!-- ─── HERO ─── -->
 <section class="hero">
+  <div class="hero-ghost" data-parallax="-0.12" aria-hidden="true">MK</div>
   <div class="wrap">
-    <div class="hero-tag">AI Automation Specialist · Telegram Bots & Claude API</div>
-    <h1>Mykyta<br>Kalchevsky<span class="accent">.</span></h1>
+    <div class="hero-tag">AI Automation Specialist · Telegram Bots &amp; Claude API</div>
+    <h1>Mykyta<br><span class="swash">Kalchevsky</span><span class="accent">.</span></h1>
     <p class="hero-sub">
-      I build production Telegram bots, LLM-powered tools, and full-stack web apps that businesses actually rely on. From a 16,003-record ECU lookup bot to a crypto DCA trading bot to a 7-language firmware marketplace — six projects, zero co-founders.
+      I build production Telegram bots, LLM-powered tools, and full-stack web apps that businesses <b>actually rely on</b>. From a 16,003-record ECU lookup bot to a crypto DCA trading bot to a 7-language firmware marketplace: six projects, zero co-founders.
     </p>
     <div class="hero-meta">
-      <div>
-        <span class="label">Email</span>
-        <span class="val"><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></span>
-      </div>
-      <div>
-        <span class="label">Telegram</span>
-        <span class="val"><a href="https://t.me/Hybrid_d">@Hybrid_d</a></span>
-      </div>
-      <div>
-        <span class="label">Phone</span>
-        <span class="val"><a href="tel:+12398879992">+1 (239) 887-9992</a></span>
-      </div>
-      <div>
-        <span class="label">GitHub</span>
-        <span class="val"><a href="https://github.com/nikitakalchevsky">@nikitakalchevsky</a></span>
-      </div>
-      <div>
-        <span class="label">LinkedIn</span>
-        <span class="val"><a href="https://linkedin.com/in/nikitakalchevsky">nikitakalchevsky</a></span>
-      </div>
+      <div><span class="label">Email</span><span class="val"><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></span></div>
+      <div><span class="label">Telegram</span><span class="val"><a href="https://t.me/Hybrid_d">@Hybrid_d</a></span></div>
+      <div><span class="label">Phone</span><span class="val"><a href="tel:+12398879992">+1 (239) 887-9992</a></span></div>
+      <div><span class="label">GitHub</span><span class="val"><a href="https://github.com/nikitakalchevsky">@nikitakalchevsky</a></span></div>
+      <div><span class="label">LinkedIn</span><span class="val"><a href="https://linkedin.com/in/nikitakalchevsky">nikitakalchevsky</a></span></div>
     </div>
   </div>
 </section>
@@ -984,29 +427,14 @@ footer .wrap {
     </div>
     <div class="about-grid">
       <div class="about-text">
-        15 years building and running networks taught me one thing: <strong>code is easy, keeping it alive is hard</strong>. Now I bring that operations mindset to AI automation — building bots, integrations, and web platforms that don't just work in a demo, they survive a Tuesday at 3 AM. I work with Claude API, Python, and React, ship to DigitalOcean, and treat every project like it has paying customers behind it. Because mine do.
+        15 years building and running networks taught me one thing: <strong>code is easy, keeping it alive is hard</strong>. Now I bring that operations mindset to AI automation, building bots, integrations, and web platforms that don't just work in a demo, they survive a Tuesday at 3 AM. I work with Claude API, Python, and React, ship to DigitalOcean, and treat every project like it has paying customers behind it. Because mine do.
       </div>
       <div class="about-stats">
-        <div class="stat">
-          <span class="stat-label">Production bots shipped</span>
-          <span class="stat-val">5<span class="unit">live</span></span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">DB records served</span>
-          <span class="stat-val">16K<span class="unit">+ rows</span></span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">E-commerce SKUs live</span>
-          <span class="stat-val">441<span class="unit">products</span></span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Droplet uptime</span>
-          <span class="stat-val">24/7<span class="unit"> · 0 incidents</span></span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Years in tech</span>
-          <span class="stat-val">15<span class="unit">+</span></span>
-        </div>
+        <div class="stat"><span class="stat-label">Production bots shipped</span><span class="stat-val"><span data-count="5">0</span><span class="unit">live</span></span></div>
+        <div class="stat"><span class="stat-label">DB records served</span><span class="stat-val"><span data-count="16" data-suffix="K">0</span><span class="unit">+ rows</span></span></div>
+        <div class="stat"><span class="stat-label">E-commerce SKUs live</span><span class="stat-val"><span data-count="441">0</span><span class="unit">products</span></span></div>
+        <div class="stat"><span class="stat-label">Droplet uptime</span><span class="stat-val">24/7<span class="unit"> · 0 incidents</span></span></div>
+        <div class="stat"><span class="stat-label">Years in tech</span><span class="stat-val"><span data-count="15">0</span><span class="unit">+</span></span></div>
       </div>
     </div>
   </div>
@@ -1025,9 +453,11 @@ footer .wrap {
 
       <!-- PROJECT 1 -->
       <article class="project">
-        <div class="phones">
-          <div class="phone phone-1">
-            <img src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing NISSAN ECU lookup">
+        <div class="project-visual">
+          <div class="phones">
+            <div class="phone phone-1">
+              <img src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing NISSAN ECU lookup">
+            </div>
           </div>
         </div>
         <div class="project-content">
@@ -1036,183 +466,163 @@ footer .wrap {
           <p class="project-desc">
             A production Telegram bot serving real customers for an automotive ECU programming service in Glendale, CA. Customers send a vehicle brand and part number; the bot queries a 16,003-record database, returns the correct reprogramming method and price, and books an appointment within an hour. Claude Haiku handles messy natural-language inputs.
           </p>
-          <div class="project-stack">
-            <span class="stack-label">stack:</span>Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron
-          </div>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron</div>
           <ul class="project-bullets">
-            <li><strong>Two-bot architecture:</strong> client-facing bot + admin management panel</li>
-            <li><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron-based auto-restart every 6h</li>
+            <li><strong>Two-bot architecture:</strong> client-facing bot plus admin management panel</li>
+            <li><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron auto-restart every 6h</li>
             <li><strong>Lean ops:</strong> 89MB memory footprint, runs comfortably on 1GB RAM / 1 vCPU</li>
-            <li><strong>API tuning:</strong> eliminated Claude 400 errors via prompt+DB chunking and temperature 0.1</li>
+            <li><strong>API tuning:</strong> eliminated Claude 400 errors via prompt plus DB chunking and temperature 0.1</li>
           </ul>
-          <div class="project-links">
-            <a href="#contact" class="btn">Demo on request</a>
-          </div>
+          <div class="project-links"><a href="#contact" class="btn">Demo on request</a></div>
         </div>
       </article>
 
       <!-- PROJECT 2 -->
       <article class="project">
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <div class="browser-url">apelsin-rozmarin.com.ua</div>
-          </div>
-          <div class="browser-content">
-            <img src="images/fruktbox-home.jpg" alt="Fruktbox e-commerce homepage with product catalog">
+        <div class="project-visual">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">apelsin-rozmarin.com.ua</div>
+            </div>
+            <div class="browser-content">
+              <img src="images/fruktbox-home.jpg" alt="Fruktbox e-commerce homepage with product catalog">
+            </div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
-          <h3>Fruktbox — E-Commerce Platform</h3>
+          <h3>Fruktbox, E-Commerce Platform</h3>
           <p class="project-desc">
-            A full-stack online shop for fruit gift boxes serving the Ukrainian market — designed, built, deployed, and maintained solo. 441 live products, custom admin panel, real-time order pipeline, and three integrated payment methods. Indexed in Google Merchant Center, SSL grade A.
+            A full-stack online shop for fruit gift boxes serving the Ukrainian market: designed, built, deployed, and maintained solo. 441 live products, custom admin panel, real-time order pipeline, and three integrated payment methods. Indexed in Google Merchant Center, SSL grade A.
           </p>
-          <div class="project-stack">
-            <span class="stack-label">stack:</span>React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal
-          </div>
+          <div class="project-stack"><span class="stack-label">stack:</span>React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal</div>
           <ul class="project-bullets">
             <li><strong>Custom admin panel</strong> for product, inventory, and order management</li>
             <li><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
             <li><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
-            <li><strong>SEO &amp; commerce:</strong> Google Search Console + Merchant Center, sitemap submitted, SSL A grade</li>
+            <li><strong>SEO &amp; commerce:</strong> Google Search Console plus Merchant Center, sitemap submitted, SSL A grade</li>
           </ul>
-          <div class="project-links">
-            <a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn primary">Visit site →</a>
-          </div>
+          <div class="project-links"><a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn primary">Visit site →</a></div>
         </div>
       </article>
 
       <!-- PROJECT 3 -->
       <article class="project">
-        <div class="phones">
-          <div class="phone phone-1">
-            <img src="images/personal-bot-menu.jpg" alt="Personal AI Assistant main menu with 9 modules">
-          </div>
-          <div class="phone phone-2">
-            <img src="images/personal-bot-nutrition.jpg" alt="Personal AI Assistant nutrition tracking and finance modules">
+        <div class="project-visual">
+          <div class="phones">
+            <div class="phone phone-1"><img src="images/personal-bot-menu.jpg" alt="Personal AI Assistant main menu with 9 modules"></div>
+            <div class="phone phone-2"><img src="images/personal-bot-nutrition.jpg" alt="Personal AI Assistant nutrition tracking and finance modules"></div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-tag">R&amp;D · MODULAR</div>
           <h3>Personal AI Assistant</h3>
           <p class="project-desc">
-            A modular Telegram-based personal assistant where Claude Haiku handles all natural-language input parsing — "ate 200g chicken" becomes a structured calorie entry, "spent $40 on gas" becomes a categorized expense. Built as a testbed for production patterns I now reuse for client work.
+            A modular Telegram-based personal assistant where Claude Haiku handles all natural-language input parsing. "Ate 200g chicken" becomes a structured calorie entry; "spent $40 on gas" becomes a categorized expense. Built as a testbed for production patterns I now reuse for client work.
           </p>
-          <div class="project-stack">
-            <span class="stack-label">stack:</span>Python · Claude Haiku · SQLite · python-telegram-bot · cron
-          </div>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku · SQLite · python-telegram-bot · cron</div>
           <ul class="project-bullets">
             <li><strong>Nutrition module</strong> with Mifflin-St Jeor BMR calculation and personalized macro goals</li>
             <li><strong>Finance tracking</strong> with category breakdowns and monthly statistics</li>
             <li><strong>Schedule &amp; reminders</strong>, timezone-aware</li>
-            <li><strong>Copart auction monitor</strong> — polls every 2 hours for new listings</li>
+            <li><strong>Copart auction monitor</strong> polling every 2 hours for new listings</li>
             <li><strong>Reliability:</strong> weekly SQLite backups, auto-restart on reboot via crontab</li>
           </ul>
         </div>
       </article>
 
-      <!-- PROJECT 5: TuningStore -->
+      <!-- PROJECT 4: TuningStore -->
       <article class="project">
-        <div class="browser-frame">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <div class="browser-url">tuningstore.net</div>
-          </div>
-          <div class="browser-content">
-            <img src="images/tuningstore-home.jpg" alt="TuningStore ECU firmware marketplace homepage">
+        <div class="project-visual">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <div class="browser-url">tuningstore.net</div>
+            </div>
+            <div class="browser-content"><img src="images/tuningstore-home.jpg" alt="TuningStore ECU firmware marketplace homepage"></div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
-          <h3>TuningStore — ECU Firmware Marketplace</h3>
+          <h3>TuningStore, ECU Firmware Marketplace</h3>
           <p class="project-desc">
-            A multilingual digital marketplace for ECU calibration files — stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog (brand → model → engine → calibration), purchase securely, and receive a presigned R2 download link. Built solo from zero.
+            A multilingual digital marketplace for ECU calibration files: stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog (brand, model, engine, calibration), purchase securely, and receive a presigned R2 download link. Built solo from zero.
           </p>
-          <div class="project-stack">
-            <span class="stack-label">stack:</span>Next.js 16 (App Router) · TypeScript · Prisma 7 · PostgreSQL (Neon) · NextAuth v4 · Stripe · PayPal · Coinbase · Cloudflare R2 · next-intl (7 locales)
-          </div>
+          <div class="project-stack"><span class="stack-label">stack:</span>Next.js 16 (App Router) · TypeScript · Prisma 7 · PostgreSQL (Neon) · NextAuth v4 · Stripe · PayPal · Coinbase · Cloudflare R2 · next-intl (7 locales)</div>
           <ul class="project-bullets">
-            <li><strong>4-level catalog:</strong> brand → model → engine → calibration file, 301+ firmware files imported</li>
+            <li><strong>4-level catalog:</strong> brand, model, engine, calibration file, 301+ firmware files imported</li>
             <li><strong>7 languages:</strong> EN, UA, RU, DE, FR, ES, IT via next-intl with full route localization</li>
-            <li><strong>Three payment rails:</strong> Stripe, PayPal, Coinbase Commerce — webhooks handle order fulfillment</li>
-            <li><strong>Secure delivery:</strong> Cloudflare R2 presigned URLs — files never exposed publicly</li>
-            <li><strong>Admin bulk import:</strong> drag-and-drop .bin upload → auto-parse filename → DB + R2 in one shot</li>
+            <li><strong>Three payment rails:</strong> Stripe, PayPal, Coinbase Commerce, webhooks handle order fulfillment</li>
+            <li><strong>Secure delivery:</strong> Cloudflare R2 presigned URLs, files never exposed publicly</li>
+            <li><strong>Admin bulk import:</strong> drag-and-drop .bin upload, auto-parse filename, DB plus R2 in one shot</li>
           </ul>
-          <div class="project-links">
-            <a href="https://tuningstore.net" target="_blank" rel="noopener" class="btn primary">tuningstore.net →</a>
-          </div>
+          <div class="project-links"><a href="https://tuningstore.net" target="_blank" rel="noopener" class="btn primary">tuningstore.net →</a></div>
         </div>
       </article>
 
-      <!-- PROJECT: DCA Trade Bot -->
+      <!-- PROJECT 5: DCA Trade Bot -->
       <article class="project">
-        <div class="phones">
-          <div class="phone phone-1">
-            <img src="images/dca-bot-all.jpg" alt="DCA Trade Bot — market scan, buy signal, and open positions">
-          </div>
-          <div class="phone phone-2">
-            <img src="images/dca-bot-menu.jpg" alt="DCA Trade Bot buy signal notification">
+        <div class="project-visual">
+          <div class="phones">
+            <div class="phone phone-1"><img src="images/dca-bot-all.jpg" alt="DCA Trade Bot market scan, buy signal, and open positions"></div>
+            <div class="phone phone-2"><img src="images/dca-bot-menu.jpg" alt="DCA Trade Bot buy signal notification"></div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-tag"><span class="live-dot"></span>LIVE · TRADING</div>
           <h3>Smart DCA Trade Bot</h3>
           <p class="project-desc">
-            Automated crypto DCA strategy bot for Binance.US, managed entirely via Telegram inline menus — no web interface needed. Scans top coins by volume and momentum, buys on dips below MA20, scales position size with dip depth, and auto-sells on take-profit. Deployed on DigitalOcean with non-blocking async exchange calls.
+            Automated crypto DCA strategy bot for Binance.US, managed entirely via Telegram inline menus, no web interface needed. Scans top coins by volume and momentum, buys on dips below MA20, scales position size with dip depth, and auto-sells on take-profit. Deployed on DigitalOcean with non-blocking async exchange calls.
           </p>
-          <div class="project-stack">
-            <span class="stack-label">stack:</span>Python · ccxt (Binance.US) · python-telegram-bot · APScheduler · SQLite · asyncio · DigitalOcean
-          </div>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python · ccxt (Binance.US) · python-telegram-bot · APScheduler · SQLite · asyncio · DigitalOcean</div>
           <ul class="project-bullets">
-            <li><strong>Smart DCA strategy:</strong> buys when price &lt; MA20 by configurable threshold, scales position size with dip depth</li>
-            <li><strong>Auto-mode:</strong> autonomous buy/sell within limits — max invested, min interval between trades</li>
+            <li><strong>Smart DCA strategy:</strong> buys when price &lt; MA20 by a configurable threshold, scales position size with dip depth</li>
+            <li><strong>Auto-mode:</strong> autonomous buy/sell within limits (max invested, min interval between trades)</li>
             <li><strong>Auto-sell only mode:</strong> takes profit on open positions without enabling auto-buy</li>
-            <li><strong>Inline Telegram UI:</strong> positions, P&amp;L, settings — full control without a web dashboard</li>
+            <li><strong>Inline Telegram UI:</strong> positions, P&amp;L, settings, full control without a web dashboard</li>
             <li><strong>DRY_RUN mode</strong> for safe strategy testing without real orders</li>
           </ul>
-          <div class="project-links">
-            <a href="#contact" class="btn">Demo on request</a>
-          </div>
+          <div class="project-links"><a href="#contact" class="btn">Demo on request</a></div>
         </div>
       </article>
 
-      <!-- PROJECT 4 -->
+      <!-- PROJECT 6: LangChain Fleet -->
       <article class="project">
-        <div class="terminal-frame">
-          <div class="terminal-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <span class="terminal-title">root@ubuntu-s-1vcpu-1gb-nyc1: ~</span>
-          </div>
-          <div class="terminal-body">
-            <div><span class="prompt">$</span> <span class="cmd">screen -ls</span></div>
-            <div><span class="out">There are screens on:</span></div>
-            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122794.bot</span> <span class="dim">(airbag · Detached)</span></div>
-            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122797.admin</span> <span class="dim">(panel · Detached)</span></div>
-            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23444.personal</span> <span class="dim">(agent · Detached)</span></div>
-            <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23445.ai-agent</span> <span class="dim">(langchain · Detached)</span></div>
-            <div><span class="prompt">$</span> <span class="cmd">uptime</span></div>
-            <div><span class="out">up <span class="ok">11 days</span>, load average: <span class="ok">0.00, 0.00, 0.00</span></span></div>
-            <div><span class="prompt">$</span> <span class="cmd">free -h | head -2</span></div>
-            <div><span class="out">          total   used   free</span></div>
-            <div><span class="out">Mem:      961Mi  <span class="ok">456Mi</span>   81Mi</span></div>
-            <div><span class="prompt">$</span> <span class="cmd">_</span></div>
+        <div class="project-visual">
+          <div class="terminal-frame">
+            <div class="terminal-bar">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <span class="terminal-title">root@ubuntu-s-1vcpu-1gb-nyc1: ~</span>
+            </div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> <span class="cmd">screen -ls</span></div>
+              <div><span class="out">There are screens on:</span></div>
+              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122794.bot</span> <span class="dim">(airbag · Detached)</span></div>
+              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122797.admin</span> <span class="dim">(panel · Detached)</span></div>
+              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23444.personal</span> <span class="dim">(agent · Detached)</span></div>
+              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23445.ai-agent</span> <span class="dim">(langchain · Detached)</span></div>
+              <div><span class="prompt">$</span> <span class="cmd">uptime</span></div>
+              <div><span class="out">up <span class="ok">11 days</span>, load average: <span class="ok">0.00, 0.00, 0.00</span></span></div>
+              <div><span class="prompt">$</span> <span class="cmd">free -h | head -2</span></div>
+              <div><span class="out">          total   used   free</span></div>
+              <div><span class="out">Mem:      961Mi  <span class="ok">456Mi</span>   81Mi</span></div>
+              <div><span class="prompt">$</span> <span class="cmd">_</span></div>
+            </div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-tag">FRAMEWORK · INFRASTRUCTURE</div>
           <h3>LangChain Framework + Bot Fleet</h3>
           <p class="project-desc">
-            A LangChain-powered Telegram assistant designed as a deployment-ready foundation for client-specific automation. Modular skills directory keeps each capability isolated and swappable per client. Currently runs alongside three other production bots on a single $5 droplet — <strong>11 days uptime, zero incidents, load average 0.00</strong>.
+            A LangChain-powered Telegram assistant designed as a deployment-ready foundation for client-specific automation. A modular skills directory keeps each capability isolated and swappable per client. It currently runs alongside three other production bots on a single $5 droplet: <strong>11 days uptime, zero incidents, load average 0.00</strong>.
           </p>
-          <div class="project-stack">
-            <span class="stack-label">stack:</span>Python · LangChain · ChatAnthropic · screen · cron · modular skills architecture
-          </div>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python · LangChain · ChatAnthropic · screen · cron · modular skills architecture</div>
           <ul class="project-bullets">
-            <li><strong>Skill-based modular design</strong> — database, messaging, logging, approval, pricing, orders, inventory</li>
+            <li><strong>Skill-based modular design:</strong> database, messaging, logging, approval, pricing, orders, inventory</li>
             <li><strong>Approval workflows</strong> for human-in-the-loop scenarios</li>
             <li><strong>Fleet management:</strong> 4 production bots co-located on one droplet, isolated screen sessions</li>
-            <li><strong>Reliability proven</strong> — production uptime measured in days, not hours</li>
+            <li><strong>Reliability proven:</strong> production uptime measured in days, not hours</li>
           </ul>
         </div>
       </article>
@@ -1289,52 +699,46 @@ footer .wrap {
       <span class="section-meta">// 2002 → now</span>
     </div>
     <div class="exp-list">
-
       <div class="exp-item">
-        <div class="exp-period">2024 — <span class="current">now</span></div>
+        <div class="exp-period">2024 – <span class="current">now</span></div>
         <div>
           <div class="exp-role">AI Automation Specialist · Freelance</div>
           <div class="exp-company">Self-employed · Glendale, CA</div>
-          <p class="exp-desc">Building production Telegram bots, Claude API integrations, and full-stack web apps. Operating a local ECU programming service (Glendale, CA) as a real-world testbed for automation tooling — every customer interaction stress-tests the systems I build for clients.</p>
+          <p class="exp-desc">Building production Telegram bots, Claude API integrations, and full-stack web apps. Operating a local ECU programming service (Glendale, CA) as a real-world testbed for automation tooling. Every customer interaction stress-tests the systems I build for clients.</p>
         </div>
       </div>
-
       <div class="exp-item">
-        <div class="exp-period">2022 — 2024</div>
+        <div class="exp-period">2022 – 2024</div>
         <div>
           <div class="exp-role">Driver · Front-End Developer (transitioning)</div>
           <div class="exp-company">Kyiv, Ukraine → Glendale, CA</div>
           <p class="exp-desc">Drove rideshare while completing intensive coursework in HTML/CSS, JavaScript, and React. Built first portfolio sites and WordPress projects.</p>
         </div>
       </div>
-
       <div class="exp-item">
-        <div class="exp-period">2015 — 2020</div>
+        <div class="exp-period">2015 – 2020</div>
         <div>
           <div class="exp-role">Network Engineer</div>
           <div class="exp-company">Kyivstar · Kharkiv, Ukraine</div>
           <p class="exp-desc">Network engineering and infrastructure operations at Ukraine's largest telecom operator.</p>
         </div>
       </div>
-
       <div class="exp-item">
-        <div class="exp-period">2010 — 2015</div>
+        <div class="exp-period">2010 – 2015</div>
         <div>
           <div class="exp-role">Network Engineer</div>
           <div class="exp-company">Airbites · Kharkiv, Ukraine</div>
           <p class="exp-desc">ISP-level network engineering and customer infrastructure.</p>
         </div>
       </div>
-
       <div class="exp-item">
-        <div class="exp-period">2002 — 2010</div>
+        <div class="exp-period">2002 – 2010</div>
         <div>
           <div class="exp-role">Local Network Owner / Operator</div>
           <div class="exp-company">Independent ISP · Kharkiv, Ukraine</div>
           <p class="exp-desc">Owned and operated a local-area ISP. Full responsibility for hardware, customer support, billing, and operations. The original real-world classroom for "ship it and keep it running."</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1348,65 +752,23 @@ footer .wrap {
       <span class="section-meta">// formal &amp; ongoing</span>
     </div>
     <div class="dual-grid">
-
       <div>
         <div class="edu-list">
-          <div class="edu-item">
-            <div>
-              <div class="edu-name">ReactJS</div>
-              <span class="edu-school">iTGid</span>
-            </div>
-            <div class="edu-meta">Aug 2024</div>
-          </div>
-          <div class="edu-item">
-            <div>
-              <div class="edu-name">JavaScript Array Methods</div>
-              <span class="edu-school">iTGid</span>
-            </div>
-            <div class="edu-meta">Apr 2024</div>
-          </div>
-          <div class="edu-item">
-            <div>
-              <div class="edu-name">JavaScript v2.0</div>
-              <span class="edu-school">iTGid</span>
-            </div>
-            <div class="edu-meta">Mar 2024</div>
-          </div>
-          <div class="edu-item">
-            <div>
-              <div class="edu-name">HTML &amp; CSS</div>
-              <span class="edu-school">From 0 to 1</span>
-            </div>
-            <div class="edu-meta">Oct 2023</div>
-          </div>
-          <div class="edu-item">
-            <div>
-              <div class="edu-name">Anthropic Claude API · LangChain · Agent architectures</div>
-              <span class="edu-school">Self-directed · ongoing</span>
-            </div>
-            <div class="edu-meta">2024 — now</div>
-          </div>
+          <div class="edu-item"><div><div class="edu-name">ReactJS</div><span class="edu-school">iTGid</span></div><div class="edu-meta">Aug 2024</div></div>
+          <div class="edu-item"><div><div class="edu-name">JavaScript Array Methods</div><span class="edu-school">iTGid</span></div><div class="edu-meta">Apr 2024</div></div>
+          <div class="edu-item"><div><div class="edu-name">JavaScript v2.0</div><span class="edu-school">iTGid</span></div><div class="edu-meta">Mar 2024</div></div>
+          <div class="edu-item"><div><div class="edu-name">HTML &amp; CSS</div><span class="edu-school">From 0 to 1</span></div><div class="edu-meta">Oct 2023</div></div>
+          <div class="edu-item"><div><div class="edu-name">Anthropic Claude API · LangChain · Agent architectures</div><span class="edu-school">Self-directed · ongoing</span></div><div class="edu-meta">2024 – now</div></div>
         </div>
       </div>
-
       <div>
-        <h4 style="font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;">Languages</h4>
+        <h4 class="sub-head">Languages</h4>
         <div class="lang-list">
-          <div class="lang">
-            <span class="lang-name">Ukrainian</span>
-            <span class="lang-level native">Native</span>
-          </div>
-          <div class="lang">
-            <span class="lang-name">Russian</span>
-            <span class="lang-level native">Native</span>
-          </div>
-          <div class="lang">
-            <span class="lang-name">English</span>
-            <span class="lang-level">Working proficiency · actively improving</span>
-          </div>
+          <div class="lang"><span class="lang-name">Ukrainian</span><span class="lang-level native">Native</span></div>
+          <div class="lang"><span class="lang-name">Russian</span><span class="lang-level native">Native</span></div>
+          <div class="lang"><span class="lang-name">English</span><span class="lang-level">Working proficiency · actively improving</span></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1415,10 +777,8 @@ footer .wrap {
 <section id="contact" class="cta">
   <div class="wrap">
     <div class="cta-tag">/// LET'S BUILD SOMETHING</div>
-    <h2>Need a bot, an<br>integration, or a<br><span class="accent">whole system</span><span style="font-style:normal">?</span></h2>
-    <p style="color: var(--text-dim); font-family: var(--mono); font-size: 0.95rem; max-width: 580px; margin: 0 auto;">
-      Telegram bots · Claude API integrations · automation pipelines · full-stack web apps. Available for one-off projects or ongoing retainers.
-    </p>
+    <h2>Need a bot, an integration,<br>or a <span class="swash">whole system</span>?</h2>
+    <p>Telegram bots, Claude API integrations, automation pipelines, full-stack web apps. Available for one-off projects or ongoing retainers.</p>
     <div class="cta-buttons">
       <a href="mailto:nikita.kalchevskyi@gmail.com" class="btn primary">Email me →</a>
       <a href="https://t.me/Hybrid_d" class="btn">Telegram</a>
@@ -1430,56 +790,99 @@ footer .wrap {
 <footer>
   <div class="wrap">
     <div>© 2026 · Mykyta Kalchevsky · Built solo, no frameworks</div>
-    <div>Last shipped: <span style="color: var(--accent);">just now</span></div>
+    <div>Last shipped: <span style="color: var(--accent-deep);">just now</span></div>
   </div>
 </footer>
 
 </main>
 
 <script>
-// Always start at top on reload
-if (history.scrollRestoration) history.scrollRestoration = 'manual';
-window.scrollTo(0, 0);
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Lightbox
-const lb = document.createElement('div');
-lb.className = 'lightbox';
-lb.innerHTML = '<span class="lightbox-close">✕ close</span><img class="lightbox-img">';
-document.body.appendChild(lb);
-const lbImg = lb.querySelector('.lightbox-img');
-lb.querySelector('.lightbox-close').addEventListener('click', () => lb.classList.remove('active'));
-lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('active'); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('active'); });
-document.querySelectorAll('.phone img, .browser-content img').forEach(img => {
-  img.style.cursor = 'zoom-in';
-  img.addEventListener('click', (e) => { e.stopPropagation(); lbImg.src = img.src; lb.classList.add('active'); });
-});
+  // Always start at top on reload
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
 
-// Reveal on scroll
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      io.unobserve(e.target);
-    }
+  // ── Lightbox ──
+  var lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<span class="lightbox-close">✕ close</span><img class="lightbox-img" alt="">';
+  document.body.appendChild(lb);
+  var lbImg = lb.querySelector('.lightbox-img');
+  lb.querySelector('.lightbox-close').addEventListener('click', function () { lb.classList.remove('active'); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) lb.classList.remove('active'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('active'); });
+  document.querySelectorAll('.phone img, .browser-content img').forEach(function (img) {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function (e) { e.stopPropagation(); lbImg.src = img.src; lb.classList.add('active'); });
   });
-}, { threshold: 0.12 });
-document.querySelectorAll('.project, .stat, .exp-item, .edu-item').forEach(el => {
-  el.classList.add('reveal');
-  io.observe(el);
-});
 
-// Live clock in status bar (PT)
-const clockEl = document.querySelectorAll('.status-left span')[2];
-if (clockEl) {
-  function tick() {
-    const now = new Date();
-    const opts = { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit', hour12: false };
-    clockEl.textContent = 'PT ' + now.toLocaleTimeString('en-US', opts);
+  // ── Reveal on scroll (staggered) ──
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.project, .stat, .exp-item, .edu-item, .stack-cat, .lang').forEach(function (el, i) {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (Math.min(i % 6, 5) * 0.06) + 's';
+    io.observe(el);
+  });
+
+  // ── Animated stat counters ──
+  var counted = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target, target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || '';
+      counted.unobserve(el);
+      if (reduce) { el.textContent = target + suffix; return; }
+      var start = performance.now(), dur = 1400;
+      (function step(now) {
+        var p = Math.min((now - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      })(start);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-count]').forEach(function (el) { counted.observe(el); });
+
+  // ── Scroll progress + parallax (rAF batched) ──
+  var progress = document.getElementById('progress');
+  var layers = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.scrollY || window.pageYOffset;
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress) progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      if (!reduce) {
+        for (var i = 0; i < layers.length; i++) {
+          var s = parseFloat(layers[i].dataset.parallax);
+          layers[i].style.transform = 'translate3d(0,' + (y * s).toFixed(1) + 'px,0)';
+        }
+      }
+      ticking = false;
+    });
   }
-  tick();
-  setInterval(tick, 30000);
-}
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ── Live clock in status bar (PT) ──
+  var clockEl = document.querySelectorAll('.status-left span')[2];
+  if (clockEl) {
+    var tick = function () {
+      var now = new Date();
+      clockEl.textContent = 'PT ' + now.toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit', hour12: false });
+    };
+    tick();
+    setInterval(tick, 30000);
+  }
+})();
 </script>
 
 </body>

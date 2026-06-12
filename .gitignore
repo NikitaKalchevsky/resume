@@ -1,0 +1,10 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Binaries / installers that must never ship with the static site
+*.exe
+
+# Local source PDF exports (the served copy is resume.pdf at the repo root)
+images/Nikita_Kalchevsky_Resume.pdf
