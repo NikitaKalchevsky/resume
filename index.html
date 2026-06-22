@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mykyta Kalchevsky – AI Automation Specialist</title>
-<meta name="description" content="AI Automation Specialist building production Telegram bots, Claude API integrations, and full-stack web apps. Glendale, CA.">
-<meta property="og:title" content="Mykyta Kalchevsky – AI Automation Specialist">
-<meta property="og:description" content="Production Telegram bots, Claude API, Python, React, full-stack automation.">
+<title>Mykyta Kalchevsky – Full-Stack Web Developer</title>
+<meta name="description" content="Full-Stack Web Developer building production websites and web apps, front end to back end: React, Next.js, Firebase, Node. Plus Telegram bots and Claude API. Glendale, CA.">
+<meta property="og:title" content="Mykyta Kalchevsky – Full-Stack Web Developer">
+<meta property="og:description" content="Full-stack websites and web apps, front end to back end. React, Next.js, Firebase, Node, plus Telegram bots and Claude API.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="images/tuningstore-home.jpg">
+<meta property="og:image" content="images/fruktbox-home.jpg">
 <meta name="theme-color" content="#f7f3ec">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f7f3ec'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' text-anchor='middle' fill='%231c1a17'%3EM%3C/text%3E%3Ccircle cx='25' cy='8' r='3' fill='%23d6451f'/%3E%3C/svg%3E">
 
@@ -343,12 +343,122 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ── HERO ORCHESTRATED ENTRANCE ── */
+@keyframes heroRise { from { opacity: 0; transform: translateY(1.1rem); } to { opacity: 1; transform: translateY(0); } }
+@keyframes heroLine { from { transform: translateY(115%); } to { transform: translateY(0); } }
+.hero-tag, .hero-sub, .hero-meta > div { opacity: 0; animation: heroRise 0.9s var(--ease) both; }
+.hero-tag { animation-delay: 0.10s; }
+.hero h1 .line { display: block; overflow: hidden; padding: 0.05em 0.1em 0.14em; margin: -0.05em -0.1em -0.14em; }
+.hero h1 .line-inner { display: block; transform: translateY(115%); animation: heroLine 1.05s var(--ease) both; }
+.hero h1 .line:nth-child(1) .line-inner { animation-delay: 0.22s; }
+.hero h1 .line:nth-child(2) .line-inner { animation-delay: 0.34s; }
+.hero-sub { animation-delay: 0.62s; }
+.hero-meta > div:nth-child(1) { animation-delay: 0.74s; }
+.hero-meta > div:nth-child(2) { animation-delay: 0.80s; }
+.hero-meta > div:nth-child(3) { animation-delay: 0.86s; }
+.hero-meta > div:nth-child(4) { animation-delay: 0.92s; }
+.hero-meta > div:nth-child(5) { animation-delay: 0.98s; }
+
+/* ── PROJECT: editorial index numeral ── */
+.project-no {
+  position: absolute; top: -2.2rem; left: -0.6rem; z-index: 0;
+  font-family: var(--serif); font-weight: 900; font-size: clamp(4.5rem, 9vw, 7.5rem);
+  line-height: 1; letter-spacing: -0.04em; color: oklch(0.5 0.07 45 / 0.07);
+  font-variant-numeric: tabular-nums; pointer-events: none; user-select: none;
+}
+.project:nth-child(even) .project-no { left: auto; right: -0.6rem; }
+.project-img, .browser-frame, .phones, .terminal-frame { position: relative; z-index: 1; }
+
+/* ── PROJECT: directional reveal (children slide in from opposite sides) ── */
+.project .project-visual,
+.project .project-content { opacity: 0; transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.project .project-visual  { transform: translateX(-2.6rem); }
+.project .project-content { transform: translateX(2.6rem); }
+.project:nth-child(even) .project-visual  { transform: translateX(2.6rem); }
+.project:nth-child(even) .project-content { transform: translateX(-2.6rem); }
+.project.visible .project-visual,
+.project.visible .project-content { opacity: 1; transform: none; }
+.project.visible .project-content { transition-delay: 0.08s; }
+
+/* ── PROJECT: alive frames (lift + image zoom + animated title underline) ── */
+.browser-frame, .terminal-frame, .phones,
+.browser-content img, .project-img img {
+  transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease);
+}
+.project:hover .browser-frame,
+.project:hover .terminal-frame,
+.project:hover .phones { transform: translateY(-9px); }
+.project:hover .browser-frame { box-shadow: 0 34px 62px -26px oklch(0.4 0.05 50 / 0.45), 0 3px 8px oklch(0.4 0.05 50 / 0.1); }
+.project:hover .browser-content img,
+.project:hover .project-img img { transform: scale(1.045); }
+.project h3 { position: relative; display: inline-block; }
+.project h3::after {
+  content: ''; position: absolute; left: 0; bottom: -0.18rem; height: 2px; width: 100%;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+.project:hover h3::after { transform: scaleX(1); }
+
+/* ── FEATURED (flagship) project ── */
+.project.featured {
+  background: radial-gradient(130% 120% at 0% 0%, var(--accent-tint) 0%, transparent 55%), var(--card);
+  border: 1px solid var(--line-strong); border-radius: 16px;
+  padding: 3rem 2.5rem; margin: 0.5rem 0 1.75rem;
+  box-shadow: 0 30px 64px -42px oklch(0.4 0.05 50 / 0.45);
+}
+.project.featured h3 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); }
+.project-tag .flag {
+  background: var(--accent); color: oklch(0.99 0.01 80);
+  padding: 0.18rem 0.6rem; border-radius: 999px;
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+}
+@media (max-width: 900px) { .project.featured { padding: 2rem 1.25rem; } }
+
+/* ── SIDE SCROLL-SPY NAV (borrowed: sticky sidebar + active-section highlight) ── */
+.side-nav {
+  position: fixed; left: 1.6rem; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; gap: 0.9rem;
+}
+.side-nav a {
+  display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em;
+  color: var(--ink-faint); transition: color 0.35s var(--ease);
+}
+.sn-tick {
+  width: 1.1rem; height: 1px; background: var(--line-strong); flex-shrink: 0;
+  transition: width 0.45s var(--ease), background 0.45s var(--ease);
+}
+.sn-label { opacity: 0; transform: translateX(-5px); transition: opacity 0.35s var(--ease), transform 0.35s var(--ease); }
+.side-nav:hover .sn-label { opacity: 1; transform: none; }
+.side-nav a:hover { color: var(--ink); }
+.side-nav a:hover .sn-tick { width: 1.9rem; background: var(--ink); }
+.side-nav a.active { color: var(--accent-deep); }
+.side-nav a.active .sn-tick { width: 2.5rem; background: var(--accent); }
+.side-nav a.active .sn-label { opacity: 1; transform: none; }
+.side-nav a:focus-visible .sn-label { opacity: 1; transform: none; }
+@media (max-width: 1300px) { .side-nav { display: none; } }
+
+/* ── PROJECT CURSOR LABEL (borrowed: Awwwards hover-reveal + interactive cursor) ── */
+.proj-cursor {
+  position: fixed; top: 0; left: 0; z-index: 150; pointer-events: none;
+  padding: 0.5rem 0.95rem; border-radius: 999px; white-space: nowrap;
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper);
+  transform: translate(-50%, -50%) scale(0.5); opacity: 0; will-change: transform, left, top;
+  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease);
+}
+.proj-cursor.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+@media (hover: none), (pointer: coarse) { .proj-cursor { display: none; } }
+
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero-ghost { transform: translateY(-50%) !important; }
+  .hero-tag, .hero-sub, .hero-meta > div,
+  .hero h1 .line-inner,
+  .project .project-visual, .project .project-content { opacity: 1 !important; transform: none !important; }
 }
 
 /* ── PRINT ── */
@@ -358,6 +468,9 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
   body { background: white; color: black; font-size: 11pt; }
   .hero-ghost { display: none; }
   .project { display: grid !important; grid-template-columns: 120px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #ddd; break-inside: avoid; }
+  .project.featured { background: none !important; box-shadow: none !important; border: none !important; border-bottom: 1px solid #ddd !important; border-radius: 0 !important; padding: 1rem 0 !important; }
+  .project-tag .flag { background: none !important; color: #000 !important; padding: 0 !important; }
+  .side-nav, .proj-cursor { display: none !important; }
   .phones { display: block !important; width: 120px; background: none; border: none; }
   .phones .phone { width: 60px; display: inline-block; box-shadow: none; }
   .phones .phone img { width: 100%; height: auto; max-height: 120px; object-fit: cover; object-position: top; animation: none !important; }
@@ -396,16 +509,28 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
   </div>
 </div>
 
+<nav class="side-nav" aria-label="Section navigation">
+  <a href="#about" data-target="about"><span class="sn-tick"></span><span class="sn-label">01 · About</span></a>
+  <a href="#work" data-target="work"><span class="sn-tick"></span><span class="sn-label">02 · Work</span></a>
+  <a href="#stack" data-target="stack"><span class="sn-tick"></span><span class="sn-label">03 · Stack</span></a>
+  <a href="#experience" data-target="experience"><span class="sn-tick"></span><span class="sn-label">04 · Trajectory</span></a>
+  <a href="#education" data-target="education"><span class="sn-tick"></span><span class="sn-label">05 · Learning</span></a>
+  <a href="#contact" data-target="contact"><span class="sn-tick"></span><span class="sn-label">06 · Contact</span></a>
+</nav>
+
 <main>
 
 <!-- ─── HERO ─── -->
 <section class="hero">
   <div class="hero-ghost" data-parallax="-0.12" aria-hidden="true">MK</div>
   <div class="wrap">
-    <div class="hero-tag">AI Automation Specialist · Telegram Bots &amp; Claude API</div>
-    <h1>Mykyta<br><span class="swash">Kalchevsky</span><span class="accent">.</span></h1>
+    <div class="hero-tag">Full-Stack Web Developer · Front &amp; Back End</div>
+    <h1>
+      <span class="line"><span class="line-inner">Mykyta</span></span>
+      <span class="line"><span class="line-inner"><span class="swash">Kalchevsky</span><span class="accent">.</span></span></span>
+    </h1>
     <p class="hero-sub">
-      I build production Telegram bots, LLM-powered tools, and full-stack web apps that businesses <b>actually rely on</b>. From a 16,003-record ECU lookup bot to a crypto DCA trading bot to a 7-language firmware marketplace: six projects, zero co-founders.
+      I design, build, and ship full-stack websites and web apps, front end to back end, that real businesses <b>run on</b>. My flagship is a live Ukrainian e-commerce store; I also built a 7-language firmware marketplace, plus production Telegram bots and Claude API tools. Six shipped projects, zero co-founders.
     </p>
     <div class="hero-meta">
       <div><span class="label">Email</span><span class="val"><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></span></div>
@@ -427,13 +552,13 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
     </div>
     <div class="about-grid">
       <div class="about-text">
-        15 years building and running networks taught me one thing: <strong>code is easy, keeping it alive is hard</strong>. Now I bring that operations mindset to AI automation, building bots, integrations, and web platforms that don't just work in a demo, they survive a Tuesday at 3 AM. I work with Claude API, Python, and React, ship to DigitalOcean, and treat every project like it has paying customers behind it. Because mine do.
+        15 years building and running networks taught me one thing: <strong>code is easy, keeping it alive is hard</strong>. Now I bring that operations mindset to full-stack web development, building websites, web apps, and the automation behind them, front end to back end. I work with React, Next.js, Firebase, and Python, ship to Vercel and DigitalOcean, and treat every project like it has paying customers behind it. Because mine do.
       </div>
       <div class="about-stats">
-        <div class="stat"><span class="stat-label">Production bots shipped</span><span class="stat-val"><span data-count="5">0</span><span class="unit">live</span></span></div>
-        <div class="stat"><span class="stat-label">DB records served</span><span class="stat-val"><span data-count="16" data-suffix="K">0</span><span class="unit">+ rows</span></span></div>
+        <div class="stat"><span class="stat-label">Live web platforms</span><span class="stat-val"><span data-count="2">0</span><span class="unit">shipped</span></span></div>
         <div class="stat"><span class="stat-label">E-commerce SKUs live</span><span class="stat-val"><span data-count="441">0</span><span class="unit">products</span></span></div>
-        <div class="stat"><span class="stat-label">Droplet uptime</span><span class="stat-val">24/7<span class="unit"> · 0 incidents</span></span></div>
+        <div class="stat"><span class="stat-label">DB records served</span><span class="stat-val"><span data-count="16" data-suffix="K">0</span><span class="unit">+ rows</span></span></div>
+        <div class="stat"><span class="stat-label">Production bots shipped</span><span class="stat-val"><span data-count="5">0</span><span class="unit">live</span></span></div>
         <div class="stat"><span class="stat-label">Years in tech</span><span class="stat-val"><span data-count="15">0</span><span class="unit">+</span></span></div>
       </div>
     </div>
@@ -451,90 +576,41 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
 
     <div class="projects">
 
-      <!-- PROJECT 1 -->
-      <article class="project">
+      <!-- PROJECT 1: Apelsin Rozmarin (FLAGSHIP) -->
+      <article class="project featured">
         <div class="project-visual">
-          <div class="phones">
-            <div class="phone phone-1">
-              <img src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing NISSAN ECU lookup">
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · COMMERCIAL</div>
-          <h3>Airbag ECU Lookup Bot</h3>
-          <p class="project-desc">
-            A production Telegram bot serving real customers for an automotive ECU programming service in Glendale, CA. Customers send a vehicle brand and part number; the bot queries a 16,003-record database, returns the correct reprogramming method and price, and books an appointment within an hour. Claude Haiku handles messy natural-language inputs.
-          </p>
-          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron</div>
-          <ul class="project-bullets">
-            <li><strong>Two-bot architecture:</strong> client-facing bot plus admin management panel</li>
-            <li><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron auto-restart every 6h</li>
-            <li><strong>Lean ops:</strong> 89MB memory footprint, runs comfortably on 1GB RAM / 1 vCPU</li>
-            <li><strong>API tuning:</strong> eliminated Claude 400 errors via prompt plus DB chunking and temperature 0.1</li>
-          </ul>
-          <div class="project-links"><a href="#contact" class="btn">Demo on request</a></div>
-        </div>
-      </article>
-
-      <!-- PROJECT 2 -->
-      <article class="project">
-        <div class="project-visual">
+          <span class="project-no" aria-hidden="true">01</span>
           <div class="browser-frame">
             <div class="browser-bar">
               <div class="browser-dots"><span></span><span></span><span></span></div>
               <div class="browser-url">apelsin-rozmarin.com.ua</div>
             </div>
             <div class="browser-content">
-              <img src="images/fruktbox-home.jpg" alt="Fruktbox e-commerce homepage with product catalog">
+              <img src="images/fruktbox-home.jpg" alt="Apelsin Rozmarin e-commerce homepage with product catalog">
             </div>
           </div>
         </div>
         <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
-          <h3>Fruktbox, E-Commerce Platform</h3>
+          <div class="project-tag"><span class="flag">Flagship</span><span class="live-dot"></span>LIVE · PRODUCTION</div>
+          <h3>Apelsin Rozmarin, Full-Stack E-Commerce</h3>
           <p class="project-desc">
-            A full-stack online shop for fruit gift boxes serving the Ukrainian market: designed, built, deployed, and maintained solo. 441 live products, custom admin panel, real-time order pipeline, and three integrated payment methods. Indexed in Google Merchant Center, SSL grade A.
+            My flagship build: a full-stack e-commerce store for the Ukrainian market, designed, coded, deployed, and maintained end to end, solo. React storefront on the front, Firebase on the back: 441 live products, a custom admin panel, a real-time order pipeline, and three payment methods. Indexed in Google Merchant Center, SSL grade A.
           </p>
           <div class="project-stack"><span class="stack-label">stack:</span>React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal</div>
           <ul class="project-bullets">
-            <li><strong>Custom admin panel</strong> for product, inventory, and order management</li>
+            <li><strong>Front to back, solo:</strong> React storefront, Firebase data and auth, custom admin panel for products, inventory, and orders</li>
             <li><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
             <li><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
             <li><strong>SEO &amp; commerce:</strong> Google Search Console plus Merchant Center, sitemap submitted, SSL A grade</li>
           </ul>
-          <div class="project-links"><a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn primary">Visit site →</a></div>
+          <div class="project-links"><a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn primary">Visit live site →</a></div>
         </div>
       </article>
 
-      <!-- PROJECT 3 -->
+      <!-- PROJECT 2: TuningStore -->
       <article class="project">
         <div class="project-visual">
-          <div class="phones">
-            <div class="phone phone-1"><img src="images/personal-bot-menu.jpg" alt="Personal AI Assistant main menu with 9 modules"></div>
-            <div class="phone phone-2"><img src="images/personal-bot-nutrition.jpg" alt="Personal AI Assistant nutrition tracking and finance modules"></div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tag">R&amp;D · MODULAR</div>
-          <h3>Personal AI Assistant</h3>
-          <p class="project-desc">
-            A modular Telegram-based personal assistant where Claude Haiku handles all natural-language input parsing. "Ate 200g chicken" becomes a structured calorie entry; "spent $40 on gas" becomes a categorized expense. Built as a testbed for production patterns I now reuse for client work.
-          </p>
-          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku · SQLite · python-telegram-bot · cron</div>
-          <ul class="project-bullets">
-            <li><strong>Nutrition module</strong> with Mifflin-St Jeor BMR calculation and personalized macro goals</li>
-            <li><strong>Finance tracking</strong> with category breakdowns and monthly statistics</li>
-            <li><strong>Schedule &amp; reminders</strong>, timezone-aware</li>
-            <li><strong>Copart auction monitor</strong> polling every 2 hours for new listings</li>
-            <li><strong>Reliability:</strong> weekly SQLite backups, auto-restart on reboot via crontab</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- PROJECT 4: TuningStore -->
-      <article class="project">
-        <div class="project-visual">
+          <span class="project-no" aria-hidden="true">02</span>
           <div class="browser-frame">
             <div class="browser-bar">
               <div class="browser-dots"><span></span><span></span><span></span></div>
@@ -561,9 +637,63 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
         </div>
       </article>
 
+      <!-- PROJECT 3: Airbag ECU Lookup Bot -->
+      <article class="project">
+        <div class="project-visual">
+          <span class="project-no" aria-hidden="true">03</span>
+          <div class="phones">
+            <div class="phone phone-1">
+              <img src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing NISSAN ECU lookup">
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag"><span class="live-dot"></span>LIVE · COMMERCIAL</div>
+          <h3>Airbag ECU Lookup Bot</h3>
+          <p class="project-desc">
+            A production Telegram bot serving real customers for an automotive ECU programming service in Glendale, CA. Customers send a vehicle brand and part number; the bot queries a 16,003-record database, returns the correct reprogramming method and price, and books an appointment within an hour. Claude Haiku handles messy natural-language inputs.
+          </p>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron</div>
+          <ul class="project-bullets">
+            <li><strong>Two-bot architecture:</strong> client-facing bot plus admin management panel</li>
+            <li><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron auto-restart every 6h</li>
+            <li><strong>Lean ops:</strong> 89MB memory footprint, runs comfortably on 1GB RAM / 1 vCPU</li>
+            <li><strong>API tuning:</strong> eliminated Claude 400 errors via prompt plus DB chunking and temperature 0.1</li>
+          </ul>
+          <div class="project-links"><a href="#contact" class="btn">Demo on request</a></div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4: Personal AI Assistant -->
+      <article class="project">
+        <div class="project-visual">
+          <span class="project-no" aria-hidden="true">04</span>
+          <div class="phones">
+            <div class="phone phone-1"><img src="images/personal-bot-menu.jpg" alt="Personal AI Assistant main menu with 9 modules"></div>
+            <div class="phone phone-2"><img src="images/personal-bot-nutrition.jpg" alt="Personal AI Assistant nutrition tracking and finance modules"></div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tag">R&amp;D · MODULAR</div>
+          <h3>Personal AI Assistant</h3>
+          <p class="project-desc">
+            A modular Telegram-based personal assistant where Claude Haiku handles all natural-language input parsing. "Ate 200g chicken" becomes a structured calorie entry; "spent $40 on gas" becomes a categorized expense. Built as a testbed for production patterns I now reuse for client work.
+          </p>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku · SQLite · python-telegram-bot · cron</div>
+          <ul class="project-bullets">
+            <li><strong>Nutrition module</strong> with Mifflin-St Jeor BMR calculation and personalized macro goals</li>
+            <li><strong>Finance tracking</strong> with category breakdowns and monthly statistics</li>
+            <li><strong>Schedule &amp; reminders</strong>, timezone-aware</li>
+            <li><strong>Copart auction monitor</strong> polling every 2 hours for new listings</li>
+            <li><strong>Reliability:</strong> weekly SQLite backups, auto-restart on reboot via crontab</li>
+          </ul>
+        </div>
+      </article>
+
       <!-- PROJECT 5: DCA Trade Bot -->
       <article class="project">
         <div class="project-visual">
+          <span class="project-no" aria-hidden="true">05</span>
           <div class="phones">
             <div class="phone phone-1"><img src="images/dca-bot-all.jpg" alt="DCA Trade Bot market scan, buy signal, and open positions"></div>
             <div class="phone phone-2"><img src="images/dca-bot-menu.jpg" alt="DCA Trade Bot buy signal notification"></div>
@@ -590,6 +720,7 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       <!-- PROJECT 6: LangChain Fleet -->
       <article class="project">
         <div class="project-visual">
+          <span class="project-no" aria-hidden="true">06</span>
           <div class="terminal-frame">
             <div class="terminal-bar">
               <div class="browser-dots"><span></span><span></span><span></span></div>
@@ -641,6 +772,30 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
     </div>
     <div class="stack-grid">
       <div class="stack-cat">
+        <h4>Frontend</h4>
+        <ul>
+          <li class="primary">React · TypeScript</li>
+          <li class="primary">Next.js (App Router)</li>
+          <li class="primary">Vite</li>
+          <li>JavaScript (ES6+)</li>
+          <li>HTML5 / CSS3</li>
+          <li>Firebase (Firestore, Auth)</li>
+          <li>WordPress</li>
+        </ul>
+      </div>
+      <div class="stack-cat">
+        <h4>Backend</h4>
+        <ul>
+          <li class="primary">Node.js · Next.js API</li>
+          <li class="primary">Python 3</li>
+          <li class="primary">Prisma ORM · PostgreSQL</li>
+          <li>Firebase (server, Auth)</li>
+          <li>python-telegram-bot</li>
+          <li>APScheduler · SQLite</li>
+          <li>async / await</li>
+        </ul>
+      </div>
+      <div class="stack-cat">
         <h4>AI &amp; LLM</h4>
         <ul>
           <li class="primary">Claude API (Sonnet, Haiku, Opus)</li>
@@ -649,29 +804,6 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
           <li>Prompt engineering</li>
           <li>Function calling / tools</li>
           <li>Claude Skills</li>
-        </ul>
-      </div>
-      <div class="stack-cat">
-        <h4>Backend</h4>
-        <ul>
-          <li class="primary">Python 3</li>
-          <li class="primary">python-telegram-bot</li>
-          <li class="primary">Next.js (App Router)</li>
-          <li>Prisma ORM · PostgreSQL</li>
-          <li>APScheduler · SQLite</li>
-          <li>openpyxl · ccxt</li>
-          <li>async / await</li>
-        </ul>
-      </div>
-      <div class="stack-cat">
-        <h4>Frontend</h4>
-        <ul>
-          <li class="primary">React · TypeScript</li>
-          <li class="primary">Vite</li>
-          <li>JavaScript (ES6+)</li>
-          <li>HTML5 / CSS3</li>
-          <li>Firebase (Firestore, Auth)</li>
-          <li>WordPress</li>
         </ul>
       </div>
       <div class="stack-cat">
@@ -702,9 +834,9 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       <div class="exp-item">
         <div class="exp-period">2024 – <span class="current">now</span></div>
         <div>
-          <div class="exp-role">AI Automation Specialist · Freelance</div>
+          <div class="exp-role">Full-Stack Web Developer · Freelance</div>
           <div class="exp-company">Self-employed · Glendale, CA</div>
-          <p class="exp-desc">Building production Telegram bots, Claude API integrations, and full-stack web apps. Operating a local ECU programming service (Glendale, CA) as a real-world testbed for automation tooling. Every customer interaction stress-tests the systems I build for clients.</p>
+          <p class="exp-desc">Designing and building full-stack websites and web apps, front end to back end: e-commerce stores, marketplaces, admin panels. Also production Telegram bots and Claude API integrations. Operating a local ECU programming service (Glendale, CA) as a real-world testbed. Every customer interaction stress-tests the systems I build for clients.</p>
         </div>
       </div>
       <div class="exp-item">
@@ -825,11 +957,13 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.project, .stat, .exp-item, .edu-item, .stack-cat, .lang').forEach(function (el, i) {
+  document.querySelectorAll('.section-head, .stat, .exp-item, .edu-item, .stack-cat, .lang').forEach(function (el, i) {
     el.classList.add('reveal');
     el.style.transitionDelay = (Math.min(i % 6, 5) * 0.06) + 's';
     io.observe(el);
   });
+  // Projects reveal directionally: visual + content slide in from opposite sides (CSS-driven on .visible)
+  document.querySelectorAll('.project').forEach(function (el) { io.observe(el); });
 
   // ── Animated stat counters ──
   var counted = new IntersectionObserver(function (entries) {
@@ -881,6 +1015,38 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
     };
     tick();
     setInterval(tick, 30000);
+  }
+
+  // ── Side-nav scroll-spy (active section highlight) ──
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+  if (navLinks.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var id = e.target.id;
+        navLinks.forEach(function (a) { a.classList.toggle('active', a.dataset.target === id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    navLinks.forEach(function (a) {
+      var sec = document.getElementById(a.dataset.target);
+      if (sec) spy.observe(sec);
+    });
+  }
+
+  // ── Project cursor label (hover-reveal, fine pointers only) ──
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine) {
+    var pc = document.createElement('div');
+    pc.className = 'proj-cursor';
+    document.body.appendChild(pc);
+    document.querySelectorAll('.project-visual').forEach(function (v) {
+      v.addEventListener('mouseenter', function () { pc.textContent = 'View'; pc.classList.add('show'); });
+      v.addEventListener('mouseleave', function () { pc.classList.remove('show'); });
+      v.addEventListener('mousemove', function (e) {
+        pc.style.left = e.clientX + 'px';
+        pc.style.top = e.clientY + 'px';
+      });
+    });
   }
 })();
 </script>

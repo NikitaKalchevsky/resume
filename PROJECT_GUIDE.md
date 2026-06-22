@@ -46,14 +46,20 @@ resume/
 └── PROJECT_GUIDE.md    — этот файл
 ```
 
+## Позиционирование
+
+Резюме спозиционировано как **Full-Stack Web Developer (front + back end)** — это основная линия; AI/Telegram-боты идут сильной вторичной. Флагман — **Apelsin Rozmarin** (apelsin-rozmarin.com.ua).
+
 ## Проекты в резюме (порядок отображения)
 
-1. **Airbag ECU Lookup Bot** — phone mockup (`airbag-bot-chat.jpg`)
-2. **Fruktbox E-Commerce** — browser frame (`fruktbox-home.jpg`)
-3. **Personal AI Assistant** — dual phones (`personal-bot-menu.jpg` + `personal-bot-nutrition.jpg`)
-4. **TuningStore** — browser frame (`tuningstore-home.jpg`) · LIVE · PRODUCTION
-5. **Smart DCA Trade Bot** — dual phones (`dca-bot-menu.jpg` + `dca-bot-positions.jpg`) · ожидаются скрины
+1. **Apelsin Rozmarin, Full-Stack E-Commerce** — флагман, `article.project.featured` (акцентный фон + pill «Flagship»), browser frame (`fruktbox-home.jpg`) · LIVE · PRODUCTION
+2. **TuningStore** — browser frame (`tuningstore-home.jpg`) · LIVE · PRODUCTION
+3. **Airbag ECU Lookup Bot** — phone mockup (`airbag-bot-chat.jpg`) · LIVE · COMMERCIAL
+4. **Personal AI Assistant** — dual phones (`personal-bot-menu.jpg` + `personal-bot-nutrition.jpg`)
+5. **Smart DCA Trade Bot** — dual phones (`dca-bot-all.jpg` + `dca-bot-menu.jpg`)
 6. **LangChain Bot Fleet** — terminal frame (CSS-only, без изображений)
+
+Номера карточек `01–06` (`.project-no`) проставлены вручную в HTML — при перестановке проектов их нужно обновлять.
 
 **Ключевой принцип:** всё в `index.html`. CSS — в теге `<style>`, JS — в теге `<script>` в конце файла. Никаких отдельных `.css` и `.js` файлов.
 
@@ -228,7 +234,10 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ## История изменений
 
+- **2026-06-21** — Репозиционирование на **Full-Stack Web Developer (front + back end)** как основную специализацию (AI/боты — вторичная линия). Обновлены `<title>`, meta/OG (og:image → `fruktbox-home.jpg`), hero-tag («Full-Stack Web Developer · Front & Back End»), hero-sub, About-текст, текущая роль в Trajectory. Статистика About переупорядочена под веб (добавлено «Live web platforms = 2», убрано «Droplet uptime»). Стек переупорядочен: Frontend → Backend → AI & LLM → Infrastructure (добавлены Node.js / Next.js API). **Проекты переставлены**: №1 — флагман **Apelsin Rozmarin** (переименован с «Fruktbox», `.featured`-карточка с акцентным фоном и pill «Flagship», ссылка «Visit live site»), №2 TuningStore, далее боты (Airbag, Personal, DCA, LangChain). Номера 01–06 пересчитаны, print-override для `.featured`.
+- **2026-06-20 (2)** — Перенял приёмы лучших dev-портфолио (Brittany Chiang, Awwwards index-module, интерактивные курсоры): добавлена **липкая боковая навигация со scroll-spy** (`.side-nav`, тики растут + подсветка активной секции через IntersectionObserver с `rootMargin -45%/-50%`, лейблы раскрываются на hover, скрыта < 1300px) и **курсор-подсказка «View»** на `.project-visual` (только fine-pointer). Адаптировано под светлую Warm Editorial, без перехода в dark.
+- **2026-06-20** — Усиление темы Warm Editorial (анимации/переходы + подача карточек). Добавлены: оркестрованный вход hero (построчное появление `h1` через clip-маску `.line`/`.line-inner`, staggered-вход тега, подзаголовка и контактов), направленное появление проектов (визуал и текст выезжают навстречу с противоположных сторон, чётные/нечётные зеркально), «живые» рамки проектов (lift + zoom картинки + анимированное подчёркивание `h3` на hover), редакционные номера `01–06` (`.project-no`) фоновым серифом за рамками. JS: `.project` наблюдаются отдельно от общего staggered-reveal; в общий reveal добавлен `.section-head`. Все новые анимации заглушены в `prefers-reduced-motion`. Контент проектов не менялся.
 - **2026-06-11** — Полный редизайн в светлую тему **Warm Editorial**: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент вместо кислотного лайма. Шрифт тела Inter → Hanken Grotesk. Добавлены параллакс (hero-ghost «MK», фоновая сетка), staggered scroll-reveal, анимированные счётчики статистики, индикатор прогресса прокрутки. Аудит-фиксы: `prefers-reduced-motion` (отключает все анимации), focus-visible состояния, favicon (inline SVG), `og:image`. Весь текст переведён с em-dash на en-dash/запятые. Из репозитория удалён мусор (`Claude Setup.exe`), добавлен `.gitignore`.
 - **2026-05-25** — `@media print` с маленькими картинками проектов; `resume.pdf` перегенерирован из живого URL.
 
-*Последнее обновление: 2026-06-11 — редизайн в светлую тему Warm Editorial + аудит.*
+*Последнее обновление: 2026-06-21 — репозиционирование на Full-Stack Web Developer; флагман Apelsin Rozmarin вынесен на первое место с акцентной карточкой; стек и статистика переупорядочены под веб.*
