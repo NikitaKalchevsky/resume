@@ -19,11 +19,12 @@
 | HTML/CSS/JS | Чистые, без фреймворков |
 | Шрифты | Google Fonts (Fraunces — дисплей, Hanken Grotesk — тело, JetBrains Mono — моно) — загружаются из сети |
 | Тема | Светлая, Warm Editorial: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент |
+| Мультиязычность | Виджет Google Website Translator (`translate.google.com/translate_a/element.js`), стиль как в Apelsin Rozmarin (плагин GTranslate). **Без API-ключа.** Переключатель EN (основной) + UK / RU / ES |
 | Хостинг | GitHub Pages |
 | Git-репозиторий | https://github.com/NikitaKalchevsky/resume.git |
 | Ветка | `main` |
 
-**Внешних API, токенов и баз данных нет.** Всё статичное.
+**Своих API, токенов и баз данных нет.** Перевод — внешний бесплатный виджет Google (без ключа, без подписки), всё остальное статичное.
 
 ---
 
@@ -62,6 +63,21 @@ resume/
 Номера карточек `01–06` (`.project-no`) проставлены вручную в HTML — при перестановке проектов их нужно обновлять.
 
 **Ключевой принцип:** всё в `index.html`. CSS — в теге `<style>`, JS — в теге `<script>` в конце файла. Никаких отдельных `.css` и `.js` файлов.
+
+---
+
+## Мультиязычность (переключатель языков)
+
+Реализовано так же, как на сайте **Apelsin Rozmarin**, — через бесплатный виджет Google Website Translator (тот же движок, что использует плагин GTranslate). **API-ключ и подписка не нужны.**
+
+- **Основной язык** — английский (`<html lang="en">`). Переключатель: EN + Українська (UK) + Русский (RU) + Español (ES).
+- **UI переключателя** — кастомная кнопка-таблетка в верхнем status-bar (`.lang-switch` / `.lang-btn` / `.lang-menu`), в стиле Warm Editorial (моно-шрифт, вермилионовый акцент, выпадающее меню). Глобус + текущий код языка + шеврон. Доступность: `aria-haspopup`, `aria-expanded`, `role="menuitemradio"`, навигация стрелками, Escape, клик вне меню закрывает.
+- **Движок перевода** — `translate.google.com/translate_a/element.js` со скрытым `#google_translate_element` (`includedLanguages: 'uk,ru,es'`, `autoDisplay:false`). Родная панель Google спрятана через CSS (`.skiptranslate`, `.goog-te-banner-frame`, `body { top:0 }`).
+- **Механизм переключения** — cookie `googtrans` (`/en/<lang>`) + перезагрузка страницы; при выборе English cookie удаляется. На загрузке кнопка синхронизирует подпись и активный пункт из cookie. Cookie ставится на текущий хост и его поддомены.
+
+**Как добавить ещё язык:** добавьте код в `includedLanguages` (вызов `googleTranslateElementInit`) и новый `<li><button role="menuitemradio" data-lang="xx" data-code="XX">…</button></li>` в `.lang-menu`. Список кодов — стандартные ISO Google Translate.
+
+**Важно:** перевод работает только по HTTP(S) (cookie). При открытии через `file://` переключатель виден, но перевод может не применяться, проверять на GitHub Pages или локальном сервере (`python -m http.server`).
 
 ---
 
@@ -234,10 +250,12 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ## История изменений
 
+- **2026-06-25** — Добавлена **мультиязычность**: переключатель языков в верхнем status-bar (EN основной + UK / RU / ES), реализован так же, как на Apelsin Rozmarin, — бесплатный виджет Google Website Translator (тот же движок, что GTranslate), **без API-ключа и подписки**. Кастомный UI в стиле Warm Editorial (`.lang-switch`: кнопка-таблетка с глобусом + выпадающее меню, доступность через `role="menuitemradio"`, стрелки/Escape/клик-вне). Перевод — cookie `googtrans` + reload, родная панель Google скрыта (`.skiptranslate`, `body{top:0}`). Подробности в разделе «Мультиязычность».
+- **2026-06-24** — Улучшения по итогам аудита: **hero CTA** (кнопки «See selected work» + «Get in touch», входят в оркестрованную анимацию hero, hero-sub margin уменьшен). Новый блок **«What I build»** в секции About (`.services` / `.services-grid`, 5 услуг: магазины, веб-приложения, админки, API/интеграции, боты) с staggered-reveal. **Чипы-результаты** (`.metrics`/`.metric`) на флагмане (441 товар · 3 оплаты · SSL A · Solo) и TuningStore (7 языков · 301+ файлов · 3 оплаты · R2). **Ровные действия**: у Personal AI и LangChain добавлена кнопка «Architecture on request» (теперь у всех 6 карточек есть CTA). JS: у живых проектов (с `.btn.primary`) клик по визуалу открывает сайт в новой вкладке, курсор-подсказка показывает «Open ↗» вместо «View». GitHub-ссылка оставлена (репозитории публичные). Отзывы не добавляли (нет реальных данных). Флагман Apelsin отмечен как **двуязычный**: чип «2 languages» + пункт «Bilingual storefront» (конкретная пара языков в подписи пока не указана — ждём подтверждения).
 - **2026-06-21** — Репозиционирование на **Full-Stack Web Developer (front + back end)** как основную специализацию (AI/боты — вторичная линия). Обновлены `<title>`, meta/OG (og:image → `fruktbox-home.jpg`), hero-tag («Full-Stack Web Developer · Front & Back End»), hero-sub, About-текст, текущая роль в Trajectory. Статистика About переупорядочена под веб (добавлено «Live web platforms = 2», убрано «Droplet uptime»). Стек переупорядочен: Frontend → Backend → AI & LLM → Infrastructure (добавлены Node.js / Next.js API). **Проекты переставлены**: №1 — флагман **Apelsin Rozmarin** (переименован с «Fruktbox», `.featured`-карточка с акцентным фоном и pill «Flagship», ссылка «Visit live site»), №2 TuningStore, далее боты (Airbag, Personal, DCA, LangChain). Номера 01–06 пересчитаны, print-override для `.featured`.
 - **2026-06-20 (2)** — Перенял приёмы лучших dev-портфолио (Brittany Chiang, Awwwards index-module, интерактивные курсоры): добавлена **липкая боковая навигация со scroll-spy** (`.side-nav`, тики растут + подсветка активной секции через IntersectionObserver с `rootMargin -45%/-50%`, лейблы раскрываются на hover, скрыта < 1300px) и **курсор-подсказка «View»** на `.project-visual` (только fine-pointer). Адаптировано под светлую Warm Editorial, без перехода в dark.
 - **2026-06-20** — Усиление темы Warm Editorial (анимации/переходы + подача карточек). Добавлены: оркестрованный вход hero (построчное появление `h1` через clip-маску `.line`/`.line-inner`, staggered-вход тега, подзаголовка и контактов), направленное появление проектов (визуал и текст выезжают навстречу с противоположных сторон, чётные/нечётные зеркально), «живые» рамки проектов (lift + zoom картинки + анимированное подчёркивание `h3` на hover), редакционные номера `01–06` (`.project-no`) фоновым серифом за рамками. JS: `.project` наблюдаются отдельно от общего staggered-reveal; в общий reveal добавлен `.section-head`. Все новые анимации заглушены в `prefers-reduced-motion`. Контент проектов не менялся.
 - **2026-06-11** — Полный редизайн в светлую тему **Warm Editorial**: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент вместо кислотного лайма. Шрифт тела Inter → Hanken Grotesk. Добавлены параллакс (hero-ghost «MK», фоновая сетка), staggered scroll-reveal, анимированные счётчики статистики, индикатор прогресса прокрутки. Аудит-фиксы: `prefers-reduced-motion` (отключает все анимации), focus-visible состояния, favicon (inline SVG), `og:image`. Весь текст переведён с em-dash на en-dash/запятые. Из репозитория удалён мусор (`Claude Setup.exe`), добавлен `.gitignore`.
 - **2026-05-25** — `@media print` с маленькими картинками проектов; `resume.pdf` перегенерирован из живого URL.
 
-*Последнее обновление: 2026-06-21 — репозиционирование на Full-Stack Web Developer; флагман Apelsin Rozmarin вынесен на первое место с акцентной карточкой; стек и статистика переупорядочены под веб.*
+*Последнее обновление: 2026-06-25 — мультиязычность: переключатель языков (EN + UK / RU / ES) на движке Google Website Translator, как на Apelsin Rozmarin, без API-ключа.*

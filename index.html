@@ -125,6 +125,53 @@ main { position: relative; z-index: 2; }
 }
 .status-cta:hover { border-color: var(--accent); color: var(--accent-deep) !important; background: var(--accent-tint); }
 
+/* ── Language switcher ── */
+.status-right { display: flex; align-items: center; gap: 1rem; }
+.lang-switch { position: relative; font-family: var(--mono); }
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font: inherit; font-size: 0.72rem; letter-spacing: 0.04em; line-height: 1;
+  color: var(--ink-dim); background: transparent; cursor: pointer;
+  padding: 0.26rem 0.6rem; border: 1px solid var(--line-strong); border-radius: 999px;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.lang-btn:hover { border-color: var(--accent); color: var(--accent-deep); background: var(--accent-tint); }
+.lang-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang-globe { width: 13px; height: 13px; opacity: 0.85; }
+.lang-cur { font-weight: 500; }
+.lang-caret { width: 9px; height: 9px; transition: transform 0.25s var(--ease); }
+.lang-switch.open .lang-caret { transform: rotate(180deg); }
+.lang-switch.open .lang-btn { border-color: var(--accent); color: var(--accent-deep); }
+
+.lang-menu {
+  position: absolute; top: calc(100% + 0.55rem); right: 0; z-index: 120;
+  min-width: 176px; list-style: none; margin: 0; padding: 0.3rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 13px;
+  box-shadow: 0 16px 36px oklch(0.30 0.02 60 / 0.16), 0 2px 6px oklch(0.30 0.02 60 / 0.08);
+  opacity: 0; transform: translateY(-6px) scale(0.98); transform-origin: top right;
+  pointer-events: none; transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+}
+.lang-switch.open .lang-menu { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.lang-menu li { list-style: none; }
+.lang-menu button {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.5rem 0.7rem; border: 0; border-radius: 9px; cursor: pointer;
+  background: transparent; font-family: var(--sans); font-size: 0.84rem;
+  color: var(--ink-soft); letter-spacing: 0; text-align: left;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+}
+.lang-menu button:hover { background: var(--paper-2); color: var(--ink); }
+.lang-menu button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.lang-menu .lang-tag { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-faint); letter-spacing: 0.06em; }
+.lang-menu button[aria-checked="true"] { color: var(--accent-deep); }
+.lang-menu button[aria-checked="true"] .lang-tag { color: var(--accent); }
+
+/* Hide Google Translate chrome (cookie-driven translation, custom UI above) */
+.goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt, .goog-tooltip, .skiptranslate { display: none !important; }
+#google_translate_element { display: none !important; }
+body { top: 0 !important; }
+font.goog-text-highlight { background: none !important; box-shadow: none !important; }
+
 /* ── HERO ── */
 .hero { position: relative; padding: 7rem 0 5rem; border-bottom: 1px solid var(--line); overflow: hidden; }
 .hero-ghost {
@@ -149,9 +196,10 @@ main { position: relative; z-index: 2; }
 .hero h1 .swash { font-style: italic; font-weight: 500; }
 .hero-sub {
   font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-  color: var(--ink-soft); max-width: 44ch; line-height: 1.55; margin-bottom: 2.75rem;
+  color: var(--ink-soft); max-width: 44ch; line-height: 1.55; margin-bottom: 1.9rem;
 }
 .hero-sub b { color: var(--ink); font-weight: 600; font-style: italic; }
+.hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2.6rem; }
 .hero-meta { display: flex; gap: 2.25rem 2.75rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.85rem; }
 .hero-meta div { display: flex; flex-direction: column; gap: 0.3rem; }
 .hero-meta .label { color: var(--ink-faint); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -346,8 +394,9 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
 /* ── HERO ORCHESTRATED ENTRANCE ── */
 @keyframes heroRise { from { opacity: 0; transform: translateY(1.1rem); } to { opacity: 1; transform: translateY(0); } }
 @keyframes heroLine { from { transform: translateY(115%); } to { transform: translateY(0); } }
-.hero-tag, .hero-sub, .hero-meta > div { opacity: 0; animation: heroRise 0.9s var(--ease) both; }
+.hero-tag, .hero-sub, .hero-cta, .hero-meta > div { opacity: 0; animation: heroRise 0.9s var(--ease) both; }
 .hero-tag { animation-delay: 0.10s; }
+.hero-cta { animation-delay: 0.70s; }
 .hero h1 .line { display: block; overflow: hidden; padding: 0.05em 0.1em 0.14em; margin: -0.05em -0.1em -0.14em; }
 .hero h1 .line-inner { display: block; transform: translateY(115%); animation: heroLine 1.05s var(--ease) both; }
 .hero h1 .line:nth-child(1) .line-inner { animation-delay: 0.22s; }
@@ -398,6 +447,25 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
   transition: transform 0.6s var(--ease);
 }
 .project:hover h3::after { transform: scaleX(1); }
+
+/* ── SERVICES (what I build) ── */
+.services { margin-top: 3.5rem; }
+.services .sub-head { margin-bottom: 1.6rem; }
+.services-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+.svc { border-top: 1px solid var(--line-strong); padding-top: 1rem; }
+.svc-no { font-family: var(--mono); font-size: 0.66rem; color: var(--accent-deep); display: block; margin-bottom: 0.55rem; letter-spacing: 0.08em; }
+.svc-title { font-family: var(--serif); font-weight: 600; font-size: 1.06rem; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.2; }
+.svc-desc { font-size: 0.82rem; line-height: 1.5; color: var(--ink-dim); }
+@media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2rem; } }
+@media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+/* ── PROJECT metric chips (scannable key results) ── */
+.metrics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+.metric {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line-strong); border-radius: 999px; padding: 0.35rem 0.78rem;
+}
+.project.featured .metric { color: var(--accent-deep); border-color: var(--accent); background: oklch(0.99 0.012 80 / 0.7); }
 
 /* ── FEATURED (flagship) project ── */
 .project.featured {
@@ -456,7 +524,7 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero-ghost { transform: translateY(-50%) !important; }
-  .hero-tag, .hero-sub, .hero-meta > div,
+  .hero-tag, .hero-sub, .hero-cta, .hero-meta > div,
   .hero h1 .line-inner,
   .project .project-visual, .project .project-content { opacity: 1 !important; transform: none !important; }
 }
@@ -505,7 +573,22 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       <span class="hide-mobile">GLENDALE · CA</span>
       <span class="hide-mobile">UTC−08:00</span>
     </div>
-    <div><a href="#contact" class="status-cta">Hire me</a></div>
+    <div class="status-right">
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+          <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.4 2.5 3.8 5.7 3.8 9s-1.4 6.5-3.8 9c-2.4-2.5-3.8-5.7-3.8-9S9.6 5.5 12 3z"/></svg>
+          <span class="lang-cur" data-cur>EN</span>
+          <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-menu" role="menu" aria-label="Language">
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="true" data-lang="en" data-code="EN"><span>English</span><span class="lang-tag">EN</span></button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lang="uk" data-code="UK"><span>Українська</span><span class="lang-tag">UK</span></button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lang="ru" data-code="RU"><span>Русский</span><span class="lang-tag">RU</span></button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-lang="es" data-code="ES"><span>Español</span><span class="lang-tag">ES</span></button></li>
+        </ul>
+      </div>
+      <a href="#contact" class="status-cta">Hire me</a>
+    </div>
   </div>
 </div>
 
@@ -532,6 +615,10 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
     <p class="hero-sub">
       I design, build, and ship full-stack websites and web apps, front end to back end, that real businesses <b>run on</b>. My flagship is a live Ukrainian e-commerce store; I also built a 7-language firmware marketplace, plus production Telegram bots and Claude API tools. Six shipped projects, zero co-founders.
     </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn primary">See selected work →</a>
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
     <div class="hero-meta">
       <div><span class="label">Email</span><span class="val"><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></span></div>
       <div><span class="label">Telegram</span><span class="val"><a href="https://t.me/Hybrid_d">@Hybrid_d</a></span></div>
@@ -560,6 +647,17 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
         <div class="stat"><span class="stat-label">DB records served</span><span class="stat-val"><span data-count="16" data-suffix="K">0</span><span class="unit">+ rows</span></span></div>
         <div class="stat"><span class="stat-label">Production bots shipped</span><span class="stat-val"><span data-count="5">0</span><span class="unit">live</span></span></div>
         <div class="stat"><span class="stat-label">Years in tech</span><span class="stat-val"><span data-count="15">0</span><span class="unit">+</span></span></div>
+      </div>
+    </div>
+
+    <div class="services">
+      <h4 class="sub-head">// what I build</h4>
+      <div class="services-grid">
+        <div class="svc"><span class="svc-no">01</span><h4 class="svc-title">E-commerce stores</h4><p class="svc-desc">Storefronts, carts, checkout, payments, and a custom admin.</p></div>
+        <div class="svc"><span class="svc-no">02</span><h4 class="svc-title">Web apps</h4><p class="svc-desc">Front to back: a React or Next.js UI on a real API and database.</p></div>
+        <div class="svc"><span class="svc-no">03</span><h4 class="svc-title">Admin panels</h4><p class="svc-desc">Dashboards for orders, inventory, content, and users.</p></div>
+        <div class="svc"><span class="svc-no">04</span><h4 class="svc-title">APIs &amp; integrations</h4><p class="svc-desc">Payments, Telegram, webhooks, and third-party services.</p></div>
+        <div class="svc"><span class="svc-no">05</span><h4 class="svc-title">Telegram &amp; AI bots</h4><p class="svc-desc">Claude-powered automation and chat assistants.</p></div>
       </div>
     </div>
   </div>
@@ -596,9 +694,17 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
           <p class="project-desc">
             My flagship build: a full-stack e-commerce store for the Ukrainian market, designed, coded, deployed, and maintained end to end, solo. React storefront on the front, Firebase on the back: 441 live products, a custom admin panel, a real-time order pipeline, and three payment methods. Indexed in Google Merchant Center, SSL grade A.
           </p>
+          <div class="metrics">
+            <span class="metric">441 products</span>
+            <span class="metric">2 languages</span>
+            <span class="metric">3 payment rails</span>
+            <span class="metric">SSL grade A</span>
+            <span class="metric">Solo build</span>
+          </div>
           <div class="project-stack"><span class="stack-label">stack:</span>React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal</div>
           <ul class="project-bullets">
             <li><strong>Front to back, solo:</strong> React storefront, Firebase data and auth, custom admin panel for products, inventory, and orders</li>
+            <li><strong>Bilingual storefront:</strong> full UI localized in two languages for the Ukrainian market</li>
             <li><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
             <li><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
             <li><strong>SEO &amp; commerce:</strong> Google Search Console plus Merchant Center, sitemap submitted, SSL A grade</li>
@@ -625,6 +731,12 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
           <p class="project-desc">
             A multilingual digital marketplace for ECU calibration files: stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog (brand, model, engine, calibration), purchase securely, and receive a presigned R2 download link. Built solo from zero.
           </p>
+          <div class="metrics">
+            <span class="metric">7 languages</span>
+            <span class="metric">301+ files</span>
+            <span class="metric">3 payment rails</span>
+            <span class="metric">R2 secure delivery</span>
+          </div>
           <div class="project-stack"><span class="stack-label">stack:</span>Next.js 16 (App Router) · TypeScript · Prisma 7 · PostgreSQL (Neon) · NextAuth v4 · Stripe · PayPal · Coinbase · Cloudflare R2 · next-intl (7 locales)</div>
           <ul class="project-bullets">
             <li><strong>4-level catalog:</strong> brand, model, engine, calibration file, 301+ firmware files imported</li>
@@ -687,6 +799,7 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
             <li><strong>Copart auction monitor</strong> polling every 2 hours for new listings</li>
             <li><strong>Reliability:</strong> weekly SQLite backups, auto-restart on reboot via crontab</li>
           </ul>
+          <div class="project-links"><a href="#contact" class="btn">Architecture on request</a></div>
         </div>
       </article>
 
@@ -755,6 +868,7 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
             <li><strong>Fleet management:</strong> 4 production bots co-located on one droplet, isolated screen sessions</li>
             <li><strong>Reliability proven:</strong> production uptime measured in days, not hours</li>
           </ul>
+          <div class="project-links"><a href="#contact" class="btn">Architecture on request</a></div>
         </div>
       </article>
 
@@ -947,8 +1061,14 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
   lb.addEventListener('click', function (e) { if (e.target === lb) lb.classList.remove('active'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('active'); });
   document.querySelectorAll('.phone img, .browser-content img').forEach(function (img) {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function (e) { e.stopPropagation(); lbImg.src = img.src; lb.classList.add('active'); });
+    var art = img.closest('.project');
+    var primary = art && art.querySelector('.project-links a.primary');
+    img.style.cursor = primary ? 'pointer' : 'zoom-in';
+    img.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (primary) { window.open(primary.href, '_blank', 'noopener'); return; }
+      lbImg.src = img.src; lb.classList.add('active');
+    });
   });
 
   // ── Reveal on scroll (staggered) ──
@@ -957,7 +1077,7 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.section-head, .stat, .exp-item, .edu-item, .stack-cat, .lang').forEach(function (el, i) {
+  document.querySelectorAll('.section-head, .stat, .svc, .exp-item, .edu-item, .stack-cat, .lang').forEach(function (el, i) {
     el.classList.add('reveal');
     el.style.transitionDelay = (Math.min(i % 6, 5) * 0.06) + 's';
     io.observe(el);
@@ -1040,7 +1160,9 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
     pc.className = 'proj-cursor';
     document.body.appendChild(pc);
     document.querySelectorAll('.project-visual').forEach(function (v) {
-      v.addEventListener('mouseenter', function () { pc.textContent = 'View'; pc.classList.add('show'); });
+      var primary = v.parentElement.querySelector('.project-links a.primary');
+      var label = primary ? 'Open ↗' : 'View';
+      v.addEventListener('mouseenter', function () { pc.textContent = label; pc.classList.add('show'); });
       v.addEventListener('mouseleave', function () { pc.classList.remove('show'); });
       v.addEventListener('mousemove', function (e) {
         pc.style.left = e.clientX + 'px';
@@ -1048,6 +1170,84 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       });
     });
   }
+})();
+</script>
+
+<!-- ── Translation engine: Google website widget (GTranslate-style, no API key) ── -->
+<div id="google_translate_element" aria-hidden="true"></div>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: 'en', includedLanguages: 'uk,ru,es', autoDisplay: false },
+    'google_translate_element'
+  );
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
+<!-- ── Language switcher control ── -->
+<script>
+(function () {
+  'use strict';
+  var sw = document.getElementById('langSwitch');
+  if (!sw) return;
+  var btn = sw.querySelector('.lang-btn');
+  var cur = sw.querySelector('[data-cur]');
+  var items = Array.prototype.slice.call(sw.querySelectorAll('[role="menuitemradio"]'));
+
+  function readCookie() {
+    var m = document.cookie.match(/googtrans=\/[^/]+\/([^;]+)/);
+    return m ? m[1] : 'en';
+  }
+  function setCookie(lang) {
+    var h = location.hostname;
+    if (lang === 'en') {
+      ['', 'domain=' + h + ';', 'domain=.' + h + ';'].forEach(function (d) {
+        document.cookie = 'googtrans=;path=/;' + d + 'expires=Thu, 01 Jan 1970 00:00:00 GMT';
+      });
+    } else {
+      var v = '/en/' + lang;
+      document.cookie = 'googtrans=' + v + ';path=/';
+      document.cookie = 'googtrans=' + v + ';path=/;domain=' + h;
+      document.cookie = 'googtrans=' + v + ';path=/;domain=.' + h;
+    }
+  }
+  function close() { sw.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  function open() {
+    sw.classList.add('open'); btn.setAttribute('aria-expanded', 'true');
+    var sel = sw.querySelector('[aria-checked="true"]') || items[0];
+    if (sel) setTimeout(function () { sel.focus(); }, 0);
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    sw.classList.contains('open') ? close() : open();
+  });
+  document.addEventListener('click', function (e) { if (!sw.contains(e.target)) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sw.classList.contains('open')) { close(); btn.focus(); }
+  });
+
+  items.forEach(function (it, i) {
+    it.addEventListener('click', function () {
+      var lang = it.getAttribute('data-lang');
+      if (readCookie() === lang) { close(); return; }
+      setCookie(lang);
+      location.reload();
+    });
+    it.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); (items[i + 1] || items[0]).focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); (items[i - 1] || items[items.length - 1]).focus(); }
+    });
+  });
+
+  // Reflect the active language from the cookie on load.
+  var active = readCookie();
+  items.forEach(function (it) {
+    var on = it.getAttribute('data-lang') === active;
+    it.setAttribute('aria-checked', on ? 'true' : 'false');
+    if (on) cur.textContent = it.getAttribute('data-code');
+  });
 })();
 </script>
 
