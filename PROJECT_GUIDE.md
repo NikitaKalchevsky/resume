@@ -43,7 +43,7 @@ resume/
 │   ├── dca-bot-menu.jpg        — buy signal (запасной)
 │   ├── dca-bot-positions.jpg   — market scan (запасной)
 │   └── ...
-├── resume.pdf          — PDF-версия резюме (обновлять вручную)
+├── resume.pdf          — PDF-версия резюме (кнопка «Download PDF»); перегенерируется из текущего сайта, см. «Как обновить resume.pdf»
 └── PROJECT_GUIDE.md    — этот файл
 ```
 
@@ -78,6 +78,31 @@ resume/
 **Как добавить ещё язык:** добавьте код в `includedLanguages` (вызов `googleTranslateElementInit`) и новый `<li><button role="menuitemradio" data-lang="xx" data-code="XX">…</button></li>` в `.lang-menu`. Список кодов — стандартные ISO Google Translate.
 
 **Важно:** перевод работает только по HTTP(S) (cookie). При открытии через `file://` переключатель виден, но перевод может не применяться, проверять на GitHub Pages или локальном сервере (`python -m http.server`).
+
+---
+
+## Как обновить resume.pdf
+
+Кнопка «Download PDF» (в секции Contact) отдаёт статичный файл `resume.pdf`. Он **не обновляется сам** — после правок сайта его нужно перегенерировать, иначе PDF будет устаревшим (старая версия была без актуальных картинок и верстки).
+
+PDF делается как **точная копия живого сайта** (screen-режим, с фоном и изображениями) через headless Chrome + `puppeteer-core` (использует уже установленный Chrome, Chromium не качается):
+
+```bash
+# 1. поставить puppeteer-core (один раз, в любой временной папке)
+npm i puppeteer-core
+
+# 2. запустить рендер (скрипт ниже)
+node render-pdf.js
+```
+
+Ключевые моменты скрипта (`render-pdf.js`):
+- `executablePath` → системный Chrome (`C:\Program Files\Google\Chrome\Application\chrome.exe`).
+- `emulateMediaType('screen')` — рендер как на сайте, а не урезанная `@media print` версия.
+- `emulateMediaFeatures([{name:'prefers-reduced-motion', value:'reduce'}])` — чтобы появляющийся по скроллу контент (reveal-анимации) был виден без прокрутки.
+- ждать `document.fonts.ready` и загрузку всех `document.images`.
+- `page.pdf({ printBackground:true, width:'1200px', height: <полная высота страницы>+'px', pageRanges:'1' })` — одна длинная страница = весь сайт целиком.
+
+Готовый файл кладётся в `D:\Project\resume-deploy\resume\resume.pdf`, затем коммит + пуш как обычно.
 
 ---
 
@@ -250,6 +275,7 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ## История изменений
 
+- **2026-06-25 (2)** — Перегенерирован **`resume.pdf`** из текущего сайта (был устаревший от 25.05 — без актуальных картинок/верстки, не совпадал с GitHub). Теперь PDF — точная копия живого сайта (screen-режим, фон + изображения), собирается headless Chrome через `puppeteer-core` (см. раздел «Как обновить resume.pdf»). Размер вырос с ~360 КБ до ~2.9 МБ (встроены картинки). Кнопка «Download PDF» не менялась, продолжает отдавать `resume.pdf`.
 - **2026-06-25** — Добавлена **мультиязычность**: переключатель языков в верхнем status-bar (EN основной + UK / RU / ES), реализован так же, как на Apelsin Rozmarin, — бесплатный виджет Google Website Translator (тот же движок, что GTranslate), **без API-ключа и подписки**. Кастомный UI в стиле Warm Editorial (`.lang-switch`: кнопка-таблетка с глобусом + выпадающее меню, доступность через `role="menuitemradio"`, стрелки/Escape/клик-вне). Перевод — cookie `googtrans` + reload, родная панель Google скрыта (`.skiptranslate`, `body{top:0}`). Подробности в разделе «Мультиязычность».
 - **2026-06-24** — Улучшения по итогам аудита: **hero CTA** (кнопки «See selected work» + «Get in touch», входят в оркестрованную анимацию hero, hero-sub margin уменьшен). Новый блок **«What I build»** в секции About (`.services` / `.services-grid`, 5 услуг: магазины, веб-приложения, админки, API/интеграции, боты) с staggered-reveal. **Чипы-результаты** (`.metrics`/`.metric`) на флагмане (441 товар · 3 оплаты · SSL A · Solo) и TuningStore (7 языков · 301+ файлов · 3 оплаты · R2). **Ровные действия**: у Personal AI и LangChain добавлена кнопка «Architecture on request» (теперь у всех 6 карточек есть CTA). JS: у живых проектов (с `.btn.primary`) клик по визуалу открывает сайт в новой вкладке, курсор-подсказка показывает «Open ↗» вместо «View». GitHub-ссылка оставлена (репозитории публичные). Отзывы не добавляли (нет реальных данных). Флагман Apelsin отмечен как **двуязычный**: чип «2 languages» + пункт «Bilingual storefront» (конкретная пара языков в подписи пока не указана — ждём подтверждения).
 - **2026-06-21** — Репозиционирование на **Full-Stack Web Developer (front + back end)** как основную специализацию (AI/боты — вторичная линия). Обновлены `<title>`, meta/OG (og:image → `fruktbox-home.jpg`), hero-tag («Full-Stack Web Developer · Front & Back End»), hero-sub, About-текст, текущая роль в Trajectory. Статистика About переупорядочена под веб (добавлено «Live web platforms = 2», убрано «Droplet uptime»). Стек переупорядочен: Frontend → Backend → AI & LLM → Infrastructure (добавлены Node.js / Next.js API). **Проекты переставлены**: №1 — флагман **Apelsin Rozmarin** (переименован с «Fruktbox», `.featured`-карточка с акцентным фоном и pill «Flagship», ссылка «Visit live site»), №2 TuningStore, далее боты (Airbag, Personal, DCA, LangChain). Номера 01–06 пересчитаны, print-override для `.featured`.
@@ -258,4 +284,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 - **2026-06-11** — Полный редизайн в светлую тему **Warm Editorial**: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент вместо кислотного лайма. Шрифт тела Inter → Hanken Grotesk. Добавлены параллакс (hero-ghost «MK», фоновая сетка), staggered scroll-reveal, анимированные счётчики статистики, индикатор прогресса прокрутки. Аудит-фиксы: `prefers-reduced-motion` (отключает все анимации), focus-visible состояния, favicon (inline SVG), `og:image`. Весь текст переведён с em-dash на en-dash/запятые. Из репозитория удалён мусор (`Claude Setup.exe`), добавлен `.gitignore`.
 - **2026-05-25** — `@media print` с маленькими картинками проектов; `resume.pdf` перегенерирован из живого URL.
 
-*Последнее обновление: 2026-06-25 — мультиязычность: переключатель языков (EN + UK / RU / ES) на движке Google Website Translator, как на Apelsin Rozmarin, без API-ключа.*
+*Последнее обновление: 2026-06-25 — перегенерирован resume.pdf (точная копия сайта с картинками, headless Chrome); ранее — мультиязычность (EN + UK / RU / ES, движок Google Website Translator, без API-ключа).*
