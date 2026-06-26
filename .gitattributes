@@ -1,0 +1,3 @@
+# Git hooks must keep LF endings so sh/Git Bash can execute them on Windows.
+scripts/hooks/* text eol=lf
+*.sh text eol=lf
