@@ -1,0 +1,15 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static resume site + PDF generator (faithful copy of the live page).",
+  "scripts": {
+    "pdf": "node scripts/generate-pdf.js",
+    "pdf:watch": "node scripts/generate-pdf.js --watch",
+    "pdf:stale": "node scripts/generate-pdf.js --if-stale",
+    "hooks": "git config core.hooksPath scripts/hooks"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.0.0"
+  }
+}

@@ -8,3 +8,7 @@ Thumbs.db
 
 # Local source PDF exports (the served copy is resume.pdf at the repo root)
 images/Nikita_Kalchevsky_Resume.pdf
+
+# Node deps for the PDF generator (scripts/generate-pdf.js)
+node_modules/
+package-lock.json

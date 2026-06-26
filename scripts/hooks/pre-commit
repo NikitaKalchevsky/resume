@@ -1,0 +1,30 @@
+#!/bin/sh
+# Авто-перегенерация resume.pdf, когда в коммит попадает index.html.
+# Включить хуки один раз:  git config core.hooksPath scripts/hooks  (или npm run hooks)
+
+changed=$(git diff --cached --name-only)
+
+# index.html не тронут — ничего не делаем.
+case "$changed" in
+  *index.html*) ;;
+  *) exit 0 ;;
+esac
+
+echo "[pre-commit] index.html изменён -> пересобираю resume.pdf"
+node scripts/generate-pdf.js
+status=$?
+
+if [ "$status" -eq 2 ]; then
+  echo "[pre-commit] окружение для PDF не готово (нет Chrome/puppeteer-core)."
+  echo "[pre-commit] коммит продолжен БЕЗ обновления PDF. Поставьте: npm install"
+  exit 0
+fi
+
+if [ "$status" -ne 0 ]; then
+  echo "[pre-commit] сборка PDF упала. Исправьте или коммитьте с --no-verify."
+  exit 1
+fi
+
+git add resume.pdf
+echo "[pre-commit] resume.pdf обновлён и добавлен в коммит."
+exit 0

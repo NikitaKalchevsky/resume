@@ -44,6 +44,11 @@ resume/
 │   ├── dca-bot-positions.jpg   — market scan (запасной)
 │   └── ...
 ├── resume.pdf          — PDF-версия резюме (кнопка «Download PDF»); перегенерируется из текущего сайта, см. «Как обновить resume.pdf»
+├── scripts/
+│   ├── generate-pdf.js — генератор PDF (headless Chrome, точная копия сайта)
+│   └── hooks/
+│       └── pre-commit  — авто-перегенерация resume.pdf при коммите index.html
+├── package.json        — npm-скрипты (pdf, pdf:watch, hooks) + puppeteer-core
 └── PROJECT_GUIDE.md    — этот файл
 ```
 
@@ -83,26 +88,42 @@ resume/
 
 ## Как обновить resume.pdf
 
-Кнопка «Download PDF» (в секции Contact) отдаёт статичный файл `resume.pdf`. Он **не обновляется сам** — после правок сайта его нужно перегенерировать, иначе PDF будет устаревшим (старая версия была без актуальных картинок и верстки).
+Кнопка «Download PDF» (в секции Contact) отдаёт статичный файл `resume.pdf`. Он **не обновляется сам** — но в проекте настроена автоматическая перегенерация (см. ниже), чтобы PDF не расходился с сайтом.
 
-PDF делается как **точная копия живого сайта** (screen-режим, с фоном и изображениями) через headless Chrome + `puppeteer-core` (использует уже установленный Chrome, Chromium не качается):
+PDF делается как **точная копия живого сайта** (screen-режим, с фоном и изображениями) через headless Chrome + `puppeteer-core` (использует уже установленный Chrome, Chromium не качается). Всё зашито в `scripts/generate-pdf.js`.
+
+### Установка (один раз)
 
 ```bash
-# 1. поставить puppeteer-core (один раз, в любой временной папке)
-npm i puppeteer-core
-
-# 2. запустить рендер (скрипт ниже)
-node render-pdf.js
+cd resume
+npm install            # ставит puppeteer-core (node_modules в .gitignore)
+npm run hooks          # включает git-хук авто-перегенерации (core.hooksPath=scripts/hooks)
 ```
 
-Ключевые моменты скрипта (`render-pdf.js`):
-- `executablePath` → системный Chrome (`C:\Program Files\Google\Chrome\Application\chrome.exe`).
-- `emulateMediaType('screen')` — рендер как на сайте, а не урезанная `@media print` версия.
-- `emulateMediaFeatures([{name:'prefers-reduced-motion', value:'reduce'}])` — чтобы появляющийся по скроллу контент (reveal-анимации) был виден без прокрутки.
-- ждать `document.fonts.ready` и загрузку всех `document.images`.
-- `page.pdf({ printBackground:true, width:'1200px', height: <полная высота страницы>+'px', pageRanges:'1' })` — одна длинная страница = весь сайт целиком.
+> `npm run hooks` нужно выполнять после каждого свежего `git clone` — настройка `core.hooksPath` хранится локально и не клонируется.
 
-Готовый файл кладётся в `D:\Project\resume-deploy\resume\resume.pdf`, затем коммит + пуш как обычно.
+### Команды
+
+| Команда | Что делает |
+|---------|-----------|
+| `npm run pdf` | Собрать `resume.pdf` из текущего `index.html` один раз |
+| `npm run pdf:watch` | Следить за `index.html` и пересобирать PDF при каждом сохранении |
+| `npm run pdf:stale` | Пересобрать только если `index.html` новее `resume.pdf` |
+
+### Автоматическая перегенерация при коммите
+
+Git-хук `scripts/hooks/pre-commit`: если в коммит попадает `index.html`, PDF пересобирается и `resume.pdf` автоматически добавляется в этот же коммит. Так PDF всегда совпадает с сайтом.
+
+- Нет Chrome/`puppeteer-core` → хук **не блокирует** коммит, а предупреждает (PDF просто не обновится; поставьте `npm install`).
+- Реальная ошибка рендера → коммит **останавливается** (чините или коммитьте с `git commit --no-verify`).
+
+### Что зашито в `scripts/generate-pdf.js` (накопленный опыт)
+
+- Авто-поиск браузера: `PUPPETEER_EXECUTABLE_PATH` / `CHROME_PATH` → Chrome → Edge (Win/macOS/Linux пути).
+- `emulateMediaType('screen')` — рендер как на сайте, а не урезанная `@media print` версия.
+- `emulateMediaFeatures([{name:'prefers-reduced-motion', value:'reduce'}])` — чтобы появляющийся по скроллу reveal-контент был виден без прокрутки (+ дополнительный CSS-фолбэк форсит `opacity:1`).
+- Ждёт `document.fonts.ready` и загрузку всех `document.images` (с защитным таймаутом 15 c), `waitUntil:'load'` (не `networkidle0` — keep-alive шрифтов мешает «простою сети»).
+- `page.pdf({ printBackground:true, width:'1200px', height:<полная высота>+'px', pageRanges:'1' })` — одна длинная страница = весь сайт целиком.
 
 ---
 
@@ -275,6 +296,8 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ## История изменений
 
+- **2026-06-25 (3)** — Финализация под выход на биржи (Upwork/Fiverr/Direct). По итогам анализа рынка фриланса — **гибридное позиционирование** «Full-Stack Developer & AI Automation Engineer» (title/meta/OG, hero-tag, hero-sub, текущая роль в Trajectory). Блок «What I build» расширен до 6 услуг (3 колонки): добавлены **Automation & integrations** и **Multilingual / i18n**. В стек добавлены `next-intl · i18n` (Frontend) и `Workflow automation (n8n, Make, Zapier)` (AI & LLM, вторичные — опыт «осваиваю»). Footer: «this page speaks 4 languages». Поправлен отступ строки языка (`.lang` gap + уровень выровнен вправо). **Важно:** после этих текстовых правок `resume.pdf` снова устарел — нужно перегенерировать (см. «Как обновить resume.pdf»). Скрины ботов — ждём свежие от пользователя.
+- **2026-06-25 (3)** — Автоматизация PDF: постоянный генератор **`scripts/generate-pdf.js`** (весь накопленный опыт — авто-поиск Chrome/Edge, screen-режим, reduced-motion, ожидание шрифтов/картинок, одна длинная страница), **`package.json`** с командами `npm run pdf` / `pdf:watch` / `pdf:stale` / `hooks`, и git-хук **`scripts/hooks/pre-commit`**, который пересобирает `resume.pdf` и добавляет его в коммит при изменении `index.html` (если нет окружения — не блокирует коммит). `node_modules` добавлены в `.gitignore`. Разовый ваш `render-pdf.js` заменён этим скриптом.
 - **2026-06-25 (2)** — Перегенерирован **`resume.pdf`** из текущего сайта (был устаревший от 25.05 — без актуальных картинок/верстки, не совпадал с GitHub). Теперь PDF — точная копия живого сайта (screen-режим, фон + изображения), собирается headless Chrome через `puppeteer-core` (см. раздел «Как обновить resume.pdf»). Размер вырос с ~360 КБ до ~2.9 МБ (встроены картинки). Кнопка «Download PDF» не менялась, продолжает отдавать `resume.pdf`.
 - **2026-06-25** — Добавлена **мультиязычность**: переключатель языков в верхнем status-bar (EN основной + UK / RU / ES), реализован так же, как на Apelsin Rozmarin, — бесплатный виджет Google Website Translator (тот же движок, что GTranslate), **без API-ключа и подписки**. Кастомный UI в стиле Warm Editorial (`.lang-switch`: кнопка-таблетка с глобусом + выпадающее меню, доступность через `role="menuitemradio"`, стрелки/Escape/клик-вне). Перевод — cookie `googtrans` + reload, родная панель Google скрыта (`.skiptranslate`, `body{top:0}`). Подробности в разделе «Мультиязычность».
 - **2026-06-24** — Улучшения по итогам аудита: **hero CTA** (кнопки «See selected work» + «Get in touch», входят в оркестрованную анимацию hero, hero-sub margin уменьшен). Новый блок **«What I build»** в секции About (`.services` / `.services-grid`, 5 услуг: магазины, веб-приложения, админки, API/интеграции, боты) с staggered-reveal. **Чипы-результаты** (`.metrics`/`.metric`) на флагмане (441 товар · 3 оплаты · SSL A · Solo) и TuningStore (7 языков · 301+ файлов · 3 оплаты · R2). **Ровные действия**: у Personal AI и LangChain добавлена кнопка «Architecture on request» (теперь у всех 6 карточек есть CTA). JS: у живых проектов (с `.btn.primary`) клик по визуалу открывает сайт в новой вкладке, курсор-подсказка показывает «Open ↗» вместо «View». GitHub-ссылка оставлена (репозитории публичные). Отзывы не добавляли (нет реальных данных). Флагман Apelsin отмечен как **двуязычный**: чип «2 languages» + пункт «Bilingual storefront» (конкретная пара языков в подписи пока не указана — ждём подтверждения).
@@ -284,4 +307,4 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 - **2026-06-11** — Полный редизайн в светлую тему **Warm Editorial**: тёплый бумажный фон, палитра в OKLCH, вермилионовый акцент вместо кислотного лайма. Шрифт тела Inter → Hanken Grotesk. Добавлены параллакс (hero-ghost «MK», фоновая сетка), staggered scroll-reveal, анимированные счётчики статистики, индикатор прогресса прокрутки. Аудит-фиксы: `prefers-reduced-motion` (отключает все анимации), focus-visible состояния, favicon (inline SVG), `og:image`. Весь текст переведён с em-dash на en-dash/запятые. Из репозитория удалён мусор (`Claude Setup.exe`), добавлен `.gitignore`.
 - **2026-05-25** — `@media print` с маленькими картинками проектов; `resume.pdf` перегенерирован из живого URL.
 
-*Последнее обновление: 2026-06-25 — перегенерирован resume.pdf (точная копия сайта с картинками, headless Chrome); ранее — мультиязычность (EN + UK / RU / ES, движок Google Website Translator, без API-ключа).*
+*Последнее обновление: 2026-06-25 — автоматизация PDF: scripts/generate-pdf.js + npm-команды + git-хук pre-commit (resume.pdf пересобирается при изменении index.html), resume.pdf пересобран под актуальный сайт. Ранее в этот день — финализация под биржи: гибрид «Full-Stack Developer & AI Automation Engineer», 6 услуг (+ Automation, + i18n), стек дополнен; мультиязычность (EN + UK / RU / ES).*
