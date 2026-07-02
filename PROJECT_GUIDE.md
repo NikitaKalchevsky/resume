@@ -61,7 +61,7 @@ resume/
 1. **Apelsin Rozmarin, Full-Stack E-Commerce** — флагман, `article.project.featured` (акцентный фон + pill «Flagship»), browser frame (`fruktbox-home.jpg`) · LIVE · PRODUCTION
 2. **TuningStore** — browser frame (`tuningstore-home.jpg`) · LIVE · PRODUCTION
 3. **Airbag ECU Lookup Bot** — phone mockup (`airbag-bot-chat.jpg`) · LIVE · COMMERCIAL
-4. **Forge Hub, Multi-Tenant AI Assistant** — dual phones (`forge-hub-menu.png` + `forge-hub-lang.png`) · LIVE · SAAS
+4. **Forge Hub, Multi-Tenant AI Assistant** — веер из трёх телефонов (`forge-hub-menu.png` + `forge-hub-lang.png` + `forge-hub-finance.png`, класс `.phones-trio`) · LIVE · SAAS
 5. **Smart DCA Trade Bot** — dual phones (`dca-bot-all.jpg` + `dca-bot-menu.jpg`)
 6. **LangChain Bot Fleet** — terminal frame (CSS-only, без изображений)
 
@@ -296,6 +296,7 @@ git remote set-url origin git@github.com:NikitaKalchevsky/resume.git
 
 ## История изменений
 
+- **2026-07-02** — Forge Hub №04: добавлен третий скрин (Finance), мокап перекомпонован в «веер» из трёх телефонов (новый CSS-класс `.phones-trio` — scoped, DCA-карточку не задевает; центральный телефон приподнят и спереди, staggered-анимация scroll). Новый файл `forge-hub-finance.png` (переименован из `*.png.png`). Стандартная договорённость: **деплой сразу после правок**.
 - **2026-07-01** — Достоверность + Forge Hub. **Apelsin:** убран недостоверный claim про двуязычность (чип «2 languages» и буллет «Bilingual storefront» удалены; вместо — реальный «WordPress to React/Vite rebuild: 301 redirects, Firebase sitemap, preserved SEO/Merchant Center»). **Проект №04:** «Personal AI Assistant» полностью заменён на **Forge Hub, Multi-Tenant AI Assistant** (LIVE · SAAS): мультитенантность по `user_id`, биллинг Telegram Stars (Pro ~$8/мес), 6-язычный UI, hardening. Про выручку/платящих не пишем (их 0). Новые скрины `forge-hub-menu.png` + `forge-hub-lang.png` (переименованы из загруженных `*.jpg.png`). Телефон +1 (239) пока не трогали — ждём CA-номер. PDF пересобран pre-commit хуком.
 - **2026-06-25 (3)** — Финализация под выход на биржи (Upwork/Fiverr/Direct). По итогам анализа рынка фриланса — **гибридное позиционирование** «Full-Stack Developer & AI Automation Engineer» (title/meta/OG, hero-tag, hero-sub, текущая роль в Trajectory). Блок «What I build» расширен до 6 услуг (3 колонки): добавлены **Automation & integrations** и **Multilingual / i18n**. В стек добавлены `next-intl · i18n` (Frontend) и `Workflow automation (n8n, Make, Zapier)` (AI & LLM, вторичные — опыт «осваиваю»). Footer: «this page speaks 4 languages». Поправлен отступ строки языка (`.lang` gap + уровень выровнен вправо). **Важно:** после этих текстовых правок `resume.pdf` снова устарел — нужно перегенерировать (см. «Как обновить resume.pdf»). Скрины ботов — ждём свежие от пользователя.
 - **2026-06-25 (3)** — Автоматизация PDF: постоянный генератор **`scripts/generate-pdf.js`** (весь накопленный опыт — авто-поиск Chrome/Edge, screen-режим, reduced-motion, ожидание шрифтов/картинок, одна длинная страница), **`package.json`** с командами `npm run pdf` / `pdf:watch` / `pdf:stale` / `hooks`, и git-хук **`scripts/hooks/pre-commit`**, который пересобирает `resume.pdf` и добавляет его в коммит при изменении `index.html` (если нет окружения — не блокирует коммит). `node_modules` добавлены в `.gitignore`. Разовый ваш `render-pdf.js` заменён этим скриптом.

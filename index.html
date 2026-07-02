@@ -267,6 +267,15 @@ section { padding: 5.5rem 0; border-bottom: 1px solid var(--line); position: rel
 .phone-1 { transform: rotate(-4deg) translateY(-8px); z-index: 2; }
 .phone-2 { transform: rotate(4deg) translateY(8px); z-index: 1; }
 .phone-single { transform: none; max-height: 480px; }
+/* Trio phone fan (Forge Hub #04) */
+.phones-trio { gap: 0; }
+.phones-trio .phone { max-height: 366px; margin: 0 -1.7rem; }
+.phones-trio .phone-1 { transform: rotate(-9deg) translateY(10px); z-index: 1; }
+.phones-trio .phone-2 { transform: rotate(0deg) translateY(-12px); z-index: 3; }
+.phones-trio .phone-3 { transform: rotate(9deg) translateY(10px); z-index: 2; }
+.phones-trio .phone-2 img { animation-delay: 3s; }
+.phones-trio .phone-3 img { animation-delay: 6s; }
+@media (max-width: 620px) { .phones-trio .phone { max-height: 300px; margin: 0 -2.1rem; } }
 
 /* Terminal frame (dark device on paper, by design) */
 .terminal-frame { position: relative; aspect-ratio: 4/3; background: oklch(0.21 0.012 55); border: 1px solid oklch(0.32 0.014 55); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; font-family: var(--mono); box-shadow: 0 24px 50px -24px oklch(0.3 0.04 50 / 0.45); }
@@ -780,9 +789,10 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
       <article class="project">
         <div class="project-visual">
           <span class="project-no" aria-hidden="true">04</span>
-          <div class="phones">
+          <div class="phones phones-trio">
             <div class="phone phone-1"><img src="images/forge-hub-menu.png" alt="Forge Hub main menu with six modules"></div>
             <div class="phone phone-2"><img src="images/forge-hub-lang.png" alt="Forge Hub language selection, six-language UI"></div>
+            <div class="phone phone-3"><img src="images/forge-hub-finance.png" alt="Forge Hub finance module tracking income and expenses"></div>
           </div>
         </div>
         <div class="project-content">
