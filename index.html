@@ -697,7 +697,6 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
           </p>
           <div class="metrics">
             <span class="metric">441 products</span>
-            <span class="metric">2 languages</span>
             <span class="metric">3 payment rails</span>
             <span class="metric">SSL grade A</span>
             <span class="metric">Solo build</span>
@@ -705,7 +704,7 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
           <div class="project-stack"><span class="stack-label">stack:</span>React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal</div>
           <ul class="project-bullets">
             <li><strong>Front to back, solo:</strong> React storefront, Firebase data and auth, custom admin panel for products, inventory, and orders</li>
-            <li><strong>Bilingual storefront:</strong> full UI localized in two languages for the Ukrainian market</li>
+            <li><strong>WordPress to React/Vite rebuild:</strong> 301 redirects, Firebase-generated sitemap, preserved SEO and Google Merchant Center indexing</li>
             <li><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
             <li><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
             <li><strong>SEO &amp; commerce:</strong> Google Search Console plus Merchant Center, sitemap submitted, SSL A grade</li>
@@ -777,28 +776,28 @@ a:focus-visible, .btn:focus-visible, .status-cta:focus-visible {
         </div>
       </article>
 
-      <!-- PROJECT 4: Personal AI Assistant -->
+      <!-- PROJECT 4: Forge Hub, Multi-Tenant AI Assistant -->
       <article class="project">
         <div class="project-visual">
           <span class="project-no" aria-hidden="true">04</span>
           <div class="phones">
-            <div class="phone phone-1"><img src="images/personal-bot-menu.jpg" alt="Personal AI Assistant main menu with 9 modules"></div>
-            <div class="phone phone-2"><img src="images/personal-bot-nutrition.jpg" alt="Personal AI Assistant nutrition tracking and finance modules"></div>
+            <div class="phone phone-1"><img src="images/forge-hub-menu.png" alt="Forge Hub main menu with six modules"></div>
+            <div class="phone phone-2"><img src="images/forge-hub-lang.png" alt="Forge Hub language selection, six-language UI"></div>
           </div>
         </div>
         <div class="project-content">
-          <div class="project-tag">R&amp;D · MODULAR</div>
-          <h3>Personal AI Assistant</h3>
+          <div class="project-tag"><span class="live-dot"></span>LIVE · SAAS</div>
+          <h3>Forge Hub, Multi-Tenant AI Assistant</h3>
           <p class="project-desc">
-            A modular Telegram-based personal assistant where Claude Haiku handles all natural-language input parsing. "Ate 200g chicken" becomes a structured calorie entry; "spent $40 on gas" becomes a categorized expense. Built as a testbed for production patterns I now reuse for client work.
+            A multi-tenant Telegram assistant with subscription billing, evolved from a single-user testbed into a productized SaaS. Six modules (nutrition, finance, shopping, tasks, schedule); every natural-language input is parsed into structured data by Claude Haiku. Per-user data isolation, a 6-language UI, freemium gating with Telegram Stars, and an admin panel for users and revenue.
           </p>
-          <div class="project-stack"><span class="stack-label">stack:</span>Python · Claude Haiku · SQLite · python-telegram-bot · cron</div>
+          <div class="project-stack"><span class="stack-label">stack:</span>Python 3.12 · Claude Haiku 4.5 · python-telegram-bot · SQLite · APScheduler · Playwright (stealth) · Google CSE · Telegram Stars · DigitalOcean</div>
           <ul class="project-bullets">
-            <li><strong>Nutrition module</strong> with Mifflin-St Jeor BMR calculation and personalized macro goals</li>
-            <li><strong>Finance tracking</strong> with category breakdowns and monthly statistics</li>
-            <li><strong>Schedule &amp; reminders</strong>, timezone-aware</li>
-            <li><strong>Copart auction monitor</strong> polling every 2 hours for new listings</li>
-            <li><strong>Reliability:</strong> weekly SQLite backups, auto-restart on reboot via crontab</li>
+            <li><strong>Multi-tenant by design:</strong> every table isolated by user_id; Free/Pro tiers gated in code</li>
+            <li><strong>Subscription billing via Telegram Stars</strong> (Pro ~$8/mo), self-serve upgrade, admin payments view</li>
+            <li><strong>6-language UI</strong> (EN, RU, UA, ES, DE, FR), full i18n, zero hardcoded strings</li>
+            <li><strong>Natural-language parsing:</strong> "spent $40 on gas" becomes a categorized expense via Claude Haiku</li>
+            <li><strong>Hardened:</strong> parameterized SQL, per-user rate limiting, prompt-injection isolation, secrets in .env only</li>
           </ul>
           <div class="project-links"><a href="#contact" class="btn">Architecture on request</a></div>
         </div>
