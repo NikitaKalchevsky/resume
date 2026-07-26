@@ -4,8 +4,13 @@
  *
  * Опыт, зашитый в скрипт (см. PROJECT_GUIDE.md → «Как обновить resume.pdf»):
  *  - рендер через системный Chrome (puppeteer-core, Chromium не качается);
+ *  - страница отдаётся по HTTP с локального статик-сервера, а НЕ через file://:
+ *    под file:// каждый ресурс — отдельный opaque-origin, и внешний styles.css
+ *    не применяется (страница выходит без стилей). HTTP это чинит;
  *  - emulateMediaType('screen') — копия сайта, а не урезанная @media print;
- *  - prefers-reduced-motion: reduce — reveal-контент виден без прокрутки;
+ *  - prefers-reduced-motion: reduce — reveal-контент виден без прокрутки,
+ *    three.js-сцена не грузится, показывается статичный hero-фолбэк;
+ *  - принудительно грузим картинки eager (loading="lazy" в headless ненадёжен);
  *  - ждём document.fonts.ready и загрузку всех картинок (с таймаутом);
  *  - одна длинная страница = весь сайт целиком, с фоном (printBackground).
  *
@@ -20,16 +25,42 @@
 
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 
 const ROOT = path.join(__dirname, '..');
 const SRC_FILE = path.join(ROOT, 'index.html');
 const OUT_FILE = path.join(ROOT, 'resume.pdf');
-const SRC_URL = 'file:///' + SRC_FILE.replace(/\\/g, '/');
 const WIDTH = 1200;
 
 const args = process.argv.slice(2);
 const WATCH = args.includes('--watch');
 const IF_STALE = args.includes('--if-stale');
+
+const MIME = {
+  '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
+  '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png',
+  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp',
+  '.gif': 'image/gif', '.ico': 'image/x-icon', '.pdf': 'application/pdf',
+  '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf',
+};
+
+function startServer() {
+  return new Promise((resolve) => {
+    const server = http.createServer((req, res) => {
+      let rel = decodeURIComponent(req.url.split('?')[0]);
+      if (rel === '/' || rel === '') rel = '/index.html';
+      const file = path.join(ROOT, path.normalize(rel).replace(/^(\.\.[\/\\])+/, ''));
+      if (!file.startsWith(ROOT)) { res.writeHead(403); res.end(); return; }
+      fs.readFile(file, (err, data) => {
+        if (err) { res.writeHead(404); res.end('not found'); return; }
+        res.writeHead(200, { 'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream' });
+        res.end(data);
+      });
+    });
+    server.listen(0, '127.0.0.1', () => resolve(server));
+  });
+}
 
 function findChrome() {
   const candidates = [
@@ -48,24 +79,16 @@ function findChrome() {
 }
 
 function loadPuppeteer() {
-  try {
-    return require('puppeteer-core');
-  } catch (_) {
-    return null;
-  }
+  try { return require('puppeteer-core'); } catch (_) { return null; }
 }
 
 function isStale() {
   try {
-    const src = fs.statSync(SRC_FILE).mtimeMs;
-    const out = fs.statSync(OUT_FILE).mtimeMs;
-    return src > out;
-  } catch (_) {
-    return true; // нет PDF — считаем устаревшим
-  }
+    return fs.statSync(SRC_FILE).mtimeMs > fs.statSync(OUT_FILE).mtimeMs;
+  } catch (_) { return true; }
 }
 
-async function render(puppeteer, chrome) {
+async function render(puppeteer, chrome, baseUrl) {
   const browser = await puppeteer.launch({
     executablePath: chrome,
     headless: true,
@@ -77,26 +100,41 @@ async function render(puppeteer, chrome) {
     await page.emulateMediaType('screen');
     await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
 
-    await page.goto(SRC_URL, { waitUntil: 'load', timeout: 60000 });
+    await page.goto(baseUrl + '/index.html', { waitUntil: 'load', timeout: 60000 });
 
-    // Дождаться шрифтов и всех изображений (с защитным таймаутом).
+    // loading="lazy" в headless-снимке длинной страницы не подхватывается —
+    // принудительно грузим все картинки eager перед снимком.
+    await page.evaluate(async () => {
+      const cap = ms => new Promise(r => setTimeout(r, ms));
+      const imgs = Array.from(document.images);
+      imgs.forEach(i => { i.loading = 'eager'; });
+      await Promise.all(imgs.map(i => {
+        if (i.complete && i.naturalWidth) return Promise.resolve();
+        return new Promise(res => {
+          i.addEventListener('load', res, { once: true });
+          i.addEventListener('error', res, { once: true });
+          const s = i.src; i.src = ''; i.src = s;
+          setTimeout(res, 8000);
+        });
+      }));
+      await cap(80);
+    });
+
+    // Дождаться шрифтов.
     await page.evaluate(async () => {
       const cap = ms => new Promise(r => setTimeout(r, ms));
       const fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-      const imgs = Array.from(document.images).map(img =>
-        img.complete && img.naturalWidth ? Promise.resolve()
-          : new Promise(res => { img.onload = img.onerror = res; }));
-      await Promise.race([Promise.all([fonts, ...imgs]), cap(15000)]);
+      await Promise.race([fonts, cap(8000)]);
     });
 
-    // Подстраховка: принудительно показать reveal-состояния, убрать служебные оверлеи.
+    // Подстраховка: показать reveal-состояния, убрать служебные оверлеи.
     await page.addStyleTag({ content: `
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal, .line-inner, .hero-tag, .hero-sub, .hero-cta, .hero-meta > div,
-      .project, .project .project-visual, .project .project-content, .section-head {
+      .reveal, .hero-tag, .hero-title, .hero-sub, .hero-cta, .hero-meta,
+      .project, .section-head, .exp-item, .edu-item, .about-lead, .contact-grid {
         opacity: 1 !important; transform: none !important; clip-path: none !important;
       }
-      .scroll-progress, .proj-cursor, .lang-menu { display: none !important; }
+      .scroll-progress { display: none !important; }
     `});
 
     await new Promise(r => setTimeout(r, 400));
@@ -106,12 +144,9 @@ async function render(puppeteer, chrome) {
     ));
 
     await page.pdf({
-      path: OUT_FILE,
-      printBackground: true,
-      width: WIDTH + 'px',
-      height: (height + 2) + 'px',
-      pageRanges: '1',
-      margin: { top: 0, right: 0, bottom: 0, left: 0 },
+      path: OUT_FILE, printBackground: true,
+      width: WIDTH + 'px', height: (height + 2) + 'px',
+      pageRanges: '1', margin: { top: 0, right: 0, bottom: 0, left: 0 },
     });
 
     const kb = Math.round(fs.statSync(OUT_FILE).size / 1024);
@@ -125,39 +160,36 @@ async function main() {
   const puppeteer = loadPuppeteer();
   const chrome = findChrome();
 
-  if (!puppeteer) {
-    console.error('[pdf] puppeteer-core не установлен. Выполните: npm install (в папке resume)');
-    process.exit(2);
-  }
-  if (!chrome) {
-    console.error('[pdf] Chrome/Edge не найден. Установите Chrome или задайте CHROME_PATH.');
-    process.exit(2);
-  }
+  if (!puppeteer) { console.error('[pdf] puppeteer-core не установлен. Выполните: npm install (в папке resume)'); process.exit(2); }
+  if (!chrome) { console.error('[pdf] Chrome/Edge не найден. Установите Chrome или задайте CHROME_PATH.'); process.exit(2); }
 
-  if (WATCH) {
-    console.log('[pdf] watch-режим: слежу за index.html. Ctrl+C для выхода.');
-    let timer = null, busy = false;
-    const trigger = () => {
-      clearTimeout(timer);
-      timer = setTimeout(async () => {
-        if (busy) return;
-        busy = true;
-        try { await render(puppeteer, chrome); }
-        catch (e) { console.error('[pdf] ошибка:', e.message); }
-        finally { busy = false; }
-      }, 500);
-    };
-    await render(puppeteer, chrome); // первичная сборка
-    fs.watch(SRC_FILE, { persistent: true }, trigger);
-    return; // держим процесс
-  }
+  if (IF_STALE && !isStale() && !WATCH) { console.log('[pdf] resume.pdf актуален — пропускаю.'); return; }
 
-  if (IF_STALE && !isStale()) {
-    console.log('[pdf] resume.pdf актуален — пропускаю.');
-    return;
-  }
+  const server = await startServer();
+  const baseUrl = 'http://127.0.0.1:' + server.address().port;
 
-  await render(puppeteer, chrome);
+  try {
+    if (WATCH) {
+      console.log('[pdf] watch-режим: слежу за index.html. Ctrl+C для выхода.');
+      let timer = null, busy = false;
+      const trigger = () => {
+        clearTimeout(timer);
+        timer = setTimeout(async () => {
+          if (busy) return; busy = true;
+          try { await render(puppeteer, chrome, baseUrl); }
+          catch (e) { console.error('[pdf] ошибка:', e.message); }
+          finally { busy = false; }
+        }, 500);
+      };
+      await render(puppeteer, chrome, baseUrl);
+      fs.watch(SRC_FILE, { persistent: true }, trigger);
+      return; // держим процесс + сервер
+    }
+
+    await render(puppeteer, chrome, baseUrl);
+  } finally {
+    if (!WATCH) server.close();
+  }
 }
 
 main().catch(e => { console.error('[pdf] FAIL', e); process.exit(1); });
