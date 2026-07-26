@@ -111,13 +111,13 @@ function init(THREE) {
   const p1 = new THREE.PointLight(new THREE.Color(SAGE), 0.5, 30); p1.position.set(-4, -3, 3); scene.add(p1);
   const p2 = new THREE.PointLight(0xffffff, 0.4, 30); p2.position.set(3, -2, 4); scene.add(p2);
 
-  // Letters
-  const S = 1.9;
+  // Letters — centered around the composition origin (M left, K right, symmetric).
   const letters = new THREE.Group();
   const M = buildLetter(M_PTS, ACCENT, -1.15);
   const K = buildLetter(K_PTS, CREAM, 1.15);
   letters.add(M, K);
-  letters.scale.setScalar(S);
+  // Local half-extents of the MK block (for the responsive fit in resize()).
+  const L_HW = 1.65, L_HH = 0.72;
 
   // Ambient background: sage wire icosahedron + accent torus
   const bg = new THREE.Group();
@@ -132,8 +132,11 @@ function init(THREE) {
   torus.rotation.x = Math.PI / 2.6;
   bg.add(icosa, torus);
 
+  // content = bg + letters, scaled/offset together so the MK always fits the panel.
+  const content = new THREE.Group();
+  content.add(bg, letters);
   const group = new THREE.Group();
-  group.add(bg, letters);
+  group.add(content);
   scene.add(group);
 
   // Reveal (hide the CSS fallback, show the mode chips)
@@ -181,12 +184,36 @@ function init(THREE) {
     const h = canvas.clientHeight || window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    const wide = w > 760;
-    group.position.x = wide ? 2.45 : 0;
-    group.position.y = wide ? 0.35 : 0.1;
-    letters.scale.setScalar(wide ? S : S * 0.72);
-    camera.fov = wide ? 42 : 52;
     camera.updateProjectionMatrix();
+
+    // Visible half-extents of the frustum at the composition's depth (z = 0).
+    const halfH = Math.tan((camera.fov / 2) * Math.PI / 180) * camera.position.z;
+    const halfW = halfH * camera.aspect;
+    const wide = w > 640;
+    const padR = halfW * 0.06 + 0.15;
+    const padV = halfH * 0.06 + 0.10;
+
+    let scale, offsetX;
+    if (wide) {
+      // MK lives in the right zone; copy overlaps the left. Fit fully, never crop.
+      const zoneL = -0.12 * halfW;
+      const zoneR = halfW - padR;
+      const sH = (0.92 * (zoneR - zoneL)) / (2 * L_HW);
+      const sV = (halfH - padV) / L_HH;
+      scale = Math.min(sH, sV);
+      offsetX = (zoneL + zoneR) / 2;
+      const overR = (offsetX + L_HW * scale) - (halfW - padR);
+      if (overR > 0) offsetX -= overR; // guarantee right edge inside
+    } else {
+      // Narrow: centered behind the copy, scaled to fit width and height.
+      const sH = (0.86 * 2 * halfW) / (2 * L_HW);
+      const sV = (halfH - padV) / L_HH;
+      scale = Math.min(sH, sV);
+      offsetX = 0;
+    }
+    content.scale.setScalar(scale);
+    group.position.x = offsetX;
+    group.position.y = 0;
   }
   window.addEventListener('resize', resize);
   resize();
@@ -205,9 +232,8 @@ function init(THREE) {
     letters.rotation.y = lerp(letters.rotation.y, targetY, 0.075);
     letters.rotation.x = lerp(letters.rotation.x, targetX, 0.075);
 
-    const breathe = 1 + Math.sin(t * 0.9) * 0.012;
-    letters.scale.y = (letters.scale.x) * breathe;
-    letters.position.y = Math.sin(t * 0.7) * 0.06;
+    letters.scale.setScalar(1 + Math.sin(t * 0.9) * 0.012); // subtle breathe
+    content.position.y = Math.sin(t * 0.7) * 0.05;           // gentle bob
 
     bg.rotation.y += 0.0016;
     bg.rotation.z = Math.sin(t * 0.2) * 0.15;

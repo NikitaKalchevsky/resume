@@ -46,32 +46,37 @@
 <main>
 
 <!-- ─── HERO ─── -->
-<section id="top" class="hero">
-  <div class="hero-scene" aria-hidden="true">
-    <canvas id="scene"></canvas>
-  </div>
-  <div class="hero-grad" aria-hidden="true"></div>
-  <div class="hero-fallback" aria-hidden="true"><span>MK</span></div>
-  <div class="scene-modes" role="group" aria-label="3D scene mode">
-    <button type="button" data-mode="solid" class="active">solid</button>
-    <button type="button" data-mode="wire">wire</button>
-    <button type="button" data-mode="cloud">cloud</button>
+<section id="top" class="hero-wrap">
+  <div class="hero">
+    <div class="hero-scene" aria-hidden="true"><canvas id="scene"></canvas></div>
+    <div class="hero-grad" aria-hidden="true"></div>
+    <div class="hero-fallback" aria-hidden="true"><span>MK</span></div>
+
+    <div class="hero-copy">
+      <span class="hero-tag reveal"><span class="pulse"></span><span data-i18n="hero.tag">Available for projects</span> <span class="sep">/</span> UTC&#8722;08:00</span>
+      <div class="hero-kicker reveal" data-i18n="hero.kicker">Full-Stack Developer · AI Automation</div>
+      <h1 class="hero-title reveal"><span class="line1">Mykyta</span><br><span class="line2">Kalchevsky.</span></h1>
+      <p class="hero-sub reveal" data-i18n="hero.sub">I build full-stack websites and web apps, front end to back end, and the AI automation behind them, that real businesses <b>run on</b>. My newest build is a live embroidery-atelier storefront in Florida; my flagship before it, a bilingual Ukrainian e-commerce store. Seven shipped projects, zero co-founders.</p>
+      <div class="hero-cta reveal">
+        <a href="#work" class="btn btn-primary" data-i18n="hero.cta1">See selected work →</a>
+        <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Get in touch</a>
+      </div>
+      <div class="scene-modes reveal" role="group" aria-label="3D scene mode">
+        <span class="scene-label" data-i18n="scene.label">Scene</span>
+        <button type="button" data-mode="solid" class="active" data-i18n="scene.solid">Volume</button>
+        <button type="button" data-mode="wire" data-i18n="scene.wire">Wireframe</button>
+        <button type="button" data-mode="cloud" data-i18n="scene.cloud">Particles</button>
+        <span class="scene-hint" data-i18n="scene.hint">drag to rotate · scroll to spin</span>
+      </div>
+    </div>
   </div>
 
-  <div class="hero-copy">
-    <span class="hero-tag reveal"><span class="pulse"></span><span data-i18n="hero.tag">Full-Stack Developer · AI Automation · Glendale, CA</span></span>
-    <h1 class="hero-title reveal">Mykyta<br>Kalchevsky<span class="accent">.</span></h1>
-    <p class="hero-sub reveal" data-i18n="hero.sub">I build full-stack websites, web apps, and the AI automation behind them, front end to back end, that real businesses run on. Shipped solo.</p>
-    <div class="hero-cta reveal">
-      <a href="#work" class="btn btn-primary" data-i18n="hero.cta1">See the work</a>
-      <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Get in touch</a>
-    </div>
-    <div class="hero-meta reveal">
-      <div><span class="num" data-count="7">7</span><span class="lbl" data-i18n="meta.projects">Shipped projects</span></div>
-      <div><span class="num" data-count="441">441</span><span class="lbl" data-i18n="meta.products">Live products</span></div>
-      <div><span class="num" data-count="16003">16003</span><span class="lbl" data-i18n="meta.records">DB records</span></div>
-      <div><span class="num" data-count="24">24</span><span class="lbl" data-i18n="meta.years">Years in tech</span></div>
-    </div>
+  <div class="hero-stats">
+    <div class="reveal"><span class="num" data-count="7">7</span><span class="lbl" data-i18n="meta.projects">Web platforms shipped</span></div>
+    <div class="reveal"><span class="num" data-count="441">441</span><span class="lbl" data-i18n="meta.products">E-commerce SKUs live</span></div>
+    <div class="reveal"><span class="num" data-count="16003" data-suffix="+">16003</span><span class="lbl" data-i18n="meta.records">DB records served</span></div>
+    <div class="reveal"><span class="num" data-count="4">4</span><span class="lbl" data-i18n="meta.bots">Production bots live</span></div>
+    <div class="reveal"><span class="num" data-count="24" data-suffix="+">24</span><span class="lbl" data-i18n="meta.years">Years in tech</span></div>
   </div>
 </section>
 

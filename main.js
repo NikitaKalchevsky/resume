@@ -14,10 +14,11 @@
   var T = {
     uk: {
       'nav.about': 'Про мене', 'nav.work': 'Роботи', 'nav.stack': 'Стек', 'nav.exp': 'Шлях', 'nav.contact': 'Контакти',
-      'hero.tag': 'Full-Stack розробник · AI-автоматизація · Glendale, CA',
-      'hero.sub': 'Створюю full-stack сайти, вебзастосунки та AI-автоматизацію за ними, від фронтенду до бекенду, на яких працює реальний бізнес. Роблю сам.',
-      'hero.cta1': 'Дивитись роботи', 'hero.cta2': 'Зв’язатися',
-      'meta.projects': 'Запущених проєктів', 'meta.products': 'Живих товарів', 'meta.records': 'Записів у БД', 'meta.years': 'Років у tech',
+      'hero.tag': 'Відкритий до проєктів', 'hero.kicker': 'Full-Stack розробник · AI-автоматизація',
+      'hero.sub': 'Створюю full-stack сайти й вебзастосунки, від фронтенду до бекенду, та AI-автоматизацію за ними, на яких <b>працює</b> реальний бізнес. Найновіший проєкт, живий магазин ателье вишивки у Флориді; до нього флагман, двомовний український магазин. Сім запущених проєктів, нуль співзасновників.',
+      'hero.cta1': 'Дивитись роботи →', 'hero.cta2': 'Зв’язатися',
+      'scene.label': 'Сцена', 'scene.solid': 'Обʼєм', 'scene.wire': 'Каркас', 'scene.cloud': 'Частинки', 'scene.hint': 'тягни щоб обертати · скрол щоб крутити',
+      'meta.projects': 'Веб-платформ', 'meta.products': 'Товарів у продажу', 'meta.records': 'Записів у БД', 'meta.bots': 'Ботів у проді', 'meta.years': 'Років у tech',
       'about.title': 'Про мене',
       'about.p1': 'Створюю full-stack сайти й вебзастосунки, від фронтенду до бекенду, та AI-автоматизацію за ними, на яких <b>працює</b> реальний бізнес. Мій флагман, живий магазин ручної вишивки у Флориді; також запустив двомовний український магазин, маркетплейс прошивок на 7 мов і продакшн Telegram-ботів на Claude API.',
       'about.p2': 'Сім запущених проєктів, нуль співзасновників. Проєктую, кодую, деплою і підтримую сам.',
@@ -36,10 +37,11 @@
     },
     ru: {
       'nav.about': 'Обо мне', 'nav.work': 'Работы', 'nav.stack': 'Стек', 'nav.exp': 'Путь', 'nav.contact': 'Контакты',
-      'hero.tag': 'Full-Stack разработчик · AI-автоматизация · Glendale, CA',
-      'hero.sub': 'Делаю full-stack сайты, веб-приложения и AI-автоматизацию за ними, от фронтенда до бэкенда, на которых работает реальный бизнес. Делаю один.',
-      'hero.cta1': 'Смотреть работы', 'hero.cta2': 'Связаться',
-      'meta.projects': 'Запущенных проектов', 'meta.products': 'Живых товаров', 'meta.records': 'Записей в БД', 'meta.years': 'Лет в tech',
+      'hero.tag': 'Открыт к проектам', 'hero.kicker': 'Full-Stack разработчик · AI-автоматизация',
+      'hero.sub': 'Делаю full-stack сайты и веб-приложения, от фронтенда до бэкенда, и AI-автоматизацию за ними, на которых <b>работает</b> реальный бизнес. Новейший проект, живой магазин ателье вышивки во Флориде; до него флагман, двуязычный украинский магазин. Семь запущенных проектов, ноль сооснователей.',
+      'hero.cta1': 'Смотреть работы →', 'hero.cta2': 'Связаться',
+      'scene.label': 'Сцена', 'scene.solid': 'Объём', 'scene.wire': 'Каркас', 'scene.cloud': 'Частицы', 'scene.hint': 'тяни чтобы вращать · скролл чтобы крутить',
+      'meta.projects': 'Веб-платформ', 'meta.products': 'Товаров в продаже', 'meta.records': 'Записей в БД', 'meta.bots': 'Ботов в проде', 'meta.years': 'Лет в tech',
       'about.title': 'Обо мне',
       'about.p1': 'Делаю full-stack сайты и веб-приложения, от фронтенда до бэкенда, и AI-автоматизацию за ними, на которых <b>работает</b> реальный бизнес. Мой флагман, живой магазин ручной вышивки во Флориде; также запустил двуязычный украинский магазин, маркетплейс прошивок на 7 языков и продакшн Telegram-ботов на Claude API.',
       'about.p2': 'Семь запущенных проектов, ноль сооснователей. Проектирую, кодирую, деплою и поддерживаю сам.',
@@ -58,10 +60,11 @@
     },
     es: {
       'nav.about': 'Sobre mí', 'nav.work': 'Trabajos', 'nav.stack': 'Stack', 'nav.exp': 'Trayectoria', 'nav.contact': 'Contacto',
-      'hero.tag': 'Desarrollador Full-Stack · Automatización con IA · Glendale, CA',
-      'hero.sub': 'Construyo sitios y apps web full-stack, y la automatización con IA detrás, del frontend al backend, sobre los que funcionan negocios reales. Hecho en solitario.',
-      'hero.cta1': 'Ver el trabajo', 'hero.cta2': 'Contactar',
-      'meta.projects': 'Proyectos lanzados', 'meta.products': 'Productos en vivo', 'meta.records': 'Registros en BD', 'meta.years': 'Años en tech',
+      'hero.tag': 'Disponible para proyectos', 'hero.kicker': 'Desarrollador Full-Stack · Automatización con IA',
+      'hero.sub': 'Construyo sitios y apps web full-stack, del frontend al backend, y la automatización con IA detrás, sobre los que <b>funcionan</b> negocios reales. Mi proyecto más reciente, una tienda de bordado artesanal en Florida; antes, mi buque insignia, una tienda ucraniana bilingüe. Siete proyectos lanzados, cero cofundadores.',
+      'hero.cta1': 'Ver el trabajo →', 'hero.cta2': 'Contactar',
+      'scene.label': 'Escena', 'scene.solid': 'Volumen', 'scene.wire': 'Malla', 'scene.cloud': 'Partículas', 'scene.hint': 'arrastra para rotar · scroll para girar',
+      'meta.projects': 'Plataformas web', 'meta.products': 'SKU en venta', 'meta.records': 'Registros en BD', 'meta.bots': 'Bots en producción', 'meta.years': 'Años en tech',
       'about.title': 'Sobre mí',
       'about.p1': 'Construyo sitios y apps web full-stack, del frontend al backend, y la automatización con IA detrás, sobre los que <b>funcionan</b> negocios reales. Mi buque insignia es una tienda de bordado artesanal en Florida; también lancé una tienda ucraniana bilingüe, un marketplace de firmware en 7 idiomas y bots de Telegram en producción con la API de Claude.',
       'about.p2': 'Siete proyectos lanzados, cero cofundadores. Lo diseño, lo programo, lo despliego y lo mantengo.',
@@ -118,15 +121,21 @@
   onScroll();
 
   /* ── Reveal on scroll (cascade) + count-up ── */
+  function fmtNum(n, suffix) {
+    return n.toLocaleString('en-US').replace(/,/g, ' ') + (suffix ? '<span class="suffix">' + suffix + '</span>' : '');
+  }
   function runCounter(el) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = '1';
     var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    if (reduce) { el.textContent = target.toLocaleString('en-US'); return; }
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (reduce) { el.innerHTML = fmtNum(target, suffix); return; }
     var dur = 1400, start = null;
     function step(ts) {
       if (start === null) start = ts;
       var p = Math.min((ts - start) / dur, 1);
       var e = 1 - Math.pow(1 - p, 3); // ease-out-cubic
-      el.textContent = Math.round(target * e).toLocaleString('en-US');
+      el.innerHTML = fmtNum(Math.round(target * e), suffix);
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
