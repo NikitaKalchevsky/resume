@@ -113,11 +113,11 @@ function init(THREE) {
 
   // Letters — centered around the composition origin (M left, K right, symmetric).
   const letters = new THREE.Group();
-  const M = buildLetter(M_PTS, ACCENT, -1.15);
-  const K = buildLetter(K_PTS, CREAM, 1.15);
+  const M = buildLetter(M_PTS, ACCENT, -0.85);
+  const K = buildLetter(K_PTS, CREAM, 0.85);
   letters.add(M, K);
   // Local half-extents of the MK block (for the responsive fit in resize()).
-  const L_HW = 1.65, L_HH = 0.72;
+  const L_HW = 1.4, L_HH = 0.72;
 
   // Ambient background: sage wire icosahedron + accent torus
   const bg = new THREE.Group();
@@ -198,16 +198,16 @@ function init(THREE) {
       // MK lives in the right zone; copy overlaps the left. Fit fully, never crop.
       const zoneL = -0.12 * halfW;
       const zoneR = halfW - padR;
-      const sH = (0.92 * (zoneR - zoneL)) / (2 * L_HW);
-      const sV = (halfH - padV) / L_HH;
+      const sH = (0.80 * (zoneR - zoneL)) / (2 * L_HW);
+      const sV = (0.52 * halfH) / L_HH;
       scale = Math.min(sH, sV);
       offsetX = (zoneL + zoneR) / 2;
       const overR = (offsetX + L_HW * scale) - (halfW - padR);
       if (overR > 0) offsetX -= overR; // guarantee right edge inside
     } else {
       // Narrow: centered behind the copy, scaled to fit width and height.
-      const sH = (0.86 * 2 * halfW) / (2 * L_HW);
-      const sV = (halfH - padV) / L_HH;
+      const sH = (0.78 * 2 * halfW) / (2 * L_HW);
+      const sV = (0.52 * halfH) / L_HH;
       scale = Math.min(sH, sV);
       offsetX = 0;
     }
