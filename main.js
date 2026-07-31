@@ -112,7 +112,7 @@
     return;
   }
 
-  import('./scene.js').then(function (mod) {
+  import('./scene.js?v=1').then(function (mod) {
     var scene = mod.initScene(canvas, hero, {
       variant: 'solid',
       motion: reduce ? 0 : 1,
