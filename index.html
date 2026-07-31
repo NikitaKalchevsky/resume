@@ -1,468 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mykyta Kalchevsky – Full-Stack Developer & AI Automation Engineer</title>
-<meta name="description" content="Full-Stack Developer and AI Automation Engineer: React, Next.js, Node, plus production Telegram bots, Claude API, and workflow automation. Front end to back end, shipped solo. Glendale, CA.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mykyta Kalchevsky — Full-Stack Developer &amp; AI Automation Engineer</title>
+<meta name="description" content="Full-stack developer in Glendale, CA. Websites, web apps and e-commerce front end to back end, plus Claude-powered automation and Telegram bots. Seven projects live in production.">
 <link rel="canonical" href="https://nikitakalchevsky.github.io/resume/">
-<meta property="og:title" content="Mykyta Kalchevsky – Full-Stack Developer & AI Automation Engineer">
-<meta property="og:description" content="Full-stack web apps and AI automation: React, Next.js, Node, Telegram bots, Claude API. Front end to back end, shipped solo.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="images/exclusivestyle-home.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mykyta Kalchevsky – Full-Stack Developer & AI Automation Engineer">
-<meta name="twitter:description" content="Full-stack web apps and AI automation, shipped solo. React, Next.js, Node, Telegram bots, Claude API.">
-<meta name="twitter:image" content="images/exclusivestyle-home.jpg">
 <meta name="theme-color" content="#f5ead8">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f5ead8'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' font-weight='700' text-anchor='middle' fill='%23201e1d'%3EM%3C/text%3E%3Ccircle cx='25' cy='8' r='3' fill='%23c67139'/%3E%3C/svg%3E">
-
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nikitakalchevsky.github.io/resume/">
+<meta property="og:title" content="Mykyta Kalchevsky — Full-Stack Developer &amp; AI Automation Engineer">
+<meta property="og:description" content="Websites, web apps and e-commerce front end to back end, plus Claude-powered automation and Telegram bots. Seven projects live in production.">
+<meta property="og:image" content="https://nikitakalchevsky.github.io/resume/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mykyta Kalchevsky — Full-Stack Developer &amp; AI Automation Engineer">
+<meta name="twitter:description" content="Websites, web apps and e-commerce front end to back end, plus Claude-powered automation and Telegram bots.">
+<meta name="twitter:image" content="https://nikitakalchevsky.github.io/resume/images/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="scroll-progress" aria-hidden="true"></div>
-
 <header class="nav">
-  <a class="nav-brand" href="#top">MK<span class="dot">.</span></a>
-  <nav class="nav-links" aria-label="Sections">
-    <a href="#about" data-i18n="nav.about">About</a>
-    <a href="#work" data-i18n="nav.work">Work</a>
-    <a href="#stack" data-i18n="nav.stack">Stack</a>
-    <a href="#experience" data-i18n="nav.exp">Trajectory</a>
-    <a href="#contact" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-switch" role="group" aria-label="Language">
-    <button type="button" data-lang="en" class="active">EN</button>
-    <button type="button" data-lang="uk">UK</button>
-    <button type="button" data-lang="ru">RU</button>
-    <button type="button" data-lang="es">ES</button>
+  <div class="nav-in">
+    <a class="nav-brand" href="#top">
+      <span class="nav-mark">MK</span>
+      <span class="nav-name"><b>Mykyta Kalchevsky</b><span>Glendale · CA</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about"><i>01</i><span data-i18n="nav1">About</span></a>
+      <a href="#work"><i>02</i><span data-i18n="nav2">Work</span></a>
+      <a href="#stack"><i>03</i><span data-i18n="nav3">Stack</span></a>
+      <a href="#experience"><i>04</i><span data-i18n="nav4">Trajectory</span></a>
+      <a href="#education"><i>05</i><span data-i18n="nav5">Learning</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="uk" aria-pressed="false">UK</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <a href="#contact" class="btn btn-primary nav-cta"><span data-i18n="hire">Hire me</span></a>
+    </div>
   </div>
 </header>
 
-<main>
+<section id="top" class="hero-outer">
+  <div class="hero" id="hero">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="hero-scrim"></div>
+    <div class="hero-in">
 
-<!-- ─── HERO ─── -->
-<section id="top" class="hero-wrap">
-  <div class="hero">
-    <div class="hero-scene" aria-hidden="true"><canvas id="scene"></canvas></div>
-    <div class="hero-grad" aria-hidden="true"></div>
-    <div class="hero-fallback" aria-hidden="true"><span>MK</span></div>
-
-    <div class="hero-copy">
-      <span class="hero-tag reveal"><span class="pulse"></span><span data-i18n="hero.tag">Available for projects</span> <span class="sep">/</span> UTC&#8722;08:00</span>
-      <div class="hero-kicker reveal" data-i18n="hero.kicker">Full-Stack Developer · AI Automation</div>
-      <h1 class="hero-title reveal"><span class="line1">Mykyta</span><br><span class="line2">Kalchevsky.</span></h1>
-      <p class="hero-sub reveal" data-i18n="hero.sub">I build full-stack websites and web apps, front end to back end, and the AI automation behind them, that real businesses <b>run on</b>. My newest build is a live embroidery-atelier storefront in Florida; my flagship before it, a bilingual Ukrainian e-commerce store. Seven shipped projects, zero co-founders.</p>
-      <div class="hero-cta reveal">
-        <a href="#work" class="btn btn-primary" data-i18n="hero.cta1">See selected work →</a>
-        <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Get in touch</a>
+      <div class="hero-status">
+        <span style="display:inline-flex;align-items:center;gap:8px">
+          <span class="dot"></span><span data-i18n="avail">Available for projects</span>
+        </span>
+        <span class="sep">/</span>
+        <span class="mono" style="letter-spacing:.06em">UTC−08:00</span>
       </div>
-      <div class="scene-modes reveal" role="group" aria-label="3D scene mode">
-        <span class="scene-label" data-i18n="scene.label">Scene</span>
-        <button type="button" data-mode="solid" class="active" data-i18n="scene.solid">Volume</button>
-        <button type="button" data-mode="wire" data-i18n="scene.wire">Wireframe</button>
-        <button type="button" data-mode="cloud" data-i18n="scene.cloud">Particles</button>
-        <span class="scene-hint" data-i18n="scene.hint">drag to rotate · scroll to spin</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="hero-stats">
-    <div class="reveal"><span class="num" data-count="7">7</span><span class="lbl" data-i18n="meta.projects">Web platforms shipped</span></div>
-    <div class="reveal"><span class="num" data-count="441">441</span><span class="lbl" data-i18n="meta.products">E-commerce SKUs live</span></div>
-    <div class="reveal"><span class="num" data-count="16003" data-suffix="+">16003</span><span class="lbl" data-i18n="meta.records">DB records served</span></div>
-    <div class="reveal"><span class="num" data-count="4">4</span><span class="lbl" data-i18n="meta.bots">Production bots live</span></div>
-    <div class="reveal"><span class="num" data-count="24" data-suffix="+">24</span><span class="lbl" data-i18n="meta.years">Years in tech</span></div>
-  </div>
-</section>
-
-<!-- ─── ABOUT ─── -->
-<section id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">01</span>
-      <h2 data-i18n="about.title">About</h2>
-      <span class="section-meta">// solo, front to back</span>
-    </div>
-    <div class="about-grid">
-      <div class="reveal">
-        <p class="about-lead" data-i18n="about.p1">I build full-stack websites and web apps, front end to back end, and the AI automation behind them, that real businesses <b>run on</b>. My flagship is a live custom-embroidery storefront in Florida; I also shipped a bilingual Ukrainian store, a 7-language firmware marketplace, and production Telegram bots powered by the Claude API.</p>
-        <p class="about-lead" data-i18n="about.p2">Seven shipped projects, zero co-founders. I design it, code it, deploy it, and keep it running.</p>
-      </div>
-      <div class="about-side reveal">
-        <div class="svc"><span class="svc-no">01</span><div><h4 class="svc-title" data-i18n="svc.1t">E-commerce stores</h4><p class="svc-desc" data-i18n="svc.1d">Storefronts, carts, checkout, payments, and a custom admin.</p></div></div>
-        <div class="svc"><span class="svc-no">02</span><div><h4 class="svc-title" data-i18n="svc.2t">Web apps</h4><p class="svc-desc" data-i18n="svc.2d">Front to back: a React or Next.js UI on a real API and database.</p></div></div>
-        <div class="svc"><span class="svc-no">03</span><div><h4 class="svc-title" data-i18n="svc.3t">Admin panels &amp; dashboards</h4><p class="svc-desc" data-i18n="svc.3d">Orders, inventory, content, and users in one place.</p></div></div>
-        <div class="svc"><span class="svc-no">04</span><div><h4 class="svc-title" data-i18n="svc.4t">Telegram &amp; AI bots</h4><p class="svc-desc" data-i18n="svc.4d">Claude-powered automation, integrations, and chat assistants.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SELECTED WORK ─── -->
-<section id="work">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">02</span>
-      <h2 data-i18n="work.title">Selected Work</h2>
-      <span class="section-meta">// 7 platforms</span>
-    </div>
-    <div class="projects">
-
-      <!-- 01 Exclusive Style (FLAGSHIP) -->
-      <article class="project featured reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="browser-frame">
-            <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">exclusivestyle-yp.com</div></div>
-            <div class="browser-content"><img src="images/exclusivestyle-home.jpg" alt="Exclusive Style custom embroidered patches homepage with the FS monogram"></div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag"><span class="flag" data-i18n="tag.flagship">Flagship</span><span class="live-dot"></span>LIVE · E-COMMERCE</div>
-          <h3>Exclusive Style, Bespoke Embroidery Atelier</h3>
-          <p class="project-desc">A storefront for a hand-embroidery atelier with its own studio in North Port, Florida. Customers browse embroidered patches and monograms, filter by motif, and design their own patch in an interactive builder. Every design is hand-digitized in-house and the embroidery file is kept, so a repeat order matches the first to the millimeter.</p>
-          <div class="metrics">
-            <span class="metric">from $4.50</span>
-            <span class="metric">patch builder</span>
-            <span class="metric">no minimum order</span>
-            <span class="metric">North Port, FL</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> React · locale-prefixed i18n (/en/) · catalog + product pages · custom patch configurator</div>
-          <ul class="project-bullets">
-            <li><strong>Design-your-own-patch builder</strong> for custom orders, from a single monogram to a full team run</li>
-            <li><strong>Catalog with motif filters:</strong> chevrons, hook-and-loop, 3D PVC, logos, monograms</li>
-            <li><strong>Hand-digitized in-house:</strong> the embroidery file is stored for exact repeat orders</li>
-            <li><strong>Design-forward front end:</strong> animated hero, product pages, ratings and pricing</li>
-          </ul>
-          <div class="project-links"><a href="https://exclusivestyle-yp.com" target="_blank" rel="noopener" class="btn btn-primary">Visit live site →</a></div>
-        </div>
-      </article>
-
-      <!-- 02 Apelsin Rozmarin -->
-      <article class="project reverse reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="browser-frame">
-            <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">apelsin-rozmarin.com.ua</div></div>
-            <div class="browser-content"><img src="images/fruktbox-home.jpg" alt="Apelsin Rozmarin edible-bouquet storefront"></div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
-          <h3>Apelsin Rozmarin, Full-Stack E-Commerce</h3>
-          <p class="project-desc">A full-stack edible-bouquet store for the Ukrainian market, designed, coded, deployed, and maintained end to end, solo. React storefront on the front, Firebase on the back: 441 live products, a custom admin panel, a real-time order pipeline, and three payment methods. Indexed in Google Merchant Center, SSL grade A.</p>
-          <div class="metrics">
-            <span class="metric">441 products</span>
-            <span class="metric">3 payment rails</span>
-            <span class="metric">SSL grade A</span>
-            <span class="metric">Solo build</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal</div>
-          <ul class="project-bullets">
-            <li><strong>Front to back, solo:</strong> React storefront, Firebase data and auth, custom admin for products, inventory, and orders</li>
-            <li><strong>WordPress to React/Vite rebuild:</strong> 301 redirects, Firebase-generated sitemap, preserved SEO and Merchant Center indexing</li>
-            <li><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
-            <li><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
-          </ul>
-          <div class="project-links"><a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn btn-primary">Visit live site →</a></div>
-        </div>
-      </article>
-
-      <!-- 03 TuningStore -->
-      <article class="project reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="browser-frame">
-            <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">tuningstore.net</div></div>
-            <div class="browser-content"><img src="images/tuningstore-home.jpg" alt="TuningStore ECU firmware marketplace homepage"></div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · PRODUCTION</div>
-          <h3>TuningStore, ECU Firmware Marketplace</h3>
-          <p class="project-desc">A multilingual digital marketplace for ECU calibration files: stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog, purchase securely, and receive a presigned R2 download link. Built solo from zero.</p>
-          <div class="metrics">
-            <span class="metric">7 languages</span>
-            <span class="metric">301+ files</span>
-            <span class="metric">3 payment rails</span>
-            <span class="metric">R2 secure delivery</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> Next.js 16 · TypeScript · Prisma 7 · PostgreSQL (Neon) · NextAuth · Stripe · PayPal · Coinbase · Cloudflare R2 · next-intl</div>
-          <ul class="project-bullets">
-            <li><strong>4-level catalog:</strong> brand, model, engine, calibration file, 301+ firmware files imported</li>
-            <li><strong>7 languages:</strong> EN, UA, RU, DE, FR, ES, IT via next-intl with full route localization</li>
-            <li><strong>Three payment rails:</strong> Stripe, PayPal, Coinbase Commerce, webhooks handle fulfillment</li>
-            <li><strong>Secure delivery:</strong> Cloudflare R2 presigned URLs, files never exposed publicly</li>
-          </ul>
-          <div class="project-links"><a href="https://tuningstore.net" target="_blank" rel="noopener" class="btn btn-primary">tuningstore.net →</a></div>
-        </div>
-      </article>
-
-      <!-- 04 Airbag ECU Lookup Bot -->
-      <article class="project reverse reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="phones">
-            <div class="phone phone-1"><img src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing an ECU lookup"></div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · COMMERCIAL</div>
-          <h3>Airbag ECU Lookup Bot</h3>
-          <p class="project-desc">A production Telegram bot serving real customers for an automotive ECU programming service in Glendale, CA. Customers send a vehicle brand and part number; the bot queries a 16,003-record database, returns the correct reprogramming method and price, and books an appointment. Claude Haiku handles messy natural-language inputs.</p>
-          <div class="metrics">
-            <span class="metric">16,003 records</span>
-            <span class="metric">two-bot arch</span>
-            <span class="metric">89 MB footprint</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron</div>
-          <ul class="project-bullets">
-            <li><strong>Two-bot architecture:</strong> client-facing bot plus admin management panel</li>
-            <li><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron auto-restart</li>
-            <li><strong>Lean ops:</strong> 89 MB memory footprint, runs comfortably on 1 GB RAM / 1 vCPU</li>
-            <li><strong>API tuning:</strong> eliminated Claude 400 errors via prompt plus DB chunking and temperature 0.1</li>
-          </ul>
-          <div class="project-links"><a href="#contact" class="btn btn-outline">Demo on request</a></div>
-        </div>
-      </article>
-
-      <!-- 05 Forge Hub -->
-      <article class="project reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="phones phones-trio">
-            <div class="phone phone-1"><img src="images/forge-hub-menu.png" alt="Forge Hub main menu with six modules"></div>
-            <div class="phone phone-2"><img src="images/forge-hub-lang.png" alt="Forge Hub language selection, six-language UI"></div>
-            <div class="phone phone-3"><img src="images/forge-hub-finance.png" alt="Forge Hub finance module tracking income and expenses"></div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · SAAS</div>
-          <h3>Forge Hub, Multi-Tenant AI Assistant</h3>
-          <p class="project-desc">A multi-tenant Telegram assistant with subscription billing, evolved from a single-user testbed into a productized SaaS. Six modules; every natural-language input is parsed into structured data by Claude Haiku. Per-user data isolation, a 6-language UI, freemium gating with Telegram Stars, and an admin panel.</p>
-          <div class="metrics">
-            <span class="metric">multi-tenant</span>
-            <span class="metric">Telegram Stars</span>
-            <span class="metric">6 languages</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> Python 3.12 · Claude Haiku 4.5 · python-telegram-bot · SQLite · APScheduler · Playwright · Telegram Stars · DigitalOcean</div>
-          <ul class="project-bullets">
-            <li><strong>Multi-tenant by design:</strong> every table isolated by user_id; Free/Pro tiers gated in code</li>
-            <li><strong>Subscription billing via Telegram Stars</strong> (Pro ~$8/mo), self-serve upgrade, admin payments view</li>
-            <li><strong>6-language UI</strong> (EN, RU, UA, ES, DE, FR), full i18n, zero hardcoded strings</li>
-            <li><strong>Hardened:</strong> parameterized SQL, per-user rate limiting, prompt-injection isolation</li>
-          </ul>
-          <div class="project-links"><a href="#contact" class="btn btn-outline">Architecture on request</a></div>
-        </div>
-      </article>
-
-      <!-- 06 Smart DCA Trade Bot -->
-      <article class="project reverse reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="phones phones-duo">
-            <div class="phone phone-1"><img src="images/dca-bot-all.jpg" alt="DCA Trade Bot market scan, buy signal, and open positions"></div>
-            <div class="phone phone-2"><img src="images/dca-bot-menu.jpg" alt="DCA Trade Bot buy signal notification"></div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag"><span class="live-dot"></span>LIVE · TRADING</div>
-          <h3>Smart DCA Trade Bot</h3>
-          <p class="project-desc">Automated crypto DCA strategy bot for Binance.US, managed entirely via Telegram inline menus, no web interface needed. Scans top coins by volume and momentum, buys on dips below MA20, scales position size with dip depth, and auto-sells on take-profit.</p>
-          <div class="metrics">
-            <span class="metric">async exchange</span>
-            <span class="metric">auto-mode</span>
-            <span class="metric">DRY_RUN safe</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> Python · ccxt (Binance.US) · python-telegram-bot · APScheduler · SQLite · asyncio · DigitalOcean</div>
-          <ul class="project-bullets">
-            <li><strong>Smart DCA strategy:</strong> buys when price &lt; MA20 by a configurable threshold, scales with dip depth</li>
-            <li><strong>Auto-mode:</strong> autonomous buy/sell within limits (max invested, min interval between trades)</li>
-            <li><strong>Inline Telegram UI:</strong> positions, P&amp;L, settings, full control without a web dashboard</li>
-            <li><strong>DRY_RUN mode</strong> for safe strategy testing without real orders</li>
-          </ul>
-          <div class="project-links"><a href="#contact" class="btn btn-outline">Demo on request</a></div>
-        </div>
-      </article>
-
-      <!-- 07 LangChain Fleet -->
-      <article class="project reveal">
-        <div class="project-visual"><div class="tilt"><div class="tilt-inner">
-          <div class="terminal-frame">
-            <div class="terminal-bar"><div class="browser-dots"><span></span><span></span><span></span></div><span class="terminal-title">root@ubuntu-s-1vcpu-1gb-nyc1: ~</span></div>
-            <div class="terminal-body">
-              <div><span class="prompt">$</span> <span class="cmd">screen -ls</span></div>
-              <div><span class="out">There are screens on:</span></div>
-              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122794.bot</span> <span class="dim">(airbag · Detached)</span></div>
-              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">122797.admin</span> <span class="dim">(panel · Detached)</span></div>
-              <div><span class="dim">  </span><span class="ok">●</span> <span class="out">23445.ai-agent</span> <span class="dim">(langchain · Detached)</span></div>
-              <div><span class="prompt">$</span> <span class="cmd">uptime</span></div>
-              <div><span class="out">up <span class="ok">11 days</span>, load average: <span class="ok">0.00, 0.00, 0.00</span></span></div>
-              <div><span class="prompt">$</span> <span class="cmd">free -h | head -2</span></div>
-              <div><span class="out">Mem: 961Mi <span class="ok">456Mi</span> used</span></div>
-              <div><span class="prompt">$</span> <span class="cmd">_</span><span class="term-cursor"></span></div>
-            </div>
-          </div>
-        </div></div></div>
-        <div class="project-content">
-          <div class="project-tag">FRAMEWORK · INFRASTRUCTURE</div>
-          <h3>LangChain Framework + Bot Fleet</h3>
-          <p class="project-desc">A LangChain-powered Telegram assistant designed as a deployment-ready foundation for client-specific automation. A modular skills directory keeps each capability isolated and swappable per client. It runs alongside three other production bots on a single $5 droplet: <strong>11 days uptime, zero incidents, load average 0.00</strong>.</p>
-          <div class="metrics">
-            <span class="metric">4 bots · 1 droplet</span>
-            <span class="metric">modular skills</span>
-            <span class="metric">11 days uptime</span>
-          </div>
-          <div class="project-stack"><span class="stack-label">stack:</span> Python · LangChain · ChatAnthropic · screen · cron · modular skills architecture</div>
-          <ul class="project-bullets">
-            <li><strong>Skill-based modular design:</strong> database, messaging, logging, approval, pricing, orders, inventory</li>
-            <li><strong>Approval workflows</strong> for human-in-the-loop scenarios</li>
-            <li><strong>Fleet management:</strong> 4 production bots co-located on one droplet, isolated screen sessions</li>
-            <li><strong>Reliability proven:</strong> production uptime measured in days, not hours</li>
-          </ul>
-          <div class="project-links"><a href="#contact" class="btn btn-outline">Architecture on request</a></div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── STACK ─── -->
-<section id="stack">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">03</span>
-      <h2 data-i18n="stack.title">Stack</h2>
-      <span class="section-meta">// front to back</span>
-    </div>
-  </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
       <div>
-        <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Firebase</span><span class="chip">Python</span><span class="chip"><span class="accent">Claude API</span></span><span class="chip">LangChain</span><span class="chip">Cloudflare R2</span><span class="chip">Stripe</span><span class="chip">PayPal</span><span class="chip">next-intl</span><span class="chip">Telegram Bot API</span><span class="chip">DigitalOcean</span><span class="chip">Vercel</span>
+        <p class="hero-kicker" data-i18n="role">Full-Stack Developer · AI Automation</p>
+        <h1><span data-i18n="h1a">Mykyta</span><br><em data-i18n="h1b">Kalchevsky.</em></h1>
       </div>
-      <div aria-hidden="true">
-        <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Firebase</span><span class="chip">Python</span><span class="chip"><span class="accent">Claude API</span></span><span class="chip">LangChain</span><span class="chip">Cloudflare R2</span><span class="chip">Stripe</span><span class="chip">PayPal</span><span class="chip">next-intl</span><span class="chip">Telegram Bot API</span><span class="chip">DigitalOcean</span><span class="chip">Vercel</span>
-      </div>
-    </div>
-  </div>
-  <div class="wrap"><p class="stack-note reveal" data-i18n="stack.note">Serverless-first where it makes sense, single-droplet where it is cheaper. I pick the stack that ships and keeps running, not the trendiest one.</p></div>
-</section>
 
-<!-- ─── EXPERIENCE ─── -->
-<section id="experience">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">04</span>
-      <h2 data-i18n="exp.title">Trajectory</h2>
-      <span class="section-meta">// 2002 → now</span>
-    </div>
-    <div class="exp-list">
-      <div class="exp-item reveal">
-        <div class="exp-period">2024 – <span class="current">now</span></div>
+      <div class="hero-bottom">
         <div>
-          <div class="exp-role">Full-Stack Developer &amp; AI Automation Engineer · Freelance</div>
-          <div class="exp-company">Self-employed · Glendale, CA</div>
-          <p class="exp-desc">Building full-stack websites and web apps front end to back end (e-commerce, marketplaces, admin panels), plus the AI automation and Telegram bots behind them: multilingual builds, Claude API integrations, custom workflow automation. Operating a local ECU programming service as a real-world testbed.</p>
+          <p class="hero-lede" data-i18n-html="lede">I build full-stack websites and web apps, front end to back end, and the AI automation behind them, that real businesses <strong>run on</strong>. My newest build is a live embroidery-atelier storefront in Florida; my flagship before it, a bilingual Ukrainian e-commerce store. Seven shipped projects, zero co-founders.</p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary"><span data-i18n="cta1">See selected work →</span></a>
+            <a href="#contact" class="btn btn-onDark"><span data-i18n="cta2">Get in touch</span></a>
+          </div>
         </div>
-      </div>
-      <div class="exp-item reveal">
-        <div class="exp-period">2022 – 2024</div>
-        <div>
-          <div class="exp-role">Driver · Front-End Developer (transitioning)</div>
-          <div class="exp-company">Kyiv, Ukraine → Glendale, CA</div>
-          <p class="exp-desc">Drove rideshare while completing intensive coursework in HTML/CSS, JavaScript, and React. Built first portfolio sites and WordPress projects.</p>
-        </div>
-      </div>
-      <div class="exp-item reveal">
-        <div class="exp-period">2015 – 2020</div>
-        <div>
-          <div class="exp-role">Network Engineer</div>
-          <div class="exp-company">Kyivstar · Kharkiv, Ukraine</div>
-          <p class="exp-desc">Network engineering and infrastructure operations at Ukraine's largest telecom operator.</p>
-        </div>
-      </div>
-      <div class="exp-item reveal">
-        <div class="exp-period">2010 – 2015</div>
-        <div>
-          <div class="exp-role">Network Engineer</div>
-          <div class="exp-company">Airbites · Kharkiv, Ukraine</div>
-          <p class="exp-desc">ISP-level network engineering and customer infrastructure.</p>
-        </div>
-      </div>
-      <div class="exp-item reveal">
-        <div class="exp-period">2002 – 2010</div>
-        <div>
-          <div class="exp-role">Local Network Owner / Operator</div>
-          <div class="exp-company">Independent ISP · Kharkiv, Ukraine</div>
-          <p class="exp-desc">Owned and operated a local-area ISP. Full responsibility for hardware, customer support, billing, and operations. The original real-world classroom for "ship it and keep it running."</p>
+        <div class="scenes" role="group" aria-label="3D scene">
+          <span class="scenes-label" data-i18n="scene">Scene</span>
+          <button type="button" data-variant="solid" aria-pressed="true"><span data-i18n="vSolid">Volume</span></button>
+          <button type="button" data-variant="wire" aria-pressed="false"><span data-i18n="vWire">Wireframe</span></button>
+          <button type="button" data-variant="cloud" aria-pressed="false"><span data-i18n="vCloud">Particles</span></button>
+          <span class="hint" data-i18n="dragHint">drag to rotate · scroll to spin</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── EDUCATION ─── -->
-<section id="education">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">05</span>
-      <h2 data-i18n="edu.title">Learning</h2>
-      <span class="section-meta">// self-directed</span>
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat" data-reveal><div class="stat-n" data-count="7">7</div><div class="stat-l" data-i18n="s1">Web platforms shipped</div></div>
+    <div class="stat" data-reveal><div class="stat-n" data-count="441">441</div><div class="stat-l" data-i18n="s2">E-commerce SKUs live</div></div>
+    <div class="stat" data-reveal><div class="stat-n"><span data-count="16003">16 003</span>+</div><div class="stat-l" data-i18n="s3">DB records served</div></div>
+    <div class="stat" data-reveal><div class="stat-n" data-count="4">4</div><div class="stat-l" data-i18n="s4">Production bots live</div></div>
+    <div class="stat" data-reveal><div class="stat-n"><span data-count="24">24</span>+</div><div class="stat-l" data-i18n="s5">Years in tech</div></div>
+  </div>
+</section>
+
+<section id="about" class="sec">
+  <div class="split">
+    <div data-reveal>
+      <div class="num">01</div>
+      <h2 data-i18n="aboutH">About</h2>
+      <p class="sec-note" style="margin-top:10px" data-i18n="aboutNote">// who · what · why</p>
     </div>
-    <div class="dual-grid">
-      <div class="reveal">
-        <h4 class="sub-head" data-i18n="edu.focus">Currently going deep on</h4>
-        <div class="metrics">
-          <span class="metric">Claude API &amp; agent architectures</span>
-          <span class="metric">LLM evaluation &amp; guardrails</span>
-          <span class="metric">Multi-tenant SaaS</span>
-          <span class="metric">Payments &amp; billing</span>
-          <span class="metric">i18n at scale</span>
-        </div>
-        <p class="stack-note" data-i18n="edu.note">Self-directed. I learn by shipping production systems, then hardening them, and move on to the next hard problem.</p>
-      </div>
-      <div class="reveal">
-        <h4 class="sub-head" data-i18n="edu.langs">Languages</h4>
-        <div class="lang"><span class="lang-name">Ukrainian</span><span class="lang-level native" data-i18n="lvl.native">Native</span></div>
-        <div class="lang"><span class="lang-name">Russian</span><span class="lang-level native" data-i18n="lvl.native">Native</span></div>
-        <div class="lang"><span class="lang-name">English</span><span class="lang-level" data-i18n="lvl.working">Working proficiency · actively improving</span></div>
+    <div data-reveal>
+      <p class="about-lede" data-i18n-html="aboutLede">15 years building and running networks taught me one thing: <strong>code is easy, keeping it alive is hard</strong>. Now I bring that operations mindset to full-stack web development, building websites, web apps, and the automation behind them, front end to back end. I work with React, Next.js, Firebase, and Python, ship to Vercel and DigitalOcean, and treat every project like it has paying customers behind it. Because mine do.</p>
+      <p class="sec-note" style="margin-bottom:6px" data-i18n="whatIBuild">// what I build</p>
+      <div class="builds">
+        <div class="build" data-reveal><i>01</i><div><h4 data-i18n="b1t">E-commerce stores</h4><p data-i18n="b1d">Storefronts, carts, checkout, payments, and a custom admin.</p></div></div>
+        <div class="build" data-reveal><i>02</i><div><h4 data-i18n="b2t">Web apps</h4><p data-i18n="b2d">Front to back: a React or Next.js UI on a real API and database.</p></div></div>
+        <div class="build" data-reveal><i>03</i><div><h4 data-i18n="b3t">Admin panels &amp; dashboards</h4><p data-i18n="b3d">Orders, inventory, content, and users in one place.</p></div></div>
+        <div class="build" data-reveal><i>04</i><div><h4 data-i18n="b4t">Automation &amp; integrations</h4><p data-i18n="b4d">Payments, Telegram, webhooks, and workflow automation.</p></div></div>
+        <div class="build" data-reveal><i>05</i><div><h4 data-i18n="b5t">Telegram &amp; AI bots</h4><p data-i18n="b5d">Claude-powered automation and chat assistants.</p></div></div>
+        <div class="build" data-reveal><i>06</i><div><h4 data-i18n="b6t">Multilingual / i18n</h4><p data-i18n="b6d">Localized UIs and full i18n, 2 to 7 languages.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── CONTACT ─── -->
-<section id="contact" class="cta on-dark">
-  <div class="wrap">
-    <div class="cta-tag reveal">/// LET'S BUILD SOMETHING</div>
-    <h2 class="reveal" data-i18n="cta.title">Need a bot, an integration,<br>or a <span class="swash">whole system</span>?</h2>
-    <p class="reveal" data-i18n="cta.sub">Telegram bots, Claude API integrations, automation pipelines, full-stack web apps. Available for one-off projects or ongoing retainers.</p>
-    <div class="cta-buttons reveal">
-      <a href="mailto:nikita.kalchevskyi@gmail.com" class="btn btn-primary" data-i18n="cta.email">Email me →</a>
-      <a href="https://t.me/Hybrid_d" class="btn btn-outline">Telegram</a>
-      <a href="resume.pdf" class="btn btn-outline" download data-i18n="cta.pdf">Download PDF</a>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-row"><span>React · Next.js</span><span>Firebase</span><span>Claude API</span><span>Telegram Bots</span><span>Prisma · Postgres</span><span>Stripe · Monobank</span><span>DigitalOcean</span><span>i18n · 7 locales</span></div>
+    <div class="marquee-row"><span>React · Next.js</span><span>Firebase</span><span>Claude API</span><span>Telegram Bots</span><span>Prisma · Postgres</span><span>Stripe · Monobank</span><span>DigitalOcean</span><span>i18n · 7 locales</span></div>
+  </div>
+</div>
+
+<section id="work" class="sec">
+  <div class="head-row" data-reveal>
+    <div>
+      <div class="num">02</div>
+      <h2 data-i18n="workH">Selected Work</h2>
     </div>
-    <div class="contact-grid reveal">
-      <div class="contact-cell"><span class="label">Email</span><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></div>
-      <div class="contact-cell"><span class="label">Telegram</span><a href="https://t.me/Hybrid_d">@Hybrid_d</a></div>
-      <div class="contact-cell"><span class="label">Phone</span><a href="tel:+12398879992">+1 (239) 887-9992</a></div>
-      <div class="contact-cell"><span class="label">GitHub</span><a href="https://github.com/nikitakalchevsky" target="_blank" rel="noopener">@nikitakalchevsky</a></div>
-      <div class="contact-cell"><span class="label">LinkedIn</span><a href="https://linkedin.com/in/nikitakalchevsky" target="_blank" rel="noopener">nikitakalchevsky</a></div>
+    <p class="sec-note">// 2024 – 2026</p>
+  </div>
+
+  <article class="work w-wide accented" data-reveal>
+    <div class="tilt">
+      <div class="shot ar43"><img class="washed" src="images/exclusivestyle-home.jpg" alt="Exclusive Style embroidery atelier storefront homepage"></div>
+    </div>
+    <div>
+      <div class="work-meta">
+        <span class="mono">01</span>
+        <span class="tag tag-accent" data-i18n="flagship">Flagship</span>
+        <span class="tag tag-accent-2">LIVE · PRODUCTION</span>
+        <span class="mono">exclusivestyle-yp.com</span>
+      </div>
+      <h3 data-i18n="p1h">Exclusive Style, Embroidery Atelier Commerce</h3>
+      <p class="work-lede" data-i18n="p1l">A full-stack storefront for a custom embroidery atelier in North Port, Florida: a filterable patch catalog with product pages and ratings, an in-browser design studio where the customer lays out their own patch, accounts, cart and checkout — three languages, dark mode, and the workshop's content pages behind it all.</p>
+      <div class="chips">
+        <span class="tag tag-outline" data-i18n="p1m1">Design studio in browser</span>
+        <span class="tag tag-outline" data-i18n="p1m2">3 languages</span>
+        <span class="tag tag-outline">Card · Apple Pay · PayPal</span>
+        <span class="tag tag-outline" data-i18n="solo">Solo build</span>
+      </div>
+      <ul class="bullets">
+        <li data-i18n-html="p1b1"><strong>Design studio:</strong> customers compose their own patch in the browser and send it straight into the workshop queue</li>
+        <li data-i18n-html="p1b2"><strong>Filterable catalog:</strong> chevrons, hook-and-loop, PVC and custom orders, with ratings, from-prices and product pages</li>
+        <li data-i18n-html="p1b3"><strong>Three locales:</strong> EN, ES, RU with fully localized routes, metadata and product data</li>
+        <li data-i18n-html="p1b4"><strong>Commerce end to end:</strong> accounts, cart, checkout with Card, Apple Pay and PayPal, USPS/UPS shipping</li>
+        <li data-i18n-html="p1b5"><strong>Dark mode and an animated hero</strong> over the atelier's own content: process, materials, equipment, reviews, FAQ</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> Next.js (App Router) · TypeScript · i18n (EN/ES/RU) · Stripe · Apple Pay · PayPal · USPS/UPS</p>
+      <a href="https://exclusivestyle-yp.com/en" target="_blank" rel="noopener" class="btn btn-secondary"><span data-i18n="visit">Visit live site →</span></a>
+    </div>
+  </article>
+
+  <article class="work w-wide" data-reveal>
+    <div class="tilt">
+      <div class="shot ar43"><img class="washed" src="images/fruktbox-home.jpg" alt="Apelsin Rozmarin e-commerce homepage with product catalog"></div>
+    </div>
+    <div>
+      <div class="work-meta">
+        <span class="mono">02</span>
+        <span class="tag tag-accent-2">LIVE · PRODUCTION</span>
+        <span class="mono">apelsin-rozmarin.com.ua</span>
+      </div>
+      <h3 data-i18n="p2h">Apelsin Rozmarin, Full-Stack E-Commerce</h3>
+      <p class="work-lede" data-i18n="p2l">A full-stack e-commerce store for the Ukrainian market, designed, coded, deployed, and maintained end to end, solo. React storefront on the front, Firebase on the back: 441 live products, a custom admin panel, a real-time order pipeline, and three payment methods. Indexed in Google Merchant Center, SSL grade A.</p>
+      <div class="chips">
+        <span class="tag tag-outline" data-i18n="p2m1">441 products</span>
+        <span class="tag tag-outline" data-i18n="p2m2">3 payment rails</span>
+        <span class="tag tag-outline">SSL grade A</span>
+        <span class="tag tag-outline" data-i18n="solo2">Solo build</span>
+      </div>
+      <ul class="bullets">
+        <li data-i18n-html="p2b1"><strong>Front to back, solo:</strong> React storefront, Firebase data and auth, custom admin panel for products, inventory, and orders</li>
+        <li data-i18n-html="p2b2"><strong>WordPress to React/Vite rebuild:</strong> 301 redirects, Firebase-generated sitemap, preserved SEO and Merchant Center indexing</li>
+        <li data-i18n-html="p2b3"><strong>Real-time Telegram notifications</strong> dispatched to operator chats on every order</li>
+        <li data-i18n-html="p2b4"><strong>Three payment rails:</strong> Monobank acquiring, IBAN bank transfer, PayPal</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> React · Vite · Firebase (Firestore, Auth, Hosting) · Telegram Bot API · Monobank · PayPal</p>
+      <a href="https://apelsin-rozmarin.com.ua" target="_blank" rel="noopener" class="btn btn-secondary"><span data-i18n="visit2">Visit live site →</span></a>
+    </div>
+  </article>
+
+  <article class="work w-rev" data-reveal>
+    <div>
+      <div class="work-meta">
+        <span class="mono">03</span>
+        <span class="tag tag-accent-2">LIVE · PRODUCTION</span>
+        <span class="mono">tuningstore.net</span>
+      </div>
+      <h3 data-i18n="p3h">TuningStore, ECU Firmware Marketplace</h3>
+      <p class="work-lede" data-i18n="p3l">A multilingual digital marketplace for ECU calibration files: stock firmware, Stage 1/2 tunes, DPF/EGR/AdBlue off, gearbox maps. Customers browse a deep hierarchical catalog, purchase securely, and receive a presigned R2 download link. Built solo from zero.</p>
+      <div class="chips">
+        <span class="tag tag-outline" data-i18n="p3m1">7 languages</span>
+        <span class="tag tag-outline" data-i18n="p3m2">301+ files</span>
+        <span class="tag tag-outline" data-i18n="p3m3">R2 secure delivery</span>
+      </div>
+      <ul class="bullets">
+        <li data-i18n-html="p3b1"><strong>4-level catalog:</strong> brand, model, engine, calibration file, 301+ firmware files imported</li>
+        <li data-i18n-html="p3b2"><strong>7 languages:</strong> EN, UA, RU, DE, FR, ES, IT via next-intl with full route localization</li>
+        <li data-i18n-html="p3b3"><strong>Three payment rails:</strong> Stripe, PayPal, Coinbase Commerce, webhooks handle order fulfillment</li>
+        <li data-i18n-html="p3b4"><strong>Admin bulk import:</strong> drag-and-drop .bin upload, auto-parse filename, DB plus R2 in one shot</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> Next.js 16 (App Router) · TypeScript · Prisma 7 · PostgreSQL (Neon) · NextAuth v4 · Stripe · PayPal · Coinbase · Cloudflare R2 · next-intl</p>
+      <a href="https://tuningstore.net" target="_blank" rel="noopener" class="btn btn-secondary">tuningstore.net →</a>
+    </div>
+    <div class="tilt">
+      <div class="shot shot-sm ar43"><img class="washed" src="images/tuningstore-home.jpg" alt="TuningStore ECU firmware marketplace homepage"></div>
+    </div>
+  </article>
+
+  <article class="work w-narrow" data-reveal>
+    <div class="tilt">
+      <div class="shot shot-sm ar34"><img class="washed" src="images/airbag-bot-chat.jpg" alt="Airbag ECU Bot Telegram conversation showing a NISSAN ECU lookup"></div>
+    </div>
+    <div>
+      <div class="work-meta">
+        <span class="mono">04</span>
+        <span class="tag tag-accent-2">LIVE · COMMERCIAL</span>
+      </div>
+      <h3 data-i18n="p4h">Airbag ECU Lookup Bot</h3>
+      <p class="work-lede" data-i18n="p4l">A production Telegram bot serving real customers for an automotive ECU programming service in Glendale, CA. Customers send a vehicle brand and part number; the bot queries a 16,003-record database, returns the correct reprogramming method and price, and books an appointment within an hour. Claude Haiku handles messy natural-language inputs.</p>
+      <ul class="bullets">
+        <li data-i18n-html="p4b1"><strong>Two-bot architecture:</strong> client-facing bot plus admin management panel</li>
+        <li data-i18n-html="p4b2"><strong>Production deploy:</strong> Ubuntu droplet, persistent screen sessions, cron auto-restart every 6h</li>
+        <li data-i18n-html="p4b3"><strong>Lean ops:</strong> 89MB memory footprint, runs comfortably on 1GB RAM / 1 vCPU</li>
+        <li data-i18n-html="p4b4"><strong>API tuning:</strong> eliminated Claude 400 errors via prompt plus DB chunking and temperature 0.1</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> Python · Claude Haiku API · python-telegram-bot · openpyxl · DigitalOcean · Linux/cron</p>
+      <a href="#contact" class="btn btn-ghost"><span data-i18n="demoReq">Demo on request</span></a>
+    </div>
+  </article>
+
+  <article class="work w-rev" data-reveal>
+    <div>
+      <div class="work-meta">
+        <span class="mono">05</span>
+        <span class="tag tag-accent-2">LIVE · SAAS</span>
+      </div>
+      <h3 data-i18n="p5h">Forge Hub, Multi-Tenant AI Assistant</h3>
+      <p class="work-lede" data-i18n="p5l">A multi-tenant Telegram assistant with subscription billing, evolved from a single-user testbed into a productized SaaS. Six modules (nutrition, finance, shopping, tasks, schedule); every natural-language input is parsed into structured data by Claude Haiku. Per-user data isolation, a 6-language UI, freemium gating with Telegram Stars, and an admin panel for users and revenue.</p>
+      <ul class="bullets">
+        <li data-i18n-html="p5b1"><strong>Multi-tenant by design:</strong> every table isolated by user_id; Free/Pro tiers gated in code</li>
+        <li data-i18n-html="p5b2"><strong>Subscription billing via Telegram Stars</strong> (Pro ~$8/mo), self-serve upgrade, admin payments view</li>
+        <li data-i18n-html="p5b3"><strong>Natural-language parsing:</strong> "spent $40 on gas" becomes a categorized expense via Claude Haiku</li>
+        <li data-i18n-html="p5b4"><strong>Hardened:</strong> parameterized SQL, per-user rate limiting, prompt-injection isolation, secrets in .env only</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> Python 3.12 · Claude Haiku 4.5 · python-telegram-bot · SQLite · APScheduler · Playwright · Google CSE · Telegram Stars · DigitalOcean</p>
+      <a href="#contact" class="btn btn-ghost"><span data-i18n="archReq">Architecture on request</span></a>
+    </div>
+    <div class="shot-grid">
+      <div class="tilt span2"><div class="shot shot-sm ar1611"><img class="washed" src="images/forge-hub-menu.png" alt="Forge Hub main menu with six modules"></div></div>
+      <div class="tilt"><div class="shot shot-sm ar34"><img class="washed" src="images/forge-hub-lang.png" alt="Forge Hub language selection, six-language UI"></div></div>
+      <div class="tilt"><div class="shot shot-sm ar34"><img class="washed" src="images/forge-hub-finance.png" alt="Forge Hub finance module tracking income and expenses"></div></div>
+    </div>
+  </article>
+
+  <article class="work w-narrow" data-reveal>
+    <div class="shot-stack">
+      <div class="tilt"><div class="shot shot-sm ar43"><img class="washed" src="images/dca-bot-all.jpg" alt="DCA Trade Bot market scan, buy signal, and open positions"></div></div>
+      <div class="tilt"><div class="shot shot-sm ar169"><img class="washed" src="images/dca-bot-menu.jpg" alt="DCA Trade Bot buy signal notification"></div></div>
+    </div>
+    <div>
+      <div class="work-meta">
+        <span class="mono">06</span>
+        <span class="tag tag-accent-2">LIVE · TRADING</span>
+      </div>
+      <h3 data-i18n="p6h">Smart DCA Trade Bot</h3>
+      <p class="work-lede" data-i18n="p6l">Automated crypto DCA strategy bot for Binance.US, managed entirely via Telegram inline menus, no web interface needed. Scans top coins by volume and momentum, buys on dips below MA20, scales position size with dip depth, and auto-sells on take-profit.</p>
+      <ul class="bullets">
+        <li data-i18n-html="p6b1"><strong>Smart DCA strategy:</strong> buys when price &lt; MA20 by a configurable threshold, scales position size with dip depth</li>
+        <li data-i18n-html="p6b2"><strong>Auto-mode:</strong> autonomous buy/sell within limits (max invested, min interval between trades)</li>
+        <li data-i18n-html="p6b3"><strong>Inline Telegram UI:</strong> positions, P&amp;L, settings, full control without a web dashboard</li>
+        <li data-i18n-html="p6b4"><strong>DRY_RUN mode</strong> for safe strategy testing without real orders</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> Python · ccxt (Binance.US) · python-telegram-bot · APScheduler · SQLite · asyncio · DigitalOcean</p>
+      <a href="#contact" class="btn btn-ghost"><span data-i18n="demoReq2">Demo on request</span></a>
+    </div>
+  </article>
+
+  <article class="work w-rev last" data-reveal>
+    <div>
+      <div class="work-meta">
+        <span class="mono">07</span>
+        <span class="tag tag-neutral">FRAMEWORK · INFRASTRUCTURE</span>
+      </div>
+      <h3 data-i18n="p7h">LangChain Framework + Bot Fleet</h3>
+      <p class="work-lede" data-i18n-html="p7l">A LangChain-powered Telegram assistant designed as a deployment-ready foundation for client-specific automation. A modular skills directory keeps each capability isolated and swappable per client. It currently runs alongside three other production bots on a single $5 droplet: <strong>11 days uptime, zero incidents, load average 0.00</strong>.</p>
+      <ul class="bullets">
+        <li data-i18n-html="p7b1"><strong>Skill-based modular design:</strong> database, messaging, logging, approval, pricing, orders, inventory</li>
+        <li data-i18n-html="p7b2"><strong>Approval workflows</strong> for human-in-the-loop scenarios</li>
+        <li data-i18n-html="p7b3"><strong>Fleet management:</strong> 4 production bots co-located on one droplet, isolated screen sessions</li>
+      </ul>
+      <p class="stack-line"><b>stack:</b> Python · LangChain · ChatAnthropic · screen · cron · modular skills architecture</p>
+      <a href="#contact" class="btn btn-ghost"><span data-i18n="archReq2">Architecture on request</span></a>
+    </div>
+    <div>
+      <div class="term">
+        <div class="term-bar">
+          <i style="background:#c4553f"></i><i style="background:#d8a13a"></i><i style="background:#aebf92"></i>
+          <span>root@ubuntu-s-1vcpu-1gb-nyc1: ~</span>
+        </div>
+        <div><span class="g">$</span> screen -ls</div>
+        <div class="d">There are screens on:</div>
+        <div><span class="g">●</span> 122794.bot <span class="d">(airbag · Detached)</span></div>
+        <div><span class="g">●</span> 122797.admin <span class="d">(panel · Detached)</span></div>
+        <div><span class="g">●</span> 23444.personal <span class="d">(agent · Detached)</span></div>
+        <div><span class="g">●</span> 23445.ai-agent <span class="d">(langchain · Detached)</span></div>
+        <div style="margin-top:10px"><span class="g">$</span> uptime</div>
+        <div class="m">up 11 days, load average: 0.00, 0.00, 0.00</div>
+        <div style="margin-top:10px"><span class="g">$</span> free -h | head -2</div>
+        <div class="d">total&nbsp;&nbsp;&nbsp;used&nbsp;&nbsp;&nbsp;free</div>
+        <div class="m">Mem:&nbsp;&nbsp;961Mi&nbsp;&nbsp;456Mi&nbsp;&nbsp;81Mi</div>
+        <div style="margin-top:10px"><span class="g">$</span> <span class="caret"></span></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section id="stack" class="stack-sec">
+  <div class="sec">
+    <div class="head-row" data-reveal>
+      <div>
+        <div class="num">03</div>
+        <h2 data-i18n="stackH">Stack</h2>
+      </div>
+      <p class="sec-note" data-i18n="stackSub">// daily drivers</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-col" data-reveal>
+        <h4>Frontend</h4>
+        <div class="chips">
+          <span class="tag tag-outline">React · TypeScript</span><span class="tag tag-outline">Next.js (App Router)</span><span class="tag tag-outline">Vite</span><span class="tag tag-outline">JavaScript (ES6+)</span><span class="tag tag-outline">HTML5 / CSS3</span><span class="tag tag-outline">next-intl · i18n</span><span class="tag tag-outline">Firebase (Firestore, Auth)</span><span class="tag tag-outline">WordPress</span>
+        </div>
+      </div>
+      <div class="stack-col" data-reveal>
+        <h4>Backend</h4>
+        <div class="chips">
+          <span class="tag tag-outline">Node.js · Next.js API</span><span class="tag tag-outline">Python 3</span><span class="tag tag-outline">Prisma ORM · PostgreSQL</span><span class="tag tag-outline">Firebase (server, Auth)</span><span class="tag tag-outline">python-telegram-bot</span><span class="tag tag-outline">APScheduler · SQLite</span><span class="tag tag-outline">async / await</span>
+        </div>
+      </div>
+      <div class="stack-col" data-reveal>
+        <h4 data-i18n="aiH">AI &amp; LLM</h4>
+        <div class="chips">
+          <span class="tag tag-accent">Claude API (Sonnet, Haiku, Opus)</span><span class="tag tag-outline">Anthropic SDK</span><span class="tag tag-outline">LangChain</span><span class="tag tag-outline" data-i18n="prompt">Prompt engineering</span><span class="tag tag-outline">Function calling / tools</span><span class="tag tag-outline">Claude Skills</span><span class="tag tag-outline">n8n · Make · Zapier</span>
+        </div>
+      </div>
+      <div class="stack-col" data-reveal>
+        <h4 data-i18n="infraH">Infrastructure</h4>
+        <div class="chips">
+          <span class="tag tag-outline">DigitalOcean droplets</span><span class="tag tag-outline">Vercel · Cloudflare R2</span><span class="tag tag-outline">Linux / Ubuntu</span><span class="tag tag-outline">Stripe · PayPal · Coinbase</span><span class="tag tag-outline">screen · cron · SSH</span><span class="tag tag-outline">Git / GitHub</span><span class="tag tag-outline">DNS · Search Console</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="sec">
+  <div class="head-row" data-reveal>
+    <div>
+      <div class="num">04</div>
+      <h2 data-i18n="expH">Trajectory</h2>
+    </div>
+    <p class="sec-note" data-i18n="expSub">// 2002 → now</p>
+  </div>
+
+  <div class="tl now" data-reveal>
+    <div class="tl-year"><i></i><b data-i18n="t1y">2024 – now</b></div>
+    <div>
+      <h4 data-i18n="t1r">Full-Stack Developer &amp; AI Automation Engineer · Freelance</h4>
+      <p class="tl-co" data-i18n="t1c">Self-employed · Glendale, CA</p>
+      <p data-i18n="t1d">Building full-stack websites and web apps front end to back end (e-commerce, marketplaces, admin panels), plus the AI automation and Telegram bots behind them: multilingual builds, Claude API integrations, custom workflow automation. Operating a local ECU programming service as a real-world testbed — every customer interaction stress-tests the systems I build for clients.</p>
+    </div>
+  </div>
+  <div class="tl" data-reveal>
+    <div class="tl-year"><i></i><b>2022 – 2024</b></div>
+    <div>
+      <h4 data-i18n="t2r">Driver · Front-End Developer (transitioning)</h4>
+      <p class="tl-co" data-i18n="t2c">Kyiv, Ukraine → Glendale, CA</p>
+      <p data-i18n="t2d">Drove rideshare while completing intensive coursework in HTML/CSS, JavaScript, and React. Built first portfolio sites and WordPress projects.</p>
+    </div>
+  </div>
+  <div class="tl" data-reveal>
+    <div class="tl-year"><i></i><b>2015 – 2020</b></div>
+    <div>
+      <h4 data-i18n="t3r">Network Engineer</h4>
+      <p class="tl-co" data-i18n="t3c">Kyivstar · Kharkiv, Ukraine</p>
+      <p data-i18n="t3d">Network engineering and infrastructure operations at Ukraine's largest telecom operator.</p>
+    </div>
+  </div>
+  <div class="tl" data-reveal>
+    <div class="tl-year"><i></i><b>2010 – 2015</b></div>
+    <div>
+      <h4 data-i18n="t4r">Network Engineer</h4>
+      <p class="tl-co" data-i18n="t4c">Airbites · Kharkiv, Ukraine</p>
+      <p data-i18n="t4d">ISP-level network engineering and customer infrastructure.</p>
+    </div>
+  </div>
+  <div class="tl last" data-reveal>
+    <div class="tl-year"><i></i><b>2002 – 2010</b></div>
+    <div>
+      <h4 data-i18n="t5r">Local Network Owner / Operator</h4>
+      <p class="tl-co" data-i18n="t5c">Independent ISP · Kharkiv, Ukraine</p>
+      <p data-i18n="t5d">Owned and operated a local-area ISP. Full responsibility for hardware, customer support, billing, and operations. The original real-world classroom for "ship it and keep it running."</p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="sec" style="padding-top:0">
+  <div class="split">
+    <div data-reveal>
+      <div class="num">05</div>
+      <h2 data-i18n="eduH">Learning</h2>
+      <p class="sec-note" style="margin-top:10px" data-i18n="eduSub">// formal &amp; ongoing</p>
+    </div>
+    <div data-reveal>
+      <div class="edu-row"><b>ReactJS</b><span class="src">iTGid</span><span class="when" data-i18n="d1">Aug 2024</span></div>
+      <div class="edu-row"><b data-i18n="e2">JavaScript Array Methods</b><span class="src">iTGid</span><span class="when" data-i18n="d2">Apr 2024</span></div>
+      <div class="edu-row"><b>JavaScript v2.0</b><span class="src">iTGid</span><span class="when" data-i18n="d3">Mar 2024</span></div>
+      <div class="edu-row"><b>HTML &amp; CSS</b><span class="src" data-i18n="e4s">From 0 to 1</span><span class="when" data-i18n="d4">Oct 2023</span></div>
+      <div class="edu-row ongoing last"><b data-i18n="e5">Claude API · LangChain · Agent architectures</b><span class="src" data-i18n="selfDir">Self-directed · ongoing</span><span class="when" data-i18n="d5">2024 – now</span></div>
+
+      <h6 class="langs-h" data-i18n="langsH">Languages</h6>
+      <div class="chips">
+        <span class="tag tag-accent-2" data-i18n="lg1">Ukrainian — native</span>
+        <span class="tag tag-accent-2" data-i18n="lg2">Russian — native</span>
+        <span class="tag tag-outline" data-i18n="lg3">English — working proficiency, actively improving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-outer">
+  <div class="contact">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="contact-in">
+      <p class="contact-kicker" data-i18n="contactKicker">/// let's build something</p>
+      <h2 data-i18n="contactH">Need a bot, an integration, or a whole system?</h2>
+      <p class="contact-lede" data-i18n="contactL">Telegram bots, Claude API integrations, automation pipelines, full-stack web apps. Available for one-off projects or ongoing retainers.</p>
+      <div class="contact-actions">
+        <a href="mailto:nikita.kalchevskyi@gmail.com" class="btn btn-primary"><span data-i18n="emailMe">Email me →</span></a>
+        <a href="https://t.me/Hybrid_d" target="_blank" rel="noopener" class="btn btn-onDark">Telegram</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-onDark"><span data-i18n="pdf">Download PDF</span></a>
+      </div>
+      <div class="cards">
+        <div><span>Email</span><a href="mailto:nikita.kalchevskyi@gmail.com">nikita.kalchevskyi@gmail.com</a></div>
+        <div><span>Telegram</span><a href="https://t.me/Hybrid_d" target="_blank" rel="noopener">@Hybrid_d</a></div>
+        <div><span data-i18n="phone">Phone</span><a href="tel:+12398879992">+1 (239) 887-9992</a></div>
+        <div><span>GitHub</span><a href="https://github.com/nikitakalchevsky" target="_blank" rel="noopener">@nikitakalchevsky</a></div>
+        <div><span>LinkedIn</span><a href="https://linkedin.com/in/nikitakalchevsky" target="_blank" rel="noopener">nikitakalchevsky</a></div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div>© 2026 · Mykyta Kalchevsky · <span data-i18n="footer.built">Built solo, no frameworks</span></div>
-    <div><span data-i18n="footer.speaks">This page speaks 4 languages</span> · <span class="accent">EN / UK / RU / ES</span></div>
-  </div>
+  <span>© 2026 · Mykyta Kalchevsky</span>
+  <span class="mono" data-i18n="lastShipped">Last shipped: just now</span>
 </footer>
 
-</main>
-
-<script src="scene.js?v=8" type="module"></script>
-<script src="main.js?v=8" defer></script>
+<script src="i18n.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
